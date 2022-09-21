@@ -87,3 +87,28 @@
 .state.active {
     display: block;
 }
+
+.box-one {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: rosybrown;
+    border-collapse: collapse;
+}
+
+.box-two {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: royalblue;
+    border-collapse: collapse;
+}
+
+.box-three {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: right;
+  background-color: yellow;
+  border-collapse: collapse;
+}
