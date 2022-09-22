@@ -4,12 +4,12 @@ public class BoardGame {
 
     private final String id;
     private final String name;
-    private final int numberOfPlayers;
+    private final String numberOfPlayers;
     private final String yearPublished;
-    private final Double averagePlayTime;
+    private final String averagePlayTime;
     private final String collectionId;
 
-    public BoardGame(String id, String name, int numberOfPlayers, String yearPublished, Double averagePlayTime, String collectionId) {
+    public BoardGame(String id, String name, String numberOfPlayers, String yearPublished, String averagePlayTime, String collectionId) {
         this.id = id;
         this.name = name;
         this.numberOfPlayers = numberOfPlayers;
@@ -26,7 +26,7 @@ public class BoardGame {
         return name;
     }
 
-    public int getNumberOfPlayers() {
+    public String getNumberOfPlayers() {
         return numberOfPlayers;
     }
 
@@ -34,7 +34,7 @@ public class BoardGame {
         return yearPublished;
     }
 
-    public Double getAveragePlayTime() {
+    public String getAveragePlayTime() {
         return averagePlayTime;
     }
 
