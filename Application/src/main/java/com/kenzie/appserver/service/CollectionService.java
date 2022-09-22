@@ -18,6 +18,9 @@ public class CollectionService {
     }
 
     public Collection addCollection(Collection collection){
+        if(collection == null){
+            throw new IllegalArgumentException();
+        }
         CollectionRecord collectionRecord = new CollectionRecord();
         collectionRecord.setId(collection.getId());
         collectionRecord.setCollectionName(collection.getCollectionName());

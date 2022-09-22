@@ -75,32 +75,9 @@ public class CollectionServiceTest {
     @Test
     void addCollection_emptyCollectionId_IllegalArgumentExceptionIsThrown() {
         // GIVEN
-        String collectionId = randomUUID().toString();
-        String collectionName = "";
-        String collectionType = "MagicTheGathering";
-        String collectionDescription = "great description";
-        List<String> collectionCards = new ArrayList<>();
-        collectionCards.add("goodCard1");
-        collectionCards.add("goodCard2");
-        collectionCards.add("reallyGoodCard1");
-        collectionCards.add("kindOfOkCardButLooksCool1");
-        collectionCards.add("notGoodCard1");
-        collectionCards.add("expensiveCard1");
-        String collectionCreationDate = ZonedDateTime.now().toString();
-
-        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCards, collectionCreationDate);
-        CollectionRecord collectionRecord = new CollectionRecord();
-        collectionRecord.setId(collection.getId());
-        collectionRecord.setCollectionName(collection.getCollectionName());
-        collectionRecord.setType(collection.getType());
-        collectionRecord.setDescription(collection.getDescription());
-        collectionRecord.setCollectionItemNames(collection.getCollectionItemNames());
-        collectionRecord.setCreationDate(collection.getCreationDate());
-
-        when(collectionRepository.save(collectionRecord)).thenThrow(IllegalArgumentException.class);
 
         assertThrows(IllegalArgumentException.class,
-                ()-> collectionService.addCollection(collection),
+                ()-> collectionService.addCollection(null),
                 "expected IllegalArgumentException to be thrown when null Id is entered to be saved to database.");
 
     }
