@@ -11,9 +11,9 @@ public class BoardGameRecord {
 
     private String id;
     private String name;
-    private int numberOfPlayers;
+    private String numberOfPlayers;
     private String yearPublished;
-    private Double averagePlayTime;
+    private String averagePlayTime;
     private String collectionId;
 
     @DynamoDBHashKey(attributeName = "Id")
@@ -35,11 +35,11 @@ public class BoardGameRecord {
     }
 
     @DynamoDBAttribute(attributeName = "NumberOfPlayers")
-    public int getNumberOfPlayers() {
+    public String getNumberOfPlayers() {
         return numberOfPlayers;
     }
 
-    public void setNumberOfPlayers(int numberOfPlayers) {
+    public void setNumberOfPlayers(String numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
     }
 
@@ -53,11 +53,11 @@ public class BoardGameRecord {
     }
 
     @DynamoDBAttribute(attributeName = "AveragePlayTime")
-    public Double getAveragePlayTime() {
+    public String getAveragePlayTime() {
         return averagePlayTime;
     }
 
-    public void setAveragePlayTime(Double averagePlayTime) {
+    public void setAveragePlayTime(String averagePlayTime) {
         this.averagePlayTime = averagePlayTime;
     }
 
