@@ -1,50 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="examplePage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
 </head>
-<body class="background">
-    <header class="header" id="header">
-        <div class="site-title">
-            <a class="header_home" href="index.html">Game Organizer Service</a>
-        </div>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+    <span class="w3-bar-item w3-right">Login | Create Account</span>
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:25px;margin-top:43px;margin-right:25px">
+
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px">
+        <h1><b><i class="fa fa-dashboard"></i class="fa fa-dashboard"> Welcome to the Game Organizer Service</b></h1>
     </header>
-    <div class="box-one">
-        <h2>Create Example</h2>
-        <form class="card-content" id="create-form">
-            <p class="form-field">
-                <label>Name</label>
-                <input type="text" required class="validated-field" id="create-name-field">
-            </p>
-            <button type="submit">Create</button>
-        </form>
-    </div>
-    <div class="box-two">
-        <h2>Get By ID</h2>
-        <form class="card-content" id="get-by-id-form">
-            <p class="form-field">
-                <label>ID</label>
-                <input type="text" required class="validated-field" id="id-field">
-            </p>
-            <button type="submit">Get</button>
-        </form>
-    </div>
-    <div class="box-three">
-        <h2>Create Example</h2>
-        <form class="card-content" id="create-card">
-            <p class="form-field">
-                <label>Name</label>
-                <input type="text" required class="validated-field" id="create-card-field">
-            </p>
-            <button type="submit">Create</button>
-        </form>
-    </div>
-    <div class="card" id="result">
-        <h2>Result:</h2>
-        <p id="result-info"></p>
+
+    <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-quarter">
+            <div class="w3-button w3-red w3-padding-16">
+                <div class="w3-clear"></div>
+                <h4>Collection Page</h4>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-button w3-blue w3-padding-16">
+                <div class="w3-clear"></div>
+                <h4>MTG Page</h4>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-button w3-teal w3-padding-16">
+                <div class="w3-clear"></div>
+                <h4>Board Game Page</h4>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                <div class="w3-clear"></div>
+                <h4>Search Bar</h4>
+            </div>
+        </div>
     </div>
 
+    <div class="w3-container" style="margin-left:25px;margin-right:25px;">
+        <img src="./images/boardcardgames.jpg" style="w3-center" alt="BoardGame">
+    </div>
+    <hr>
+    <div class="w3-panel">
+        <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-third">
+                <h5>Most Viewed Collection</h5>
+                <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map">
+            </div>
+            <div class="w3-third">
+                <h5>Recently Created Collections</h5>
+                <table class="w3-table w3-striped w3-white">
+                    <tr>
+                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                        <td>New record, over 90 views.</td>
+                        <td><i>10 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                        <td>Database error.</td>
+                        <td><i>15 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                        <td>New record, over 40 users.</td>
+                        <td><i>17 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                        <td>New comments.</td>
+                        <td><i>25 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                        <td>Check transactions.</td>
+                        <td><i>28 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+                        <td>CPU overload.</td>
+                        <td><i>35 mins</i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+                        <td>New shares.</td>
+                        <td><i>39 mins</i></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-third">
+                <h5>Navigation</h5>
+                <div class="w3-bar-block w3-round w3-aqua">
+                    <a href="#" class="w3-bar-item w3-round w3-button">Create New Collection</a>
+                    <a href="#" class="w3-bar-item w3-round w3-button">Add Card to Collection</a>
+                    <a href="#" class="w3-bar-item w3-round w3-button">Add Board Game to Collection</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-16 w3-light-grey">
+        <h4>FOOTER</h4>
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+
+    <!-- End page content -->
+</div>
 </body>
 </html>
