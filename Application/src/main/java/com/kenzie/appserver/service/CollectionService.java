@@ -7,6 +7,8 @@ import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CollectionService {
 
@@ -30,5 +32,66 @@ public class CollectionService {
         collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRepository.save(collectionRecord);
         return collection;
+    }
+
+
+    public Collection getCollectionById(String collectionId){
+        Collection collectionFromBackEnd = collectionRepository
+                .findById(collectionId)
+                .map(collection -> new Collection( collection.getId(),
+                        collection.getCollectionName(),
+                        collection.getType(),
+                        collection.getDescription(),
+                        collection.getCollectionItemNames(),
+                        collection.getCreationDate()))
+                .orElse(null);
+        return collectionFromBackEnd;
+    }
+
+    //removeById
+    public void deleteCollectionById(String collectionId){
+        if(collectionRepository.existsById(collectionId)){
+            collectionRepository.deleteById(collectionId);
+        }else{
+            throw new IllegalArgumentException(String.format("Collection Id %s does not exist", collectionId));
+        }
+    }
+
+    //addItemToList
+    public void addItemToList(String collectionId, String itemName){
+        //not doing a exists by Id, because in order to create card a valid collectionId must be input
+        if(collectionId == null || itemName == null){
+            throw new IllegalArgumentException();
+        }
+        Collection collection = getCollectionById(collectionId);
+        List<String> itemList = collection.getCollectionItemNames();
+        itemList.add(0, itemName);
+
+        CollectionRecord collectionRecord = new CollectionRecord();
+        collectionRecord.setId(collection.getId());
+        collectionRecord.setCollectionName(collection.getCollectionName());
+        collectionRecord.setType(collection.getType());
+        collectionRecord.setDescription(collection.getDescription());
+        collectionRecord.setCollectionItemNames(itemList);
+        collectionRecord.setCreationDate(collection.getCreationDate());
+        collectionRepository.save(collectionRecord);
+    }
+
+    public void deleteItemFromList(String collectionId, String itemName){
+        if(collectionId == null || itemName == null){
+            throw new IllegalArgumentException();
+        }
+        Collection collection = getCollectionById(collectionId);
+        List<String> itemList = collection.getCollectionItemNames();
+        itemList.remove(itemName);
+
+        CollectionRecord collectionRecord = new CollectionRecord();
+        collectionRecord.setId(collection.getId());
+        collectionRecord.setCollectionName(collection.getCollectionName());
+        collectionRecord.setType(collection.getType());
+        collectionRecord.setDescription(collection.getDescription());
+        collectionRecord.setCollectionItemNames(itemList);
+        collectionRecord.setCreationDate(collection.getCreationDate());
+        collectionRepository.save(collectionRecord);
     }
 }
