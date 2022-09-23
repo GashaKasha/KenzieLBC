@@ -29,9 +29,9 @@ public class BoardGameServiceTest {
         // GIVEN
         String id = UUID.randomUUID().toString();
         String name = "Testham Horror: The Test Game";
-        int numberOfPlayers = 2;
+        String numberOfPlayers = "2";
         String yearPublished = "2016";
-        Double averagePlayTime = 120.0;
+        String averagePlayTime = "60-120";
         String collectionId = UUID.randomUUID().toString();
 
         BoardGame validBoardGame = new BoardGame(
