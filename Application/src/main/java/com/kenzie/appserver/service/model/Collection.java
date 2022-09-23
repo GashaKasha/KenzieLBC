@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Collection {
@@ -11,17 +12,21 @@ public class Collection {
     private final List<String> collectionItemNames;
     private final String creationDate;
 
-    public Collection(String id, String collectionName, String type, String description, List<String> collectionItemNames, String creationDate) {
+    public Collection(String id, String collectionName, String type, String description, String creationDate) {
         this.id = id;
+        this.creationDate = creationDate;
         this.collectionName = collectionName;
         this.type = type;
         this.description = description;
-        this.collectionItemNames = collectionItemNames;
-        this.creationDate = creationDate;
+        this.collectionItemNames = new ArrayList<>();
     }
 
     public String getId() {
         return id;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
     }
 
     public String getCollectionName() {
@@ -38,9 +43,5 @@ public class Collection {
 
     public List<String> getCollectionItemNames() {
         return collectionItemNames;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
     }
 }
