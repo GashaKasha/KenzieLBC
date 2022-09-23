@@ -62,9 +62,10 @@ public class BoardGameServiceTest {
     }
 
     @Test
-    void addBoardGame_invalidData_returnsNull(){
-        // GIVEN
-        // WHEN
-        // THEN
+    void addBoardGame_emptyStringName_returnsNull(){
+        // GIVEN + WHEN + THEN
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> boardGameService.addBoardGame(null),
+                "Null board game should throw IllegalArgumentException");
     }
 }

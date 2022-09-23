@@ -14,10 +14,10 @@ public class BoardGameService {
     }
 
     public BoardGame addBoardGame(BoardGame boardGame){
-        // TODO: Write error handling
-//        if(boardGame == null || boardGame == isEmpty){
-//            return exception;
-//        }
+        if(boardGame == null){
+            throw new IllegalArgumentException();
+        }
+
         BoardGameRecord boardGameRecord = new BoardGameRecord();
         boardGameRecord.setId(boardGame.getId());
         boardGameRecord.setName(boardGame.getName());
@@ -26,6 +26,7 @@ public class BoardGameService {
         boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
         boardGameRecord.setCollectionId(boardGame.getCollectionId());
         boardGameRepository.save(boardGameRecord);
+
         return boardGame;
     }
 }
