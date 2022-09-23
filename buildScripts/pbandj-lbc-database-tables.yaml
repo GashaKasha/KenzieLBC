@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template for Game Organizer Service DynamoDB table setup for LBC Project
+Resources:
+  Collection:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "Collection"
+      AttributeDefinitions:
+        - AttributeName: "Id"
+          AttributeType: "S"
+        - AttributeName: "CreationDate"
+          AttributeType: "S"
+      BillingMode: "PAY_PER_REQUEST"
+      ContributorInsightsSpecification:
+        Enabled: false
+      KeySchema:
+        - AttributeName: "Id"
+          KeyType: HASH
+        - AttributeName: "CreationDate"
+          KeyType: RANGE
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      TableClass: "STANDARD"
+      Tags:
+        - Key: LBCProjectName
+          Value: GameOrganizerService
+  BoardGame:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "BoardGame"
+        AttributeDefinitions:
+          - AttributeName: "Id"
+            AttributeType: "S"
+        BillingMode: "PAY_PER_REQUEST"
+        ContributorInsightsSpecification:
+          Enabled: false
+        KeySchema:
+          - AttributeName: "Id"
+            KeyType: HASH
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: false
+        TableClass: "STANDARD"
+        Tags:
+          - Key: LBCProjectName
+            Value: GameOrganizerService
+  MagicTheGathering:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "MagicTheGathering"
+        AttributeDefinitions:
+          - AttributeName: "Id"
+            AttributeType: "S"
+        BillingMode: "PAY_PER_REQUEST"
+        ContributorInsightsSpecification:
+          Enabled: false
+        KeySchema:
+          - AttributeName: "Id"
+            KeyType: HASH
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: false
+        TableClass: "STANDARD"
+        Tags:
+          - Key: LBCProjectName
+            Value: GameOrganizerService
+
