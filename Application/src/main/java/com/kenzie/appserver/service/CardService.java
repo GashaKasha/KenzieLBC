@@ -27,7 +27,7 @@ public class CardService {
         magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
         magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
         magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
-        magicTheGatheringRecord.setDescription(magicTheGathering.getDescription());
+        magicTheGatheringRecord.setCardAbilities(magicTheGathering.getCardAbilities());
         magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
         magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
         magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());

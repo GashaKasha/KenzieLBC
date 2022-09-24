@@ -10,13 +10,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.UUID.randomUUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 public class CardServiceTest {
 
@@ -44,14 +42,14 @@ public class CardServiceTest {
         String cardType = "Legendary Creature - Wizard";
         String manaCost = "3UUU";
         String powerToughness = "3/4";
-        String description = "Tap: Draw three cards. 2UU: Return Arcanis the Omnipotent" +
+        String cardAbilities = "Tap: Draw three cards. 2UU: Return Arcanis the Omnipotent" +
                 " to its owner's hand.";
         int numOfCardsOwned = 4;
         String artist = "Justin Sweet";
         String collectionId = randomUUID().toString();
 
         MagicTheGathering card = new MagicTheGathering(id, name, releasedSet, cardType,
-                manaCost, powerToughness, description, numOfCardsOwned, artist, collectionId);
+                manaCost, powerToughness, cardAbilities, numOfCardsOwned, artist, collectionId);
 
         ArgumentCaptor<MagicTheGatheringRecord> cardCaptor = ArgumentCaptor.forClass(MagicTheGatheringRecord.class);
 
@@ -72,7 +70,7 @@ public class CardServiceTest {
         assertEquals(record.getCardType(), card.getCardType());
         assertEquals(record.getManaCost(), card.getManaCost());
         assertEquals(record.getPowerToughness(), card.getPowerToughness());
-        assertEquals(record.getDescription(), card.getDescription());
+        assertEquals(record.getCardAbilities(), card.getCardAbilities());
         assertEquals(record.getNumberOfCardsOwned(), card.getNumberOfCardsOwned());
         assertEquals(record.getArtist(), card.getArtist());
         assertEquals(record.getCollectionId(), card.getCollectionId());

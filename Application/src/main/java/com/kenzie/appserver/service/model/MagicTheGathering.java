@@ -10,7 +10,7 @@ public class MagicTheGathering {
     private final String cardType;
     private final String manaCost;
     private final String powerToughness;
-    private final String description;
+    private final String cardAbilities;
     private final int numberOfCardsOwned;
     private final String artist;
     private final String collectionId;
@@ -21,7 +21,7 @@ public class MagicTheGathering {
                              String cardType,
                              String manaCost,
                              String powerToughness,
-                             String description,
+                             String cardAbilities,
                              int numberOfCardsOwned,
                              String artist,
                              String collectionId) {
@@ -31,7 +31,7 @@ public class MagicTheGathering {
         this.cardType = cardType;
         this.manaCost = manaCost;
         this.powerToughness = powerToughness;
-        this.description = description;
+        this.cardAbilities = cardAbilities;
         this.numberOfCardsOwned = numberOfCardsOwned;
         this.artist = artist;
         this.collectionId = collectionId;
@@ -61,8 +61,8 @@ public class MagicTheGathering {
         return powerToughness;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCardAbilities() {
+        return cardAbilities;
     }
 
     public int getNumberOfCardsOwned() {
