@@ -65,7 +65,7 @@ public class CollectionService {
         }
         Collection collection = getCollectionById(collectionId);
         List<String> itemList = collection.getCollectionItemNames();
-        itemList.add(0, itemName);
+        itemList.add(itemName);
 
         CollectionRecord collectionRecord = new CollectionRecord();
         collectionRecord.setId(collection.getId());
