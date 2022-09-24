@@ -31,7 +31,7 @@ public class BoardGameServiceTest {
         String name = "Testham Horror: The Test Game";
         String numberOfPlayers = "2";
         String yearPublished = "2016";
-        String averagePlayTime = "120.0";
+        String averagePlayTime = "60-120";
         String collectionId = UUID.randomUUID().toString();
 
         BoardGame validBoardGame = new BoardGame(
@@ -62,7 +62,7 @@ public class BoardGameServiceTest {
     }
 
     @Test
-    void addBoardGame_emptyStringName_returnsNull(){
+    void addBoardGame_nullBoardGame_throwsException(){
         // GIVEN + WHEN + THEN
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> boardGameService.addBoardGame(null),

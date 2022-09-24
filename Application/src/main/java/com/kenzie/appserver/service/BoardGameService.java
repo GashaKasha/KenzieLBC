@@ -8,6 +8,7 @@ import com.kenzie.appserver.service.model.BoardGame;
 
 public class BoardGameService {
     private BoardGameRepository boardGameRepository;
+//    private CacheStore cache;
 
     public BoardGameService(BoardGameRepository boardGameRepository) {
         this.boardGameRepository = boardGameRepository;
@@ -28,5 +29,19 @@ public class BoardGameService {
         boardGameRepository.save(boardGameRecord);
 
         return boardGame;
+    }
+
+    public void updateBoardGame(BoardGame boardGame){
+        if(boardGameRepository.existsById(boardGame.getId())){
+            BoardGameRecord boardGameRecord = new BoardGameRecord();
+            boardGameRecord.setId(boardGame.getId());
+            boardGameRecord.setName(boardGame.getName());
+            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
+            boardGameRecord.setYearPublished(boardGame.getYearPublished());
+            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
+            boardGameRecord.setCollectionId(boardGame.getCollectionId());
+            boardGameRepository.save(boardGameRecord);
+        }
+//        cache.evict(boardGame.getAveragePlayTime());
     }
 }
