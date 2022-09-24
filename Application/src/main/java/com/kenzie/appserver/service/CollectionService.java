@@ -77,21 +77,21 @@ public class CollectionService {
         collectionRepository.save(collectionRecord);
     }
 
-    public void deleteItemFromList(String collectionId, String itemName){
-        if(collectionId == null || itemName == null){
-            throw new IllegalArgumentException();
-        }
-        Collection collection = getCollectionById(collectionId);
-        List<String> itemList = collection.getCollectionItemNames();
-        itemList.remove(itemName);
-
-        CollectionRecord collectionRecord = new CollectionRecord();
-        collectionRecord.setId(collection.getId());
-        collectionRecord.setCollectionName(collection.getCollectionName());
-        collectionRecord.setType(collection.getType());
-        collectionRecord.setDescription(collection.getDescription());
-        collectionRecord.setCollectionItemNames(itemList);
-        collectionRecord.setCreationDate(collection.getCreationDate());
-        collectionRepository.save(collectionRecord);
-    }
+//    public void deleteItemFromList(String collectionId, String itemName){
+//        if(collectionId == null || itemName == null){
+//            throw new IllegalArgumentException();
+//        }
+//        Collection collection = getCollectionById(collectionId);
+//        List<String> itemList = collection.getCollectionItemNames();
+//        itemList.remove(itemName);
+//
+//        CollectionRecord collectionRecord = new CollectionRecord();
+//        collectionRecord.setId(collection.getId());
+//        collectionRecord.setCollectionName(collection.getCollectionName());
+//        collectionRecord.setType(collection.getType());
+//        collectionRecord.setDescription(collection.getDescription());
+//        collectionRecord.setCollectionItemNames(itemList);
+//        collectionRecord.setCreationDate(collection.getCreationDate());
+//        collectionRepository.save(collectionRecord);
+//    }
 }
