@@ -16,6 +16,7 @@ public class MagicTheGatheringRecord {
     private String cardType;
     private String manaCost;
     private String powerToughness;
+    private String cardAbilities;
     private int numberOfCardsOwned;
     private String artist;
     private String collectionId;
@@ -72,6 +73,15 @@ public class MagicTheGatheringRecord {
 
     public void setPowerToughness(String powerToughness) {
         this.powerToughness = powerToughness;
+    }
+
+    @DynamoDBAttribute(attributeName = "CardAbilities")
+    public String getCardAbilities() {
+        return cardAbilities;
+    }
+
+    public void setCardAbilities(String cardAbilities) {
+        this.cardAbilities = cardAbilities;
     }
 
     @DynamoDBAttribute(attributeName = "NumberOfCardsOwned")
