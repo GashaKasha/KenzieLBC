@@ -41,15 +41,15 @@ public class CollectionServiceTest {
         String collectionType = "MagicTheGathering";
         String collectionDescription = "great description";
         List<String> collectionCards = new ArrayList<>();
-        collectionCards.add("goodCard1");
-        collectionCards.add("goodCard2");
-        collectionCards.add("reallyGoodCard1");
-        collectionCards.add("kindOfOkCardButLooksCool1");
-        collectionCards.add("notGoodCard1");
-        collectionCards.add("expensiveCard1");
+//        collectionCards.add("goodCard1");
+//        collectionCards.add("goodCard2");
+//        collectionCards.add("reallyGoodCard1");
+//        collectionCards.add("kindOfOkCardButLooksCool1");
+//        collectionCards.add("notGoodCard1");
+//        collectionCards.add("expensiveCard1");
         String collectionCreationDate = ZonedDateTime.now().toString();
 
-        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCards, collectionCreationDate);
+        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCreationDate, collectionCards);
 
         ArgumentCaptor<CollectionRecord> collectionRecordCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
 
