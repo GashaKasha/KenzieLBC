@@ -40,6 +40,7 @@ public class BoardGameService {
             boardGameRecord.setYearPublished(boardGame.getYearPublished());
             boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
             boardGameRecord.setCollectionId(boardGame.getCollectionId());
+            boardGameRepository.save(boardGameRecord);
         }
 //        cache.evict(boardGame.getAveragePlayTime());
     }
