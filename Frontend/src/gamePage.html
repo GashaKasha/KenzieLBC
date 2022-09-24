@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="gamePageStyle.css">
 </head>
 <body class="background">
     <header class="header" id="header">
         <div class="site-title">
             <!-- should this be a separate form to create the game?-->
-            <!-- should there also be a landing page for the game itself with the info already populated? -->
             <a class="header_home">Board Game</a>
         </div>
     </header>
@@ -38,7 +38,6 @@
             <input type="text" required class="validated-field" id="create-year-published-field">
         </p>
     </form>
-    <!-- make sure that card doesn't use this same name -->
     <form class="card-content" id="create-number-of-players-form">
         <p class="form-field">
             <label>Number of Players</label>
@@ -51,20 +50,13 @@
             <input type="text" required class="validated-field" id="create-average-playtime-field">
         </p>
     </form>
-    <form class="card-content" id="create-game-mechanics-form">
-        <p class="form-field">
-            <label>Game Mechanics</label>
-            <input type="text" required class="validated-field" id="create-game-mechanics-field">
-        </p>
-    </form>
-    <!-- can we delete this one? -->
-    <form class="card-content" id="create-game-cost-form">
-        <p class="form-field">
-            <label>Game Cost</label>
-            <input type="text" required class="validated-field" id="create-game-cost-field">
-        </p>
-        <button type="submit">Submit</button>
-    </form>
+    <button type="button">Add Board Game</button>
+</div>
+<div>
+    <ul>
+        <li><img src="./images/TwilightInscription.jpg" alt="Twilight Inscription"></li>
+        <li><img src="./images/CamelUp.jpg" alt="Camel Up"></li>
+    </ul>
 </div>
 </body>
 </html>
