@@ -18,7 +18,7 @@ public class Collection {
         this.collectionName = collectionName;
         this.type = type;
         this.description = description;
-        this.collectionItemNames = new ArrayList<>();
+        this.collectionItemNames = new ArrayList<>(collectionItemNames);
     }
 
     public String getId() {
