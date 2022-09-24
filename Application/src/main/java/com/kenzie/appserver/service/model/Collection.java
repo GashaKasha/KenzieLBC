@@ -12,7 +12,7 @@ public class Collection {
     private final List<String> collectionItemNames;
     private final String creationDate;
 
-    public Collection(String id, String collectionName, String type, String description, String creationDate) {
+    public Collection(String id, String collectionName, String type, String description, String creationDate, List<String> collectionItemNames) {
         this.id = id;
         this.creationDate = creationDate;
         this.collectionName = collectionName;

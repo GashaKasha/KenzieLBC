@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
@@ -42,12 +44,14 @@ public class CollectionControllerTest {
         String collectionName = mockNeat.strings().valStr();
         String type = "Board Game";
         String description = "Patti's Board Game Collection";
+        List<String> collectionItems = new ArrayList<>();
 
         CollectionCreateRequest collectionCreateRequest = new CollectionCreateRequest();
         collectionCreateRequest.setCreationDate(LocalDate.now());
         collectionCreateRequest.setCollectionName(collectionName);
         collectionCreateRequest.setType(type);
         collectionCreateRequest.setDescription(description);
+        collectionCreateRequest.setCollectionItemNames(collectionItems);
 
         mapper.registerModule(new JavaTimeModule());
 

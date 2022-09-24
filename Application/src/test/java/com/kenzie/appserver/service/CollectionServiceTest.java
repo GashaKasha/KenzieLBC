@@ -41,15 +41,15 @@ public class CollectionServiceTest {
         String collectionType = "MagicTheGathering";
         String collectionDescription = "great description";
         List<String> collectionCards = new ArrayList<>();
-        collectionCards.add("goodCard1");
-        collectionCards.add("goodCard2");
-        collectionCards.add("reallyGoodCard1");
-        collectionCards.add("kindOfOkCardButLooksCool1");
-        collectionCards.add("notGoodCard1");
-        collectionCards.add("expensiveCard1");
+//        collectionCards.add("goodCard1");
+//        collectionCards.add("goodCard2");
+//        collectionCards.add("reallyGoodCard1");
+//        collectionCards.add("kindOfOkCardButLooksCool1");
+//        collectionCards.add("notGoodCard1");
+//        collectionCards.add("expensiveCard1");
         String collectionCreationDate = ZonedDateTime.now().toString();
 
-        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCreationDate);
+        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCreationDate, collectionCards);
 
         ArgumentCaptor<CollectionRecord> collectionRecordCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
 
@@ -68,7 +68,7 @@ public class CollectionServiceTest {
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
         Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
-        //Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection items match");
+        Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection items match");
         Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
     }
 

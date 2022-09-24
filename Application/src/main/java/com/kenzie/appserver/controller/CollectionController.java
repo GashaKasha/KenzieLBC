@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
 
@@ -30,11 +33,15 @@ public class CollectionController {
     @PostMapping
     public ResponseEntity<CollectionResponse> createCollection(@RequestBody CollectionCreateRequest collectionCreateRequest) {
 
-        Collection collection = new Collection(randomUUID().toString(),
+        String generateCollectionId = UUID.randomUUID().toString();
+        List<String> collectionItems = new ArrayList<>();
+
+        Collection collection = new Collection(generateCollectionId,
                 collectionCreateRequest.getCreationDate().toString(),
                 collectionCreateRequest.getCollectionName(),
                 collectionCreateRequest.getType(),
-                collectionCreateRequest.getDescription());
+                collectionCreateRequest.getDescription(),
+                collectionItems);
         collectionService.addCollection(collection);
 
         CollectionResponse collectionResponse = createCollectionResponse(collection);
