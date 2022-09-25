@@ -39,11 +39,11 @@ public class CollectionService {
         Collection collectionFromBackEnd = collectionRepository
                 .findById(collectionId)
                 .map(collection -> new Collection( collection.getId(),
+                        collection.getCreationDate(),
                         collection.getCollectionName(),
                         collection.getType(),
                         collection.getDescription(),
-                        collection.getCollectionItemNames(),
-                        collection.getCreationDate()))
+                        collection.getCollectionItemNames()))
                 .orElse(null);
         return collectionFromBackEnd;
     }
@@ -75,6 +75,11 @@ public class CollectionService {
         collectionRecord.setCollectionItemNames(itemList);
         collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRepository.save(collectionRecord);
+    }
+
+    public boolean doesExist(String collectionId) {
+        // Returns true if collectionId exists, otherwise False
+        return collectionRepository.existsById(collectionId);
     }
 
 //    public void deleteItemFromList(String collectionId, String itemName){
