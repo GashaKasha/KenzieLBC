@@ -13,11 +13,12 @@ public class CardService {
     private MagicTheGatheringRepository magicTheGatheringRepository;
     private CollectionService collectionService;
 
-    @Autowired
-    public CardService(MagicTheGatheringRepository magicTheGatheringRepository) {
-        this.magicTheGatheringRepository = magicTheGatheringRepository;
-    }
+//    @Autowired
+//    public CardService(MagicTheGatheringRepository magicTheGatheringRepository) {
+//        this.magicTheGatheringRepository = magicTheGatheringRepository;
+//    }
 
+    @Autowired
     public CardService(MagicTheGatheringRepository magicTheGatheringRepository, CollectionService collectionService) {
         this.magicTheGatheringRepository = magicTheGatheringRepository;
         this.collectionService = collectionService;
@@ -29,7 +30,7 @@ public class CardService {
         }
 
         String collectionId = magicTheGathering.getCollectionId();
-        if (collectionService.doesExist(collectionId)) {
+        if (doesExist(collectionId)) {
             MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
             magicTheGatheringRecord.setId(magicTheGathering.getId());
             magicTheGatheringRecord.setName(magicTheGathering.getName());
@@ -52,5 +53,10 @@ public class CardService {
 //            throw new CollectionNotFoundException();
         }
         return magicTheGathering;
+    }
+
+    public boolean doesExist(String collectionId) {
+        // Returns true if collectionId exists, otherwise False
+        return collectionService.doesExist(collectionId);
     }
 }

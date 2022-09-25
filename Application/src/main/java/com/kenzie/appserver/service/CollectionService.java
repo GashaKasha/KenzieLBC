@@ -77,6 +77,7 @@ public class CollectionService {
         collectionRepository.save(collectionRecord);
     }
 
+    // TODO: More efficient way of doing this?
     public boolean doesExist(String collectionId) {
         // Returns true if collectionId exists, otherwise False
         return collectionRepository.existsById(collectionId);

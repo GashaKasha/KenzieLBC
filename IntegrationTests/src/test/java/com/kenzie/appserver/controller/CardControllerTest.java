@@ -87,7 +87,7 @@ public class CardControllerTest {
         // THEN
                 .andExpect(jsonPath("collectionId")
                         .value(is(collectionId)))
-                .andExpect(jsonPath("cardName")
+                .andExpect(jsonPath("name")
                         .value(is(cardName)))
                 .andExpect(jsonPath("releasedSet")
                         .value(is(releasedSet)))

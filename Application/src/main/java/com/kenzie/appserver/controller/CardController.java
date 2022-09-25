@@ -18,15 +18,16 @@ import java.util.UUID;
 public class CardController {
 
     private CardService cardService;
-    private CollectionService collectionService;
 
-    public CardController(CardService cardService) { this.cardService = cardService; }
+    public CardController(CardService cardService) {
+        this.cardService = cardService;
+    }
 
     @PostMapping("/mtg")
     public ResponseEntity<CardResponse> addMtgCardToCollection(@RequestBody CardCreateRequest cardCreateRequest) {
         // Check if collection Id exists
         String collectionId = cardCreateRequest.getCollectionId();
-        if (!collectionService.doesExist(collectionId)) {
+        if (!cardService.doesExist(collectionId)) {
             return ResponseEntity.noContent().build();
         }
 
