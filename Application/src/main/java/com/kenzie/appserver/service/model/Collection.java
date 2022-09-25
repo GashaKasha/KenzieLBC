@@ -6,13 +6,13 @@ import java.util.List;
 public class Collection {
 
     private final String id;
+    private final String creationDate;
     private final String collectionName;
     private final String type;
     private final String description;
     private final List<String> collectionItemNames;
-    private final String creationDate;
 
-    public Collection(String id, String collectionName, String type, String description, String creationDate, List<String> collectionItemNames) {
+    public Collection(String id, String creationDate, String collectionName, String type, String description,  List<String> collectionItemNames) {
         this.id = id;
         this.creationDate = creationDate;
         this.collectionName = collectionName;

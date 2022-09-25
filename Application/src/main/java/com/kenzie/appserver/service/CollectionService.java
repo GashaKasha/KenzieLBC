@@ -25,11 +25,11 @@ public class CollectionService {
         }
         CollectionRecord collectionRecord = new CollectionRecord();
         collectionRecord.setId(collection.getId());
+        collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRecord.setCollectionName(collection.getCollectionName());
         collectionRecord.setType(collection.getType());
         collectionRecord.setDescription(collection.getDescription());
         collectionRecord.setCollectionItemNames(collection.getCollectionItemNames());
-        collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRepository.save(collectionRecord);
         return collection;
     }
@@ -39,11 +39,11 @@ public class CollectionService {
         Collection collectionFromBackEnd = collectionRepository
                 .findById(collectionId)
                 .map(collection -> new Collection( collection.getId(),
+                        collection.getCreationDate(),
                         collection.getCollectionName(),
                         collection.getType(),
                         collection.getDescription(),
-                        collection.getCollectionItemNames(),
-                        collection.getCreationDate()))
+                        collection.getCollectionItemNames()))
                 .orElse(null);
         return collectionFromBackEnd;
     }
@@ -69,11 +69,11 @@ public class CollectionService {
 
         CollectionRecord collectionRecord = new CollectionRecord();
         collectionRecord.setId(collection.getId());
+        collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRecord.setCollectionName(collection.getCollectionName());
         collectionRecord.setType(collection.getType());
         collectionRecord.setDescription(collection.getDescription());
         collectionRecord.setCollectionItemNames(itemList);
-        collectionRecord.setCreationDate(collection.getCreationDate());
         collectionRepository.save(collectionRecord);
     }
 
