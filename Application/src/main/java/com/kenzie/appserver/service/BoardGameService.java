@@ -8,7 +8,6 @@ import com.kenzie.appserver.service.model.BoardGame;
 
 public class BoardGameService {
     private BoardGameRepository boardGameRepository;
-//    private CacheStore cache;
 
     public BoardGameService(BoardGameRepository boardGameRepository) {
         this.boardGameRepository = boardGameRepository;
@@ -42,6 +41,5 @@ public class BoardGameService {
             boardGameRecord.setCollectionId(boardGame.getCollectionId());
             boardGameRepository.save(boardGameRecord);
         }
-//        cache.evict(boardGame.getAveragePlayTime());
     }
 }
