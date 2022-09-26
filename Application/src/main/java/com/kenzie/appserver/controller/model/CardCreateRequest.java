@@ -1,36 +1,41 @@
-package com.kenzie.appserver.repositories.model;
+package com.kenzie.appserver.controller.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
-import java.util.Objects;
 
-@DynamoDBTable(tableName = "MagicTheGathering")
-public class MagicTheGatheringRecord {
+public class CardCreateRequest {
 
-    private String id;
+    @NotEmpty
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("releasedSet")
     private List<String> releasedSet;
+
+    @JsonProperty("cardType")
     private String cardType;
+
+    @JsonProperty("manaCost")
     private String manaCost;
+
+    @JsonProperty("powerToughness")
     private String powerToughness;
+
+    @JsonProperty("cardAbilities")
     private String cardAbilities;
+
+    @JsonProperty("numberOfCardsOwned")
     private int numberOfCardsOwned;
+
+    @JsonProperty("artist")
     private String artist;
+
+    @NotEmpty
+    @JsonProperty("collectionId")
     private String collectionId;
 
-    @DynamoDBHashKey(attributeName = "Id")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @DynamoDBAttribute(attributeName = "Name")
     public String getName() {
         return name;
     }
@@ -39,7 +44,6 @@ public class MagicTheGatheringRecord {
         this.name = name;
     }
 
-    @DynamoDBAttribute(attributeName = "ReleasedSet")
     public List<String> getReleasedSet() {
         return releasedSet;
     }
@@ -48,7 +52,6 @@ public class MagicTheGatheringRecord {
         this.releasedSet = releasedSet;
     }
 
-    @DynamoDBAttribute(attributeName = "CardType")
     public String getCardType() {
         return cardType;
     }
@@ -57,7 +60,6 @@ public class MagicTheGatheringRecord {
         this.cardType = cardType;
     }
 
-    @DynamoDBAttribute(attributeName = "ManaCost")
     public String getManaCost() {
         return manaCost;
     }
@@ -66,7 +68,6 @@ public class MagicTheGatheringRecord {
         this.manaCost = manaCost;
     }
 
-    @DynamoDBAttribute(attributeName = "PowerToughness")
     public String getPowerToughness() {
         return powerToughness;
     }
@@ -75,7 +76,6 @@ public class MagicTheGatheringRecord {
         this.powerToughness = powerToughness;
     }
 
-    @DynamoDBAttribute(attributeName = "CardAbilities")
     public String getCardAbilities() {
         return cardAbilities;
     }
@@ -84,7 +84,6 @@ public class MagicTheGatheringRecord {
         this.cardAbilities = cardAbilities;
     }
 
-    @DynamoDBAttribute(attributeName = "NumberOfCardsOwned")
     public int getNumberOfCardsOwned() {
         return numberOfCardsOwned;
     }
@@ -93,7 +92,6 @@ public class MagicTheGatheringRecord {
         this.numberOfCardsOwned = numberOfCardsOwned;
     }
 
-    @DynamoDBAttribute(attributeName = "Artist")
     public String getArtist() {
         return artist;
     }
@@ -102,25 +100,11 @@ public class MagicTheGatheringRecord {
         this.artist = artist;
     }
 
-    @DynamoDBAttribute(attributeName = "CollectionId")
     public String getCollectionId() {
         return collectionId;
     }
 
     public void setCollectionId(String collectionId) {
         this.collectionId = collectionId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MagicTheGatheringRecord that = (MagicTheGatheringRecord) o;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }

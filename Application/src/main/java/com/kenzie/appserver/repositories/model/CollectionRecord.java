@@ -2,6 +2,7 @@ package com.kenzie.appserver.repositories.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.List;
@@ -11,11 +12,11 @@ import java.util.Objects;
 public class CollectionRecord {
 
     private String id;
+    private String creationDate;
     private String collectionName;
     private String type;
     private String description;
     private List<String> collectionItemNames;
-    private String creationDate;
 
     @DynamoDBHashKey(attributeName = "Id")
     public String getId() {
@@ -24,6 +25,16 @@ public class CollectionRecord {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    //@DynamoDBRangeKey(attributeName = "CreationDate")
+    @DynamoDBAttribute(attributeName = "CreationDate")
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
     @DynamoDBAttribute(attributeName = "CollectionName")
@@ -60,15 +71,6 @@ public class CollectionRecord {
 
     public void setCollectionItemNames(List<String> collectionItemNames) {
         this.collectionItemNames = collectionItemNames;
-    }
-
-    @DynamoDBAttribute(attributeName = "CreationDate")
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
     }
 
     @Override
