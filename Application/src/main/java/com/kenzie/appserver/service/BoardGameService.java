@@ -1,33 +1,43 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.BoardGameRepository;
-import com.kenzie.appserver.repositories.ExampleRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
 //import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.BoardGame;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BoardGameService {
     private BoardGameRepository boardGameRepository;
-//    private CacheStore cache;
+    private CollectionService collectionService;
 
-    public BoardGameService(BoardGameRepository boardGameRepository) {
+    @Autowired
+    public BoardGameService(BoardGameRepository boardGameRepository, CollectionService collectionService) {
         this.boardGameRepository = boardGameRepository;
+        this.collectionService = collectionService;
     }
 
-    public BoardGame addBoardGame(BoardGame boardGame){
+    public BoardGame addBoardGameToCollection(BoardGame boardGame){
         if(boardGame == null){
             throw new IllegalArgumentException();
         }
 
-        BoardGameRecord boardGameRecord = new BoardGameRecord();
-        boardGameRecord.setId(boardGame.getId());
-        boardGameRecord.setName(boardGame.getName());
-        boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
-        boardGameRecord.setYearPublished(boardGame.getYearPublished());
-        boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
-        boardGameRecord.setCollectionId(boardGame.getCollectionId());
-        boardGameRepository.save(boardGameRecord);
+        String collectionId = boardGame.getCollectionId();
 
+        if(checkIfCollectionIdExists(collectionId)) {
+            BoardGameRecord boardGameRecord = new BoardGameRecord();
+            boardGameRecord.setId(boardGame.getId());
+            boardGameRecord.setName(boardGame.getName());
+            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
+            boardGameRecord.setYearPublished(boardGame.getYearPublished());
+            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
+            boardGameRecord.setCollectionId(boardGame.getCollectionId());
+            boardGameRepository.save(boardGameRecord);
+            collectionService.addItemToList(collectionId, boardGame.getName());
+        } else {
+            throw new IllegalArgumentException();
+        }
         return boardGame;
     }
 
@@ -42,6 +52,9 @@ public class BoardGameService {
             boardGameRecord.setCollectionId(boardGame.getCollectionId());
             boardGameRepository.save(boardGameRecord);
         }
-//        cache.evict(boardGame.getAveragePlayTime());
+    }
+
+    public boolean checkIfCollectionIdExists(String collectionId){
+        return collectionService.doesExist(collectionId);
     }
 }
