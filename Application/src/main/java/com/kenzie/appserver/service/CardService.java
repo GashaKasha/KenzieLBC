@@ -34,4 +34,22 @@ public class CardService {
         magicTheGatheringRepository.save(magicTheGatheringRecord);
         return magicTheGathering;
     }
+
+    public void updateCardInCollection(MagicTheGathering magicTheGathering) {
+        if (magicTheGathering == null) {
+            throw new IllegalArgumentException();
+        }
+        MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
+        magicTheGatheringRecord.setId(magicTheGathering.getId());
+        magicTheGatheringRecord.setName(magicTheGathering.getName());
+        magicTheGatheringRecord.setReleasedSet(magicTheGathering.getReleasedSet());
+        magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
+        magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
+        magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
+        magicTheGatheringRecord.setDescription(magicTheGathering.getDescription());
+        magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
+        magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
+        magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());
+        magicTheGatheringRepository.save(magicTheGatheringRecord);
+    }
 }
