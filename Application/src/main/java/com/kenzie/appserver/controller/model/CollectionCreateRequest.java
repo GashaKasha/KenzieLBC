@@ -13,18 +13,11 @@ public class CollectionCreateRequest {
     @JsonProperty("collectionName")
     private String collectionName;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("creationDate")
-    private LocalDate creationDate;
-
     @JsonProperty("type")
     private String type;
 
     @JsonProperty("description")
     private String description;
-
-    @JsonProperty("collectionItemNames")
-    private List<String> collectionItemNames;
 
     public String getCollectionName() {
         return collectionName;
@@ -32,14 +25,6 @@ public class CollectionCreateRequest {
 
     public void setCollectionName(String collectionName) {
         this.collectionName = collectionName;
-    }
-
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
     }
 
     public String getType() {
@@ -56,13 +41,5 @@ public class CollectionCreateRequest {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<String> getCollectionItemNames() {
-        return collectionItemNames;
-    }
-
-    public void setCollectionItemNames(List<String> collectionItemNames) {
-        this.collectionItemNames = collectionItemNames;
     }
 }

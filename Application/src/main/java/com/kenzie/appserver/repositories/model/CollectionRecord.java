@@ -27,8 +27,8 @@ public class CollectionRecord {
         this.id = id;
     }
 
-//    @DynamoDBRangeKey(attributeName = "CreationDate")
-    @DynamoDBAttribute(attributeName = "Creation Date")
+    //@DynamoDBRangeKey(attributeName = "CreationDate")
+    @DynamoDBAttribute(attributeName = "CreationDate")
     public String getCreationDate() {
         return creationDate;
     }
