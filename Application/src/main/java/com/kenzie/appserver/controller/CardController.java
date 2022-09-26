@@ -26,9 +26,10 @@ public class CardController {
     @PostMapping("/mtg")
     public ResponseEntity<CardResponse> addMtgCardToCollection(@RequestBody CardCreateRequest cardCreateRequest) {
         // Check if collection Id exists
+        // TODO: This should actually return an error message or something
         String collectionId = cardCreateRequest.getCollectionId();
         if (!cardService.doesExist(collectionId)) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.notFound().build();
         }
 
         String generateCardId = UUID.randomUUID().toString();

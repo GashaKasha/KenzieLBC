@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CollectionService {
@@ -60,9 +59,13 @@ public class CollectionService {
     //addItemToList
     public void addItemToList(String collectionId, String itemName){
         //not doing a exists by Id, because in order to create card a valid collectionId must be input
+        // TODO: Add a check to verify that the item doesn't already exists in the list
+        // Maybe needs to be a custom exception for - if names already exists in collection
+
         if(collectionId == null || itemName == null){
             throw new IllegalArgumentException();
         }
+
         Collection collection = getCollectionById(collectionId);
         List<String> itemList = collection.getCollectionItemNames();
         itemList.add(itemName);
@@ -77,7 +80,6 @@ public class CollectionService {
         collectionRepository.save(collectionRecord);
     }
 
-    // TODO: More efficient way of doing this?
     public boolean doesExist(String collectionId) {
         // Returns true if collectionId exists, otherwise False
         return collectionRepository.existsById(collectionId);
@@ -86,10 +88,7 @@ public class CollectionService {
     public boolean checkCollectionItemNames(String collectionId) {
         Collection getCollection = getCollectionById(collectionId);
 
-        if (getCollection.getCollectionItemNames().isEmpty() || getCollection.getCollectionItemNames() == null) {
-            throw
-        }
-
+        return !getCollection.getCollectionItemNames().isEmpty();
     }
 
 //    public void deleteItemFromList(String collectionId, String itemName){
