@@ -3,7 +3,6 @@ package com.kenzie.appserver.service;
 import com.kenzie.appserver.repositories.CollectionRepository;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.Collection;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,9 +59,13 @@ public class CollectionService {
     //addItemToList
     public void addItemToList(String collectionId, String itemName){
         //not doing a exists by Id, because in order to create card a valid collectionId must be input
+        // TODO: Add a check to verify that the item doesn't already exists in the list
+        // Maybe needs to be a custom exception for - if names already exists in collection
+
         if(collectionId == null || itemName == null){
             throw new IllegalArgumentException();
         }
+
         Collection collection = getCollectionById(collectionId);
         List<String> itemList = collection.getCollectionItemNames();
         itemList.add(itemName);
@@ -75,6 +78,17 @@ public class CollectionService {
         collectionRecord.setDescription(collection.getDescription());
         collectionRecord.setCollectionItemNames(itemList);
         collectionRepository.save(collectionRecord);
+    }
+
+    public boolean doesExist(String collectionId) {
+        // Returns true if collectionId exists, otherwise False
+        return collectionRepository.existsById(collectionId);
+    }
+
+    public boolean checkCollectionItemNames(String collectionId) {
+        Collection getCollection = getCollectionById(collectionId);
+
+        return !getCollection.getCollectionItemNames().isEmpty();
     }
 
 //    public void deleteItemFromList(String collectionId, String itemName){

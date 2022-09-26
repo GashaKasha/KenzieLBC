@@ -119,7 +119,7 @@ public class CollectionServiceTest {
     }
 
     @Test
-    void deleteCollection_validCollectionId_CollectiontDeleted() throws IllegalAccessException {
+    void deleteCollection_validCollectionId_collectionDeleted() throws IllegalAccessException {
         String collectionId = UUID.randomUUID().toString();
 
         when(collectionRepository.existsById(collectionId)).thenReturn(true);
