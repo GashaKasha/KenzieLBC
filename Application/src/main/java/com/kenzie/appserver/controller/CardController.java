@@ -52,6 +52,7 @@ public class CardController {
 
     private CardResponse createCardResponse(MagicTheGathering magicTheGathering) {
         CardResponse cardResponse = new CardResponse();
+        cardResponse.setName(magicTheGathering.getName());
         cardResponse.setCollectionId(magicTheGathering.getCollectionId());
         return cardResponse;
     }

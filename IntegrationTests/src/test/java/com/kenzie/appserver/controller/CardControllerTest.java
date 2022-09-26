@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -38,7 +39,6 @@ public class CardControllerTest {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    // TODO: addMtgCardToCollection - Happy case - successfully added MTG card to collection
     @Test
     public void addMtgCardToCollection_withValidCollectionId_createsNewCardAndAddToCollection() throws Exception {
         // GIVEN
@@ -55,6 +55,7 @@ public class CardControllerTest {
         collectionService.addCollection(newCollection);
 
         // Add Card to that Collection
+        String cardId = UUID.randomUUID().toString();
         String cardName = "Omnath, Locus of Creation";
         List<String> releasedSet = new ArrayList<>();
         releasedSet.add("Zendikar Rising");
@@ -78,6 +79,9 @@ public class CardControllerTest {
 
         mapper.registerModule(new JavaTimeModule());
 
+        // TODO: This test or separate test should include
+        // verifying that the card gets added to the Collection?
+        // assertThat(collectionService.getCollectionById(collectionId)).isNull();
         // WHEN
         mvc.perform(post("/cards/mtg")
                 .accept(MediaType.APPLICATION_JSON)
@@ -85,24 +89,14 @@ public class CardControllerTest {
                 .content(mapper.writeValueAsString(cardCreateRequest)))
 
         // THEN
-                .andExpect(jsonPath("collectionId")
-                        .value(is(collectionId)))
                 .andExpect(jsonPath("name")
                         .value(is(cardName)))
-                .andExpect(jsonPath("releasedSet")
-                        .value(is(releasedSet)))
-                .andExpect(jsonPath("cardType")
-                        .value(is(cardType)))
-                .andExpect(jsonPath("manaCost")
-                        .value(is(manaCost)))
-                .andExpect(jsonPath("powerToughness")
-                        .value(is(powerToughness)))
-                .andExpect(jsonPath("cardAbilities")
-                        .value(is(cardAbilities)))
-                .andExpect(jsonPath("numberOfCardsOwned")
-                        .value(is(numberOfCardsOwned)))
-                .andExpect(jsonPath("artist")
-                        .value(is(artist)))
+                .andExpect(jsonPath("collectionId")
+                        .value(is(collectionId)))
                 .andExpect(status().isCreated());
+
+        assertThat(collectionService.)
     }
+
+    // TODO: Unhappy case addMtgCardToCollection_withInvalidCollectionId
 }
