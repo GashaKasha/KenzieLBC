@@ -3,11 +3,11 @@ package com.kenzie.appserver.service;
 import com.kenzie.appserver.repositories.CollectionRepository;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.Collection;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CollectionService {
@@ -81,6 +81,15 @@ public class CollectionService {
     public boolean doesExist(String collectionId) {
         // Returns true if collectionId exists, otherwise False
         return collectionRepository.existsById(collectionId);
+    }
+
+    public boolean checkCollectionItemNames(String collectionId) {
+        Collection getCollection = getCollectionById(collectionId);
+
+        if (getCollection.getCollectionItemNames().isEmpty() || getCollection.getCollectionItemNames() == null) {
+            throw
+        }
+
     }
 
 //    public void deleteItemFromList(String collectionId, String itemName){
