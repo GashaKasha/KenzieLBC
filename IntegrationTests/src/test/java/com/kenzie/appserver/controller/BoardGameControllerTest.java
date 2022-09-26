@@ -36,8 +36,8 @@ public class BoardGameControllerTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void addBoardGame_validData_postSuccessful() throws Exception{
-        
+    public void addBoardGameToCollection_validData_postSuccessful() throws Exception{
+
     }
 
     @Test
