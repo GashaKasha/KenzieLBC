@@ -5,29 +5,23 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kenzie.appserver.IntegrationTest;
 import com.kenzie.appserver.controller.model.BoardGameUpdateRequest;
 import com.kenzie.appserver.service.BoardGameService;
+import com.kenzie.appserver.service.CollectionService;
 import com.kenzie.appserver.service.model.BoardGame;
+import com.kenzie.appserver.service.model.Collection;
+import net.andreinc.mockneat.MockNeat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-//@IntegrationTest
-//class ConcertControllerTest {
-//    @Autowired
-//    private MockMvc mvc;
-//
-//    @Autowired
-//    ConcertService concertService;
-//
-//    private final MockNeat mockNeat = MockNeat.threadLocal();
-//
-//    private final ObjectMapper mapper = new ObjectMapper();
 @IntegrationTest
 public class BoardGameControllerTest {
     @Autowired
@@ -36,10 +30,15 @@ public class BoardGameControllerTest {
     @Autowired
     BoardGameService boardGameService;
 
-    //    private final MockNeat mockNeat = MockNeat.threadLocal();
+    @Autowired
+    CollectionService collectionService;
 
     private final ObjectMapper mapper = new ObjectMapper();
 
+    @Test
+    public void addBoardGame_validData_postSuccessful() throws Exception{
+        
+    }
 
     @Test
     public void updateBoardGame_validData_putSuccessful() throws Exception{
@@ -47,9 +46,18 @@ public class BoardGameControllerTest {
         String id = UUID.randomUUID().toString();
         String name = "Testham Horror: The Test Game";
         String numberOfPlayers = "2";
-        String yearPublished = "2016";
+        String yearPublished = "2015";
         String averagePlayTime = "60-120";
         String collectionId = UUID.randomUUID().toString();
+
+        Collection collection = new Collection(collectionId,
+                "Euro Games",
+                "Board Game",
+                "My favorite Euro style games",
+                LocalDate.now().toString(),
+                new ArrayList<>());
+
+        collectionService.addCollection(collection);
 
         BoardGame validBoardGame = new BoardGame(
                 id,
@@ -58,18 +66,20 @@ public class BoardGameControllerTest {
                 yearPublished,
                 averagePlayTime,
                 collectionId);
-                BoardGame persistedBoardGame = boardGameService.addBoardGameToCollection(validBoardGame);
+
+        boardGameService.addBoardGameToCollection(validBoardGame);
 
         String newNumberOfPlayers = "2-4";
-        String newCollectionId = UUID.randomUUID().toString();
+        String newYearPublished = "2016";
+//        String newCollectionId = UUID.randomUUID().toString();
 
         BoardGameUpdateRequest boardGameUpdateRequest = new BoardGameUpdateRequest();
-        boardGameUpdateRequest.setCollectionId(id);
+        boardGameUpdateRequest.setId(id);
         boardGameUpdateRequest.setName(name);
         boardGameUpdateRequest.setNumberOfPlayers(newNumberOfPlayers);
-        boardGameUpdateRequest.setYearPublished(yearPublished);
+        boardGameUpdateRequest.setYearPublished(newYearPublished);
         boardGameUpdateRequest.setAveragePlayTime(averagePlayTime);
-        boardGameUpdateRequest.setCollectionId(newCollectionId);
+        boardGameUpdateRequest.setCollectionId(collectionId);
 
         mapper.registerModule(new JavaTimeModule());
 
@@ -80,52 +90,12 @@ public class BoardGameControllerTest {
                 .content(mapper.writeValueAsString(boardGameUpdateRequest)))
 
         // THEN
-                .andExpect(jsonPath("id").exists())
-                .andExpect(jsonPath("name").value(is(name)))
-                .andExpect(jsonPath("numberOfPlayers").value(is(newNumberOfPlayers)))
-                .andExpect(jsonPath("yearPublished").value(is(yearPublished)))
-                .andExpect(jsonPath("averagePlayTime").value(is(averagePlayTime)))
-                .andExpect(jsonPath("collectionId").value(is(newCollectionId)))
+                .andExpect(jsonPath("Id").exists())
+                .andExpect(jsonPath("Name").value(is(name)))
+                .andExpect(jsonPath("NumberOfPlayers").value(is(newNumberOfPlayers)))
+                .andExpect(jsonPath("YearPublished").value(is(newYearPublished)))
+                .andExpect(jsonPath("AveragePlayTime").value(is(averagePlayTime)))
+                .andExpect(jsonPath("CollectionId").value(is(collectionId)))
                 .andExpect(status().isOk());
     }
-//    public void updateConcert_PutSuccessful() throws Exception {
-//        // GIVEN
-//        String id = UUID.randomUUID().toString();
-//        String name = mockNeat.strings().valStr();
-//        String date = LocalDate.now().toString();
-//        Double ticketBasePrice = 90.0;
-//
-//        Concert concert = new Concert(id, name, date, ticketBasePrice, false);
-//        Concert persistedConcert = concertService.addNewConcert(concert);
-//
-//        String newName = mockNeat.strings().valStr();
-//        Double newTicketBasePrice = 100.0;
-//
-//        ConcertUpdateRequest concertUpdateRequest = new ConcertUpdateRequest();
-//        concertUpdateRequest.setId(id);
-//        concertUpdateRequest.setDate(LocalDate.now());
-//        concertUpdateRequest.setName(newName);
-//        concertUpdateRequest.setTicketBasePrice(newTicketBasePrice);
-//        concertUpdateRequest.setReservationClosed(true);
-//
-//        mapper.registerModule(new JavaTimeModule());
-//
-//        // WHEN
-//        mvc.perform(put("/concerts")
-//                        .accept(MediaType.APPLICATION_JSON)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(mapper.writeValueAsString(concertUpdateRequest)))
-//                // THEN
-//                .andExpect(jsonPath("id")
-//                        .exists())
-//                .andExpect(jsonPath("name")
-//                        .value(is(newName)))
-//                .andExpect(jsonPath("date")
-//                        .value(is(date)))
-//                .andExpect(jsonPath("ticketBasePrice")
-//                        .value(is(newTicketBasePrice)))
-//                .andExpect(jsonPath("reservationClosed")
-//                        .value(is(true)))
-//                .andExpect(status().isOk());
-//    }
 }

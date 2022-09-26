@@ -9,6 +9,9 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/boardGame")
 public class BoardGameController {
@@ -19,10 +22,27 @@ public class BoardGameController {
     }
 
     @PostMapping()
-    public RequestEntity<BoardGameResponse> addBoardGameToCollection(@RequestBody BoardGameCreateRequest boardGameCreateRequest){
-        if(){
+    public ResponseEntity<BoardGameResponse> addBoardGameToCollection(@RequestBody BoardGameCreateRequest boardGameCreateRequest){
+        String collectionId = boardGameCreateRequest.getCollectionId();
 
+        if(!boardGameService.checkIfCollectionIdExists(collectionId)) {
+            return ResponseEntity.noContent().build();
         }
+
+        String boardGameId = UUID.randomUUID().toString();
+
+        BoardGame boardGame = new BoardGame(boardGameId,
+                boardGameCreateRequest.getName(),
+                boardGameCreateRequest.getNumberOfPlayers(),
+                boardGameCreateRequest.getYearPublished(),
+                boardGameCreateRequest.getAveragePlayTime(),
+                boardGameCreateRequest.getCollectionId());
+
+        boardGameService.addBoardGameToCollection(boardGame);
+
+        BoardGameResponse boardGameResponse = createBoardGameResponse(boardGame);
+
+        return ResponseEntity.created(URI.create("/boardGame" + boardGameResponse.getCollectionId())).body(boardGameResponse);
     }
 
     @PutMapping
@@ -45,7 +65,7 @@ public class BoardGameController {
         boardGameResponse.setId(boardGame.getId());
         boardGameResponse.setName(boardGame.getName());
         boardGameResponse.setNumberOfPlayers(boardGame.getNumberOfPlayers());
-        boardGameResponse.setYearPublished(boardGame.getAveragePlayTime());
+        boardGameResponse.setYearPublished(boardGame.getYearPublished());
         boardGameResponse.setAveragePlayTime(boardGame.getAveragePlayTime());
         boardGameResponse.setCollectionId(boardGame.getCollectionId());
 

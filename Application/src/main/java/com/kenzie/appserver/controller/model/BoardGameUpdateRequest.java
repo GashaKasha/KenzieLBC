@@ -9,19 +9,15 @@ public class BoardGameUpdateRequest {
     @JsonProperty("Id")
     private String id;
 
-    @NotEmpty
     @JsonProperty("Name")
     private String name;
 
-    @NotEmpty
     @JsonProperty("NumberOfPlayers")
     private String numberOfPlayers;
 
-    @NotEmpty
     @JsonProperty("YearPublished")
     private String yearPublished;
 
-    @NotEmpty
     @JsonProperty("AveragePlayTime")
     private String averagePlayTime;
 
@@ -30,7 +26,7 @@ public class BoardGameUpdateRequest {
     private String collectionId;
 
     public String getId() {
-        return null;
+        return id;
     }
 
     public void setId(String id) {

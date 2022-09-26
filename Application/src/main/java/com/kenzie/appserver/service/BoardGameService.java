@@ -23,15 +23,21 @@ public class BoardGameService {
             throw new IllegalArgumentException();
         }
 
-        BoardGameRecord boardGameRecord = new BoardGameRecord();
-        boardGameRecord.setId(boardGame.getId());
-        boardGameRecord.setName(boardGame.getName());
-        boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
-        boardGameRecord.setYearPublished(boardGame.getYearPublished());
-        boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
-        boardGameRecord.setCollectionId(boardGame.getCollectionId());
-        boardGameRepository.save(boardGameRecord);
+        String collectionId = boardGame.getCollectionId();
 
+        if(checkIfCollectionIdExists(collectionId)) {
+            BoardGameRecord boardGameRecord = new BoardGameRecord();
+            boardGameRecord.setId(boardGame.getId());
+            boardGameRecord.setName(boardGame.getName());
+            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
+            boardGameRecord.setYearPublished(boardGame.getYearPublished());
+            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
+            boardGameRecord.setCollectionId(boardGame.getCollectionId());
+            boardGameRepository.save(boardGameRecord);
+            collectionService.addItemToList(collectionId, boardGame.getName());
+        } else {
+            throw new IllegalArgumentException();
+        }
         return boardGame;
     }
 
@@ -49,6 +55,6 @@ public class BoardGameService {
     }
 
     public boolean checkIfCollectionIdExists(String collectionId){
-        if(collectionService.)
+        return collectionService.doesExist(collectionId);
     }
 }
