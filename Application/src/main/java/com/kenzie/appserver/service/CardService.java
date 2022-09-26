@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service;
 
+
 import com.kenzie.appserver.repositories.CollectionRepository;
 import com.kenzie.appserver.repositories.MagicTheGatheringRepository;
 import com.kenzie.appserver.repositories.model.MagicTheGatheringRecord;
