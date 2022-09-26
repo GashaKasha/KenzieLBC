@@ -1,5 +1,6 @@
 package com.kenzie.appserver.controller;
 
+public class CardController {
 import com.kenzie.appserver.controller.model.CardCreateRequest;
 import com.kenzie.appserver.controller.model.CardResponse;
 import com.kenzie.appserver.service.CardService;

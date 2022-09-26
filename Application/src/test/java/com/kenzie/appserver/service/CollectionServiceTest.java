@@ -52,7 +52,7 @@ public class CollectionServiceTest {
 //        collectionCards.add("expensiveCard1");
         String collectionCreationDate = ZonedDateTime.now().toString();
 
-        Collection collection = new Collection(collectionId, collectionName, collectionType, collectionDescription, collectionCreationDate, collectionCards);
+        Collection collection = new Collection(collectionId, collectionCreationDate, collectionName, collectionType, collectionDescription, collectionCards);
 
         ArgumentCaptor<CollectionRecord> collectionRecordCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
 
@@ -68,11 +68,11 @@ public class CollectionServiceTest {
 
         Assertions.assertNotNull(record, "The concert record is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
+        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
         Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
         Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection items match");
-        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
     }
 
     @Test
@@ -99,11 +99,11 @@ public class CollectionServiceTest {
 
         CollectionRecord record = new CollectionRecord();
         record.setId(collecitonId);
+        record.setCreationDate(LocalDateTime.now().toString());
         record.setCollectionName("collectionName");
         record.setType("MagicTheGathering");
-        record.setCollectionItemNames(collectionCards);
         record.setDescription("coolDeck");
-        record.setCreationDate(LocalDateTime.now().toString());
+        record.setCollectionItemNames(collectionCards);
         when(collectionRepository.findById(collecitonId)).thenReturn(Optional.of(record));
         // WHEN
         Collection collection = collectionService.getCollectionById(collecitonId);
@@ -111,11 +111,11 @@ public class CollectionServiceTest {
         // THEN
         Assertions.assertNotNull(collection, "The collection is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
+        Assertions.assertEquals(record.getCreationDate(),collection.getCreationDate(), "The collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
-        Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection item list matches");
         Assertions.assertEquals(record.getDescription(),collection.getDescription(), "The collection description matches");
-        Assertions.assertEquals(record.getCreationDate(),collection.getCreationDate(), "The collection creation date matches");
+        Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection item list matches");
     }
 
     @Test
