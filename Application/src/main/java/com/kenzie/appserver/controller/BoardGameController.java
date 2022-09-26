@@ -1,14 +1,13 @@
 package com.kenzie.appserver.controller;
 
+import com.kenzie.appserver.controller.model.BoardGameCreateRequest;
 import com.kenzie.appserver.controller.model.BoardGameResponse;
 import com.kenzie.appserver.controller.model.BoardGameUpdateRequest;
 import com.kenzie.appserver.service.BoardGameService;
 import com.kenzie.appserver.service.model.BoardGame;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/boardGame")
@@ -17,6 +16,13 @@ public class BoardGameController {
 
     BoardGameController(BoardGameService boardGameService){
         this.boardGameService = boardGameService;
+    }
+
+    @PostMapping()
+    public RequestEntity<BoardGameResponse> addBoardGameToCollection(@RequestBody BoardGameCreateRequest boardGameCreateRequest){
+        if(){
+
+        }
     }
 
     @PutMapping

@@ -1,19 +1,24 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.BoardGameRepository;
-import com.kenzie.appserver.repositories.ExampleRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
 //import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.BoardGame;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BoardGameService {
     private BoardGameRepository boardGameRepository;
+    private CollectionService collectionService;
 
-    public BoardGameService(BoardGameRepository boardGameRepository) {
+    @Autowired
+    public BoardGameService(BoardGameRepository boardGameRepository, CollectionService collectionService) {
         this.boardGameRepository = boardGameRepository;
+        this.collectionService = collectionService;
     }
 
-    public BoardGame addBoardGame(BoardGame boardGame){
+    public BoardGame addBoardGameToCollection(BoardGame boardGame){
         if(boardGame == null){
             throw new IllegalArgumentException();
         }
@@ -41,5 +46,9 @@ public class BoardGameService {
             boardGameRecord.setCollectionId(boardGame.getCollectionId());
             boardGameRepository.save(boardGameRecord);
         }
+    }
+
+    public boolean checkIfCollectionIdExists(String collectionId){
+        if(collectionService.)
     }
 }

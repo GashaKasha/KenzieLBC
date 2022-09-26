@@ -6,13 +6,11 @@ import com.kenzie.appserver.IntegrationTest;
 import com.kenzie.appserver.controller.model.BoardGameUpdateRequest;
 import com.kenzie.appserver.service.BoardGameService;
 import com.kenzie.appserver.service.model.BoardGame;
-import net.andreinc.mockneat.MockNeat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
@@ -60,7 +58,7 @@ public class BoardGameControllerTest {
                 yearPublished,
                 averagePlayTime,
                 collectionId);
-        //        BoardGame persistedBoardGame = boardGameService.addBoardGame(validBoardGame);
+                BoardGame persistedBoardGame = boardGameService.addBoardGameToCollection(validBoardGame);
 
         String newNumberOfPlayers = "2-4";
         String newCollectionId = UUID.randomUUID().toString();
@@ -73,15 +71,22 @@ public class BoardGameControllerTest {
         boardGameUpdateRequest.setAveragePlayTime(averagePlayTime);
         boardGameUpdateRequest.setCollectionId(newCollectionId);
 
-        //        mapper.registerModule(new JavaTimeModule());
+        mapper.registerModule(new JavaTimeModule());
 
         // WHEN
         mvc.perform(put("/boardGame")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(boardGameUpdateRequest)))
+
         // THEN
-                .andExpect()
+                .andExpect(jsonPath("id").exists())
+                .andExpect(jsonPath("name").value(is(name)))
+                .andExpect(jsonPath("numberOfPlayers").value(is(newNumberOfPlayers)))
+                .andExpect(jsonPath("yearPublished").value(is(yearPublished)))
+                .andExpect(jsonPath("averagePlayTime").value(is(averagePlayTime)))
+                .andExpect(jsonPath("collectionId").value(is(newCollectionId)))
+                .andExpect(status().isOk());
     }
 //    public void updateConcert_PutSuccessful() throws Exception {
 //        // GIVEN

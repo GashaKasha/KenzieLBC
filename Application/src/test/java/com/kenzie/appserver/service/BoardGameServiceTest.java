@@ -1,7 +1,6 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.BoardGameRepository;
-import com.kenzie.appserver.repositories.ExampleRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
 import com.kenzie.appserver.service.model.BoardGame;
 import org.junit.jupiter.api.Assertions;
@@ -17,11 +16,12 @@ import static org.mockito.Mockito.verify;
 public class BoardGameServiceTest {
     private BoardGameRepository boardGameRepository;
     private BoardGameService boardGameService;
+    private CollectionService collectionService;
 
     @BeforeEach
     void setup() {
         boardGameRepository = mock(BoardGameRepository.class);
-        boardGameService = new BoardGameService(boardGameRepository);
+        boardGameService = new BoardGameService(boardGameRepository, collectionService);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class BoardGameServiceTest {
         ArgumentCaptor<BoardGameRecord> boardGameRecordArgumentCaptor = ArgumentCaptor.forClass(BoardGameRecord.class);
 
         // WHEN
-        BoardGame returnedBoardGame = boardGameService.addBoardGame(validBoardGame);
+        BoardGame returnedBoardGame = boardGameService.addBoardGameToCollection(validBoardGame);
 
         // THEN
         Assertions.assertNotNull(returnedBoardGame);
@@ -65,7 +65,7 @@ public class BoardGameServiceTest {
     void addBoardGame_nullBoardGame_throwsException(){
         // GIVEN + WHEN + THEN
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> boardGameService.addBoardGame(null),
+                () -> boardGameService.addBoardGameToCollection(null),
                 "Null board game should throw IllegalArgumentException");
     }
 }
