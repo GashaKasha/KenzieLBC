@@ -88,7 +88,7 @@ public class BoardGameControllerTest {
 
     // TODO: unhappy case for add
     @Test
-    public void addBoardGameToCollection_invalidCollectionId_returnsNoContent() throws Exception {
+    public void addBoardGameToCollection_invalidCollectionId_returnsNotFound() throws Exception {
         // GIVEN
         String collectionId = UUID.randomUUID().toString();
         String creationDate = LocalDate.now().toString();
@@ -124,9 +124,8 @@ public class BoardGameControllerTest {
                         .content(mapper.writeValueAsString(boardGameRequest)))
 
         // THEN
-                .andExpect(status().);
+                .andExpect(status().isNotFound());
 
-        assertThat(boardGameService.checkIfCollectionIdExists(collectionId)).isFalse();
     }
 
     @Test
