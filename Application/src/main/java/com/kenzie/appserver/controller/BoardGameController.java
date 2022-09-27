@@ -26,7 +26,7 @@ public class BoardGameController {
         String collectionId = boardGameCreateRequest.getCollectionId();
 
         if(!boardGameService.checkIfCollectionIdExists(collectionId)) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.notFound().build();
         }
 
         String boardGameId = UUID.randomUUID().toString();
