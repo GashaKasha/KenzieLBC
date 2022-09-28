@@ -43,6 +43,9 @@ public class BoardGameService {
     }
 
     public void updateBoardGame(BoardGame boardGame){
+        if(boardGame == null){
+            throw new IllegalArgumentException();
+        }
         if(boardGameRepository.existsById(boardGame.getId())){
             String gameId = getGameId(boardGame.getName(), boardGame.getCollectionId());
             BoardGameRecord boardGameRecord = new BoardGameRecord();
