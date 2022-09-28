@@ -1,8 +1,15 @@
-class MainPage extends BaseClass {
+import BaseClass from "../util/baseClass";
+import DataStore from "../util/DataStore";
+import ExampleClient from "../api/exampleClient";
+
+/**
+ * Logic needed for the view playlist page of the website.
+ */
+class ExamplePage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['myFunction'], this);
+        this.bindClassMethods(['onGet', 'onCreate', 'renderExample'], this);
         this.dataStore = new DataStore();
     }
 
@@ -14,26 +21,58 @@ class MainPage extends BaseClass {
         document.getElementById('create-form').addEventListener('submit', this.onCreate);
         this.client = new ExampleClient();
 
-        this.dataStore.addChangeListener(this.renderExample)
+        this.dataStore.addChangeListener(this.renderMainPage)
     }
 
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
+    // Render Methods --------------------------------------------------------------------------------------------------
+
+    async renderMainPage() {
+        let resultArea = document.getElementById("result-info");
+
+        const example = this.dataStore.get("example");
+
+        if (example) {
+            resultArea.innerHTML = `
+                <div>ID: ${example.id}</div>
+                <div>Name: ${example.name}</div>
+            `
+        } else {
+            resultArea.innerHTML = "No Item";
+        }
     }
 
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-                }
-            }
+    // Event Handlers --------------------------------------------------------------------------------------------------
+
+    async onGet(event) {
+        // Prevent the page from refreshing on form submit
+        event.preventDefault();
+
+        let id = document.getElementById("id-field").value;
+        this.dataStore.set("example", null);
+
+        let result = await this.client.getExample(id, this.errorHandler);
+        this.dataStore.set("example", result);
+        if (result) {
+            this.showMessage(`Got ${result.name}!`)
+        } else {
+            this.errorHandler("Error doing GET!  Try again...");
+        }
+    }
+
+    async onCreate(event) {
+        // Prevent the page from refreshing on form submit
+        event.preventDefault();
+        this.dataStore.set("example", null);
+
+        let name = document.getElementById("create-name-field").value;
+
+        const createdExample = await this.client.createExample(name, this.errorHandler);
+        this.dataStore.set("example", createdExample);
+
+        if (createdExample) {
+            this.showMessage(`Created ${createdExample.name}!`)
+        } else {
+            this.errorHandler("Error creating!  Try again...");
         }
     }
 }
