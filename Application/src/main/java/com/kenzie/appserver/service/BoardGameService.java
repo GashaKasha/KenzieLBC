@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.CollectionNotFoundException;
 import com.kenzie.appserver.repositories.BoardGameRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
 //import com.kenzie.appserver.repositories.model.CollectionRecord;
@@ -36,15 +37,16 @@ public class BoardGameService {
             boardGameRepository.save(boardGameRecord);
             collectionService.addItemToList(collectionId, boardGame.getName());
         } else {
-            throw new IllegalArgumentException();
+            throw new CollectionNotFoundException();
         }
         return boardGame;
     }
 
     public void updateBoardGame(BoardGame boardGame){
         if(boardGameRepository.existsById(boardGame.getId())){
+            String gameId = getGameId(boardGame.getName(), boardGame.getCollectionId());
             BoardGameRecord boardGameRecord = new BoardGameRecord();
-            boardGameRecord.setId(boardGame.getId());
+            boardGameRecord.setId(gameId);
             boardGameRecord.setName(boardGame.getName());
             boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
             boardGameRecord.setYearPublished(boardGame.getYearPublished());
@@ -56,5 +58,10 @@ public class BoardGameService {
 
     public boolean checkIfCollectionIdExists(String collectionId){
         return collectionService.doesExist(collectionId);
+    }
+
+    public String getGameId(String name, String collectionId) {
+        BoardGameRecord boardGameRecord = boardGameRepository.findByNameCollectionId(name, collectionId);
+        return boardGameRecord.getId();
     }
 }
