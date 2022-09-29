@@ -150,4 +150,160 @@ public class CardControllerTest {
 
         assertThat(collectionService.checkCollectionItemNames(collectionId)).isFalse();
     }
+
+    // TODO: Happy case for updateCardInCollection
+//    @Test
+//    public void updateCardInCollection_withValidCard_updatesCardData() throws Exception {
+//        // GIVEN
+//        // Create new Collection
+//        String collectionId = UUID.randomUUID().toString();
+//        String creationDate = LocalDate.now().toString();
+//        String collectionName = "Pat's MTG Library";
+//        String type = "Card Game";
+//        String description = "Pat MTG Card Collection";
+//        List<String> collectionItems = new ArrayList<>();
+//
+//        Collection newCollection = new Collection(collectionId, creationDate, collectionName, type, description, collectionItems);
+//        collectionService.addCollection(newCollection);
+//
+//        // Original Card Data
+//        String cardId = UUID.randomUUID().toString();
+//        String cardName = "Omnath, Locus of Creation";
+//        List<String> releasedSet = new ArrayList<>();
+//        releasedSet.add("Zendikar Rising");
+//        String cardType = "Creature";
+//        String manaCost = "RGW";
+//        String powerToughness = "3/4";
+//        String cardAbilities = "Card Draw on ETB, Landfall, Lifegain, add RGWBU, deal damage.";
+//        int numberOfCardsOwned = 1;
+//        String artist = "Chris Rahn";
+//
+//        MagicTheGathering validMtgCard = new MagicTheGathering(
+//                cardId,
+//                cardName,
+//                releasedSet,
+//                cardType,
+//                manaCost,
+//                powerToughness,
+//                cardAbilities,
+//                numberOfCardsOwned,
+//                artist,
+//                collectionId
+//        );
+//
+//        cardService.addCardToCollection(validMtgCard);
+//
+//        // Data to update
+//        String correctManaCost = "RGWB";
+//        String correctPowerToughness = "4/4";
+//        int newCardOwned = 2;
+//
+//        CardUpdateRequest cardUpdateRequest = new CardUpdateRequest();
+//        cardUpdateRequest.setId(cardId);
+//        cardUpdateRequest.setName(cardName);
+//        cardUpdateRequest.setReleasedSet(releasedSet);
+//        cardUpdateRequest.setCardType(cardType);
+//        cardUpdateRequest.setManaCost(correctManaCost);
+//        cardUpdateRequest.setPowerToughness(correctPowerToughness);
+//        cardUpdateRequest.setCardAbilities(cardAbilities);
+//        cardUpdateRequest.setNumberOfCardsOwned(newCardOwned);
+//        cardUpdateRequest.setArtist(artist);
+//        cardUpdateRequest.setCollectionId(collectionId);
+//
+//        mapper.registerModule(new JavaTimeModule());
+//
+//        // WHEN
+//        mvc.perform(post("/cards/mtg")
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(mapper.writeValueAsString(cardUpdateRequest)))
+//
+//                // THEN
+//                .andExpect(jsonPath("name")
+//                        .value(is(cardName)))
+//                .andExpect(jsonPath("collectionId")
+//                        .value(is(collectionId)))
+//                .andExpect(status().isCreated());
+//
+//        assertThat(collectionService.checkCollectionItemNames(collectionId)).isTrue();
+//
+//    }
+//
+//    // TODO: Unhappy case for updateCardInCollection
+//    @Test
+//    public void updateCardInCollection_withInvalidCard_updatesCardData() throws Exception {
+//        // GIVEN
+//        // Create new Collection
+//        String collectionId = UUID.randomUUID().toString();
+//        String creationDate = LocalDate.now().toString();
+//        String collectionName = "Pat's MTG Library";
+//        String type = "Card Game";
+//        String description = "Pat MTG Card Collection";
+//        List<String> collectionItems = new ArrayList<>();
+//
+//        Collection newCollection = new Collection(collectionId, creationDate, collectionName, type, description, collectionItems);
+//        collectionService.addCollection(newCollection);
+//
+//        // Original Card Data
+//        String cardId = UUID.randomUUID().toString();
+//        String cardName = "Omnath, Locus of Creation";
+//        List<String> releasedSet = new ArrayList<>();
+//        releasedSet.add("Zendikar Rising");
+//        String cardType = "Creature";
+//        String manaCost = "RGW";
+//        String powerToughness = "3/4";
+//        String cardAbilities = "Card Draw on ETB, Landfall, Lifegain, add RGWBU, deal damage.";
+//        int numberOfCardsOwned = 1;
+//        String artist = "Chris Rahn";
+//
+//        MagicTheGathering validMtgCard = new MagicTheGathering(
+//                cardId,
+//                cardName,
+//                releasedSet,
+//                cardType,
+//                manaCost,
+//                powerToughness,
+//                cardAbilities,
+//                numberOfCardsOwned,
+//                artist,
+//                collectionId
+//        );
+//
+//        cardService.addCardToCollection(validMtgCard);
+//
+//        // Data to update
+//        String correctManaCost = "RGWB";
+//        String correctPowerToughness = "4/4";
+//        int newCardOwned = 2;
+//
+//        CardUpdateRequest cardUpdateRequest = new CardUpdateRequest();
+//        cardUpdateRequest.setId(cardId);
+//        cardUpdateRequest.setName(cardName);
+//        cardUpdateRequest.setReleasedSet(releasedSet);
+//        cardUpdateRequest.setCardType(cardType);
+//        cardUpdateRequest.setManaCost(correctManaCost);
+//        cardUpdateRequest.setPowerToughness(correctPowerToughness);
+//        cardUpdateRequest.setCardAbilities(cardAbilities);
+//        cardUpdateRequest.setNumberOfCardsOwned(newCardOwned);
+//        cardUpdateRequest.setArtist(artist);
+//        cardUpdateRequest.setCollectionId(collectionId);
+//
+//        mapper.registerModule(new JavaTimeModule());
+//
+//        // WHEN
+//        mvc.perform(post("/cards/mtg")
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(mapper.writeValueAsString(cardUpdateRequest)))
+//
+//                // THEN
+//                .andExpect(jsonPath("name")
+//                        .value(is(cardName)))
+//                .andExpect(jsonPath("collectionId")
+//                        .value(is(collectionId)))
+//                .andExpect(status().isCreated());
+//
+//        assertThat(collectionService.checkCollectionItemNames(collectionId)).isTrue();
+//
+//    }
 }

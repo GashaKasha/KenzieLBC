@@ -2,6 +2,7 @@ package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.controller.model.CardCreateRequest;
 import com.kenzie.appserver.controller.model.CardResponse;
+import com.kenzie.appserver.controller.model.CardUpdateRequest;
 import com.kenzie.appserver.service.CardService;
 import com.kenzie.appserver.service.CollectionService;
 import com.kenzie.appserver.service.model.MagicTheGathering;
@@ -28,9 +29,9 @@ public class CardController {
         // Check if collection Id exists
         // TODO: This should actually return an error message or something
         String collectionId = cardCreateRequest.getCollectionId();
-//        if (!cardService.doesExist(collectionId)) {
-//            return ResponseEntity.notFound().build();
-//        }
+        if (!cardService.doesExist(collectionId)) {
+            return ResponseEntity.notFound().build();
+        }
 
         String generateCardId = UUID.randomUUID().toString();
 
@@ -50,6 +51,31 @@ public class CardController {
 
         return ResponseEntity.created(URI.create("/cards/mtg" + cardResponse.getCollectionId())).body(cardResponse);
     }
+
+//    @PutMapping("/mtg")
+//    public ResponseEntity<CardResponse> updateCardInCollection(@RequestBody CardUpdateRequest cardUpdateRequest) {
+//        String collectionId = cardUpdateRequest.getCollectionId();
+//        if (!cardService.doesExist(collectionId)) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        MagicTheGathering magicTheGathering = new MagicTheGathering(cardUpdateRequest.getId(),
+//                cardUpdateRequest.getName(),
+//                cardUpdateRequest.getReleasedSet(),
+//                cardUpdateRequest.getCardType(),
+//                cardUpdateRequest.getManaCost(),
+//                cardUpdateRequest.getPowerToughness(),
+//                cardUpdateRequest.getCardAbilities(),
+//                cardUpdateRequest.getNumberOfCardsOwned(),
+//                cardUpdateRequest.getArtist(),
+//                cardUpdateRequest.getCollectionId());
+//        cardService.updateCardInCollection(magicTheGathering);
+//
+//        CardResponse cardResponse = createCardResponse(magicTheGathering);
+//
+//        return ResponseEntity.ok(cardResponse);
+//    }
+
 
     private CardResponse createCardResponse(MagicTheGathering magicTheGathering) {
         CardResponse cardResponse = new CardResponse();

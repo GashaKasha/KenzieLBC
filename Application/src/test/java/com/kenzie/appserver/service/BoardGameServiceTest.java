@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.UUID;
 
@@ -14,13 +16,20 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class BoardGameServiceTest {
-    private BoardGameRepository boardGameRepository;
+
     private BoardGameService boardGameService;
+
+    @Mock
+    private BoardGameRepository boardGameRepository;
+
+    @Mock
     private CollectionService collectionService;
 
     @BeforeEach
     void setup() {
-        boardGameRepository = mock(BoardGameRepository.class);
+        // The below declaration was causing the collectionService is null error
+        //boardGameRepository = mock(BoardGameRepository.class);
+        MockitoAnnotations.initMocks(this);
         boardGameService = new BoardGameService(boardGameRepository, collectionService);
     }
 

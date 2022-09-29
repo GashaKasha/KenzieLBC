@@ -32,49 +32,49 @@ public class CardService {
 
         String collectionId = magicTheGathering.getCollectionId();
 
-            MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
-            magicTheGatheringRecord.setId(magicTheGathering.getId());
-            magicTheGatheringRecord.setName(magicTheGathering.getName());
-            magicTheGatheringRecord.setReleasedSet(magicTheGathering.getReleasedSet());
-            magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
-            magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
-            magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
-            magicTheGatheringRecord.setCardAbilities(magicTheGathering.getCardAbilities());
-            magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
-            magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
-            magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());
-            magicTheGatheringRepository.save(magicTheGatheringRecord);
+        MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
+        magicTheGatheringRecord.setId(magicTheGathering.getId());
+        magicTheGatheringRecord.setName(magicTheGathering.getName());
+        magicTheGatheringRecord.setReleasedSet(magicTheGathering.getReleasedSet());
+        magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
+        magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
+        magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
+        magicTheGatheringRecord.setCardAbilities(magicTheGathering.getCardAbilities());
+        magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
+        magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
+        magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());
+        magicTheGatheringRepository.save(magicTheGatheringRecord);
 
-            // Add to collection after creation
-            collectionService.addItemToList(collectionId, magicTheGathering.getName());
+        // Add to collection after creation
+        collectionService.addItemToList(collectionId, magicTheGathering.getName());
 
         return magicTheGathering;
     }
 
-    public void updateCardInCollection(MagicTheGathering magicTheGathering) {
-        if (magicTheGathering == null) {
-            throw new IllegalArgumentException();
-        }
-        String collectionId = magicTheGathering.getCollectionId();
-        if (doesExist(collectionId)) {
-            MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
-            magicTheGatheringRecord.setId(magicTheGathering.getId());
-            magicTheGatheringRecord.setName(magicTheGathering.getName());
-            magicTheGatheringRecord.setReleasedSet(magicTheGathering.getReleasedSet());
-            magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
-            magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
-            magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
-            magicTheGatheringRecord.setCardAbilities(magicTheGathering.getCardAbilities());
-            magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
-            magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
-            magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());
-            magicTheGatheringRepository.save(magicTheGatheringRecord);
-
-            collectionService.addItemToList(collectionId, magicTheGathering.getName());
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
+//    public void updateCardInCollection(MagicTheGathering magicTheGathering) {
+//        if (magicTheGathering == null) {
+//            throw new IllegalArgumentException();
+//        }
+//        String collectionId = magicTheGathering.getCollectionId();
+//        if (doesExist(collectionId)) {
+//            MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
+//            magicTheGatheringRecord.setId(magicTheGathering.getId());
+//            magicTheGatheringRecord.setName(magicTheGathering.getName());
+//            magicTheGatheringRecord.setReleasedSet(magicTheGathering.getReleasedSet());
+//            magicTheGatheringRecord.setCardType(magicTheGathering.getCardType());
+//            magicTheGatheringRecord.setManaCost(magicTheGathering.getManaCost());
+//            magicTheGatheringRecord.setPowerToughness(magicTheGathering.getPowerToughness());
+//            magicTheGatheringRecord.setCardAbilities(magicTheGathering.getCardAbilities());
+//            magicTheGatheringRecord.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
+//            magicTheGatheringRecord.setArtist(magicTheGathering.getArtist());
+//            magicTheGatheringRecord.setCollectionId(magicTheGathering.getCollectionId());
+//            magicTheGatheringRepository.save(magicTheGatheringRecord);
+//
+//            collectionService.addItemToList(collectionId, magicTheGathering.getName());
+//        } else {
+//            throw new IllegalArgumentException();
+//        }
+//    }
 
     public boolean doesExist(String collectionId) {
         // Returns true if collectionId exists, otherwise False

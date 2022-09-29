@@ -61,7 +61,6 @@ public class CollectionService {
         //not doing a exists by Id, because in order to create card a valid collectionId must be input
         // TODO: Add a check to verify that the item doesn't already exists in the list
         // Maybe needs to be a custom exception for - if names already exists in collection
-
         if(collectionId == null || itemName == null){
             throw new IllegalArgumentException();
         }
