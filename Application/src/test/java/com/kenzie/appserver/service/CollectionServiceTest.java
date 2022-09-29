@@ -35,7 +35,7 @@ public class CollectionServiceTest {
     private CollectionService collectionService;
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         MockitoAnnotations.initMocks(this);
         collectionService = new CollectionService(collectionRepository);
     }
@@ -84,7 +84,7 @@ public class CollectionServiceTest {
         // GIVEN
 
         assertThrows(IllegalArgumentException.class,
-                ()-> collectionService.addCollection(null),
+                () -> collectionService.addCollection(null),
                 "expected IllegalArgumentException to be thrown when null Id is entered to be saved to database.");
 
     }
@@ -115,10 +115,10 @@ public class CollectionServiceTest {
         // THEN
         Assertions.assertNotNull(collection, "The collection is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
-        Assertions.assertEquals(record.getCreationDate(),collection.getCreationDate(), "The collection creation date matches");
+        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "The collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
-        Assertions.assertEquals(record.getDescription(),collection.getDescription(), "The collection description matches");
+        Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
         Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection item list matches");
     }
 
@@ -137,34 +137,47 @@ public class CollectionServiceTest {
     void deleteCollection_invalidCollectionId_IllegalArgumentExceptionThrown() throws IllegalAccessException {
 
         Assertions.assertThrows(IllegalArgumentException.class,
-                ()-> collectionService.deleteCollectionById(null),
+                () -> collectionService.deleteCollectionById(null),
                 "IllegalArgumentException should be thrown if existsById is false");
     }
 
     @Test
-    void addItemToList_validData_savesToRepository(){
-        String collectionId = UUID.randomUUID().toString();
-        String creationDate = LocalDateTime.now().toString();
-        String collectionName = "Arkham Horror The Card Game";
-        String type = "card";
-        String description = "Latest AHTCG cards";
-        List<String> listOfItems = new ArrayList<>();
-        String itemName = "Scarlet Key";
-
-        ArgumentCaptor<CollectionRecord> collectionRecordArgumentCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
-
-        Collection collection = new Collection(collectionId, creationDate, collectionName, type, description, listOfItems);
-
-        collectionService.addCollection(collection);
-
-
+    void addItemToList_validItem_itemAddedToList() {
+        String collectionId = randomUUID().toString();
+        String collectionName = "testName";
+        String collectionType = "MagicTheGathering";
+        String collectionDescription = "great description";
+        List<String> collectionCards = new ArrayList<>();
+        collectionCards.add("goodCard1");
+        collectionCards.add("goodCard2");
+        collectionCards.add("reallyGoodCard1");
+        collectionCards.add("kindOfOkCardButLooksCool1");
+        collectionCards.add("notGoodCard1");
+        collectionCards.add("expensiveCard1");
+        String collectionCreationDate = ZonedDateTime.now().toString();
+        Collection collection = new Collection(collectionId, collectionCreationDate, collectionName, collectionType, collectionDescription, collectionCards);
+        ArgumentCaptor<CollectionRecord> collectionRecordCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
         // WHEN
-        collectionService.addItemToList(collectionId, itemName);
-
+        Collection returnedCollection = collectionService.addCollection(collection);
         // THEN
-        verify(collectionRepository).save(collectionRecordArgumentCaptor.capture());
-        CollectionRecord collectionRecord = collectionRecordArgumentCaptor.getValue();
-        assertEquals(collectionRecord.getId(), collection.getId());
-        assertEquals(collectionRecord.getCollectionItemNames(), collection.getCollectionItemNames());
+        Assertions.assertNotNull(returnedCollection);
+        CollectionRecord collectionRecord = new CollectionRecord();
+        collectionRecord.setId(collection.getId());
+        collectionRecord.setCreationDate(collection.getCreationDate());
+        collectionRecord.setCollectionName(collection.getCollectionName());
+        collectionRecord.setType(collection.getType());
+        collectionRecord.setDescription(collection.getDescription());
+        collectionRecord.setCollectionItemNames(collection.getCollectionItemNames());
+        when(collectionRepository.findById(collectionId)).thenReturn(Optional.of(collectionRecord));
+        collectionService.addItemToList(collectionId, "addedName");
+        verify(collectionRepository, times(2)).save(collectionRecordCaptor.capture());
+        CollectionRecord record = collectionRecordCaptor.getValue();
+        Assertions.assertNotNull(record, "The concert record is returned");
+        Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
+        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
+        Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
+        Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
+        Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
+        assert (record.getCollectionItemNames().contains("addedName"));
     }
 }
