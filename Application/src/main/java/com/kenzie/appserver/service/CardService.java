@@ -31,7 +31,7 @@ public class CardService {
         }
 
         String collectionId = magicTheGathering.getCollectionId();
-        if (doesExist(collectionId)) {
+
             MagicTheGatheringRecord magicTheGatheringRecord = new MagicTheGatheringRecord();
             magicTheGatheringRecord.setId(magicTheGathering.getId());
             magicTheGatheringRecord.setName(magicTheGathering.getName());
@@ -47,12 +47,7 @@ public class CardService {
 
             // Add to collection after creation
             collectionService.addItemToList(collectionId, magicTheGathering.getName());
-        } else {
-            throw new IllegalArgumentException();
-            // Add after collection controller code
-            // is merged in
-//            throw new CollectionNotFoundException();
-        }
+
         return magicTheGathering;
     }
 

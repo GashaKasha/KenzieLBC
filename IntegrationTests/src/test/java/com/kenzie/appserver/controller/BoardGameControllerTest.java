@@ -54,7 +54,7 @@ public class BoardGameControllerTest {
         Collection newCollection = new Collection(collectionId, creationDate, collectionName, type, description, collectionItems);
         collectionService.addCollection(newCollection);
 
-//        String id = UUID.randomUUID().toString();
+        String id = UUID.randomUUID().toString();
         String name = "Testorini";
         String numberOfPlayers = "2-4";
         String yearPublished = "2016";
@@ -128,64 +128,64 @@ public class BoardGameControllerTest {
 
     }
 
-    @Test
-    public void updateBoardGame_validData_putSuccessful() throws Exception{
-        // GIVEN
-        String id = UUID.randomUUID().toString();
-        String name = "Testham Horror: The Test Game";
-        String numberOfPlayers = "2";
-        String yearPublished = "2015";
-        String averagePlayTime = "60-120";
-        String collectionId = UUID.randomUUID().toString();
-
-        Collection collection = new Collection(collectionId,
-                "Euro Games",
-                "Board Game",
-                "My favorite Euro style games",
-                LocalDate.now().toString(),
-                new ArrayList<>());
-
-        collectionService.addCollection(collection);
-
-        BoardGame validBoardGame = new BoardGame(
-                id,
-                name,
-                numberOfPlayers,
-                yearPublished,
-                averagePlayTime,
-                collectionId);
-
-        boardGameService.addBoardGameToCollection(validBoardGame);
-
-        String newNumberOfPlayers = "2-4";
-        String newYearPublished = "2016";
-//        String newCollectionId = UUID.randomUUID().toString();
-
-        BoardGameUpdateRequest boardGameUpdateRequest = new BoardGameUpdateRequest();
-        boardGameUpdateRequest.setId(id);
-        boardGameUpdateRequest.setName(name);
-        boardGameUpdateRequest.setNumberOfPlayers(newNumberOfPlayers);
-        boardGameUpdateRequest.setYearPublished(newYearPublished);
-        boardGameUpdateRequest.setAveragePlayTime(averagePlayTime);
-        boardGameUpdateRequest.setCollectionId(collectionId);
-
-        mapper.registerModule(new JavaTimeModule());
-
-        // WHEN
-        mvc.perform(put("/boardGame")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(boardGameUpdateRequest)))
-
-        // THEN
-                .andExpect(jsonPath("Id").exists())
-                .andExpect(jsonPath("Name").value(is(name)))
-                .andExpect(jsonPath("NumberOfPlayers").value(is(newNumberOfPlayers)))
-                .andExpect(jsonPath("YearPublished").value(is(newYearPublished)))
-                .andExpect(jsonPath("AveragePlayTime").value(is(averagePlayTime)))
-                .andExpect(jsonPath("CollectionId").value(is(collectionId)))
-                .andExpect(status().isOk());
-    }
+//    @Test
+//    public void updateBoardGame_validData_putSuccessful() throws Exception{
+//        // GIVEN
+//        String id = UUID.randomUUID().toString();
+//        String name = "Testham Horror: The Test Game";
+//        String numberOfPlayers = "2";
+//        String yearPublished = "2015";
+//        String averagePlayTime = "60-120";
+//        String collectionId = UUID.randomUUID().toString();
+//
+//        Collection collection = new Collection(collectionId,
+//                "Euro Games",
+//                "Board Game",
+//                "My favorite Euro style games",
+//                LocalDate.now().toString(),
+//                new ArrayList<>());
+//
+//        collectionService.addCollection(collection);
+//
+//        BoardGame validBoardGame = new BoardGame(
+//                id,
+//                name,
+//                numberOfPlayers,
+//                yearPublished,
+//                averagePlayTime,
+//                collectionId);
+//
+//        boardGameService.addBoardGameToCollection(validBoardGame);
+//
+//        String newNumberOfPlayers = "2-4";
+//        String newYearPublished = "2016";
+////        String newCollectionId = UUID.randomUUID().toString();
+//
+//        BoardGameUpdateRequest boardGameUpdateRequest = new BoardGameUpdateRequest();
+//        boardGameUpdateRequest.setId(id);
+//        boardGameUpdateRequest.setName(name);
+//        boardGameUpdateRequest.setNumberOfPlayers(newNumberOfPlayers);
+//        boardGameUpdateRequest.setYearPublished(newYearPublished);
+//        boardGameUpdateRequest.setAveragePlayTime(averagePlayTime);
+//        boardGameUpdateRequest.setCollectionId(collectionId);
+//
+//        mapper.registerModule(new JavaTimeModule());
+//
+//        // WHEN
+//        mvc.perform(put("/boardGame")
+//                .accept(MediaType.APPLICATION_JSON)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(mapper.writeValueAsString(boardGameUpdateRequest)))
+//
+//        // THEN
+//                .andExpect(jsonPath("Id").exists())
+//                .andExpect(jsonPath("Name").value(is(name)))
+//                .andExpect(jsonPath("NumberOfPlayers").value(is(newNumberOfPlayers)))
+//                .andExpect(jsonPath("YearPublished").value(is(newYearPublished)))
+//                .andExpect(jsonPath("AveragePlayTime").value(is(averagePlayTime)))
+//                .andExpect(jsonPath("CollectionId").value(is(collectionId)))
+//                .andExpect(status().isOk());
+//    }
 
     // TODO: Unhappy case for update
 

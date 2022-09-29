@@ -45,20 +45,20 @@ public class BoardGameController {
         return ResponseEntity.created(URI.create("/boardGame" + boardGameResponse.getCollectionId())).body(boardGameResponse);
     }
 
-    @PutMapping
-    public ResponseEntity<BoardGameResponse> updateBoardGame(@RequestBody BoardGameUpdateRequest boardGameUpdateRequest) {
-        BoardGame boardGame = new BoardGame(boardGameUpdateRequest.getId(),
-                boardGameUpdateRequest.getName(),
-                boardGameUpdateRequest.getNumberOfPlayers(),
-                boardGameUpdateRequest.getYearPublished(),
-                boardGameUpdateRequest.getAveragePlayTime(),
-                boardGameUpdateRequest.getCollectionId());
-        boardGameService.updateBoardGame(boardGame);
-
-        BoardGameResponse boardGameResponse = createBoardGameResponse(boardGame);
-
-        return ResponseEntity.ok(boardGameResponse);
-    }
+//    @PutMapping
+//    public ResponseEntity<BoardGameResponse> updateBoardGame(@RequestBody BoardGameUpdateRequest boardGameUpdateRequest) {
+//        BoardGame boardGame = new BoardGame(boardGameUpdateRequest.getId(),
+//                boardGameUpdateRequest.getName(),
+//                boardGameUpdateRequest.getNumberOfPlayers(),
+//                boardGameUpdateRequest.getYearPublished(),
+//                boardGameUpdateRequest.getAveragePlayTime(),
+//                boardGameUpdateRequest.getCollectionId());
+//        boardGameService.updateBoardGame(boardGame);
+//
+//        BoardGameResponse boardGameResponse = createBoardGameResponse(boardGame);
+//
+//        return ResponseEntity.ok(boardGameResponse);
+//    }
 
     private BoardGameResponse createBoardGameResponse(BoardGame boardGame) {
         BoardGameResponse boardGameResponse = new BoardGameResponse();

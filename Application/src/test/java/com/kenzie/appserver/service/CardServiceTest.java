@@ -23,10 +23,12 @@ public class CardServiceTest {
 
     private CardService cardService;
 
+    private CollectionService collectionService;
+
     @BeforeEach
     void setup() {
         MockitoAnnotations.initMocks(this);
-        cardService = new CardService(magicTheGatheringRepository);
+        cardService = new CardService(magicTheGatheringRepository, collectionService);
     }
 
     @Test
