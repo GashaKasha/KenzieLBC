@@ -1,7 +1,9 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.CollectionRepository;
+import com.kenzie.appserver.repositories.model.BoardGameRecord;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
+import org.joda.time.DateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.kenzie.appserver.service.model.Collection;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -135,5 +139,32 @@ public class CollectionServiceTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 ()-> collectionService.deleteCollectionById(null),
                 "IllegalArgumentException should be thrown if existsById is false");
+    }
+
+    @Test
+    void addItemToList_validData_savesToRepository(){
+        String collectionId = UUID.randomUUID().toString();
+        String creationDate = LocalDateTime.now().toString();
+        String collectionName = "Arkham Horror The Card Game";
+        String type = "card";
+        String description = "Latest AHTCG cards";
+        List<String> listOfItems = new ArrayList<>();
+        String itemName = "Scarlet Key";
+
+        ArgumentCaptor<CollectionRecord> collectionRecordArgumentCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
+
+        Collection collection = new Collection(collectionId, creationDate, collectionName, type, description, listOfItems);
+
+        collectionService.addCollection(collection);
+
+
+        // WHEN
+        collectionService.addItemToList(collectionId, itemName);
+
+        // THEN
+        verify(collectionRepository).save(collectionRecordArgumentCaptor.capture());
+        CollectionRecord collectionRecord = collectionRecordArgumentCaptor.getValue();
+        assertEquals(collectionRecord.getId(), collection.getId());
+        assertEquals(collectionRecord.getCollectionItemNames(), collection.getCollectionItemNames());
     }
 }
