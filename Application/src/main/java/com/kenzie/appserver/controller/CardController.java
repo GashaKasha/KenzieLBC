@@ -28,9 +28,9 @@ public class CardController {
         // Check if collection Id exists
         // TODO: This should actually return an error message or something
         String collectionId = cardCreateRequest.getCollectionId();
-        if (!cardService.doesExist(collectionId)) {
-            return ResponseEntity.notFound().build();
-        }
+//        if (!cardService.doesExist(collectionId)) {
+//            return ResponseEntity.notFound().build();
+//        }
 
         String generateCardId = UUID.randomUUID().toString();
 

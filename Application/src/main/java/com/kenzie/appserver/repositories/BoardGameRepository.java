@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 
 @EnableScan
 public interface BoardGameRepository extends CrudRepository<BoardGameRecord, String> {
-    BoardGameRecord findByNameCollectionId(String name, String collectionId);
+//    BoardGameRecord findByNameCollectionId(String name, String collectionId);
 }

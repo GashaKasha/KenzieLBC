@@ -13,6 +13,11 @@ public class BoardGameService {
     private BoardGameRepository boardGameRepository;
     private CollectionService collectionService;
 
+//    @Autowired
+//    public BoardGameService(BoardGameRepository boardGameRepository){
+//        this.boardGameRepository = boardGameRepository;
+//    }
+
     @Autowired
     public BoardGameService(BoardGameRepository boardGameRepository, CollectionService collectionService) {
         this.boardGameRepository = boardGameRepository;
@@ -26,45 +31,42 @@ public class BoardGameService {
 
         String collectionId = boardGame.getCollectionId();
 
-        if(checkIfCollectionIdExists(collectionId)) {
             BoardGameRecord boardGameRecord = new BoardGameRecord();
             boardGameRecord.setId(boardGame.getId());
             boardGameRecord.setName(boardGame.getName());
             boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
             boardGameRecord.setYearPublished(boardGame.getYearPublished());
             boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
-            boardGameRecord.setCollectionId(boardGame.getCollectionId());
+            boardGameRecord.setCollectionId(collectionId);
             boardGameRepository.save(boardGameRecord);
-            collectionService.addItemToList(collectionId, boardGame.getName());
-        } else {
-            throw new CollectionNotFoundException();
-        }
+//            collectionService.addItemToList(collectionId, boardGame.getName());
+
         return boardGame;
     }
 
-    public void updateBoardGame(BoardGame boardGame){
-        if(boardGame == null){
-            throw new IllegalArgumentException();
-        }
-        if(boardGameRepository.existsById(boardGame.getId())){
-            String gameId = getGameId(boardGame.getName(), boardGame.getCollectionId());
-            BoardGameRecord boardGameRecord = new BoardGameRecord();
-            boardGameRecord.setId(gameId);
-            boardGameRecord.setName(boardGame.getName());
-            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
-            boardGameRecord.setYearPublished(boardGame.getYearPublished());
-            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
-            boardGameRecord.setCollectionId(boardGame.getCollectionId());
-            boardGameRepository.save(boardGameRecord);
-        }
-    }
+//    public void updateBoardGame(BoardGame boardGame){
+//        if(boardGame == null){
+//            throw new IllegalArgumentException();
+//        }
+//        if(boardGameRepository.existsById(boardGame.getId())){
+//            String gameId = getGameId(boardGame.getName(), boardGame.getCollectionId());
+//            BoardGameRecord boardGameRecord = new BoardGameRecord();
+//            boardGameRecord.setId(gameId);
+//            boardGameRecord.setName(boardGame.getName());
+//            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
+//            boardGameRecord.setYearPublished(boardGame.getYearPublished());
+//            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
+//            boardGameRecord.setCollectionId(boardGame.getCollectionId());
+//            boardGameRepository.save(boardGameRecord);
+//        }
+//    }
 
     public boolean checkIfCollectionIdExists(String collectionId){
         return collectionService.doesExist(collectionId);
     }
 
-    public String getGameId(String name, String collectionId) {
-        BoardGameRecord boardGameRecord = boardGameRepository.findByNameCollectionId(name, collectionId);
-        return boardGameRecord.getId();
-    }
+//    public String getGameId(String name, String collectionId) {
+//        BoardGameRecord boardGameRecord = boardGameRepository.findByNameCollectionId(name, collectionId);
+//        return boardGameRecord.getId();
+//    }
 }
