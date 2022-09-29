@@ -3,6 +3,7 @@ package com.kenzie.appserver.service;
 import com.kenzie.appserver.repositories.MagicTheGatheringRepository;
 import com.kenzie.appserver.repositories.model.MagicTheGatheringRecord;
 import com.kenzie.appserver.service.model.MagicTheGathering;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -18,15 +19,17 @@ import static org.mockito.Mockito.verify;
 
 public class CardServiceTest {
 
+    private CardService cardService;
+
     @Mock
     private MagicTheGatheringRepository magicTheGatheringRepository;
 
-    private CardService cardService;
-
+    @Mock
     private CollectionService collectionService;
 
+
     @BeforeEach
-    void setup() {
+    public void setup() {
         MockitoAnnotations.initMocks(this);
         cardService = new CardService(magicTheGatheringRepository, collectionService);
     }
@@ -60,9 +63,7 @@ public class CardServiceTest {
 
         // THEN
         assertNotNull(returnedCard);
-
         verify(magicTheGatheringRepository).save(cardCaptor.capture());
-
         MagicTheGatheringRecord record = cardCaptor.getValue();
 
         assertNotNull(record, "The card is returned.");
@@ -85,6 +86,8 @@ public class CardServiceTest {
         assertThrows(IllegalArgumentException.class,
                 ()-> cardService.addCardToCollection(null),
                 "expected IllegalArgumentException to be thrown when null Id is entered to be saved to database.");
+
+
 
     }
 }

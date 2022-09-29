@@ -31,16 +31,17 @@ public class BoardGameService {
 
         String collectionId = boardGame.getCollectionId();
 
-            BoardGameRecord boardGameRecord = new BoardGameRecord();
-            boardGameRecord.setId(boardGame.getId());
-            boardGameRecord.setName(boardGame.getName());
-            boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
-            boardGameRecord.setYearPublished(boardGame.getYearPublished());
-            boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
-            boardGameRecord.setCollectionId(collectionId);
-            boardGameRepository.save(boardGameRecord);
-//            collectionService.addItemToList(collectionId, boardGame.getName());
+        BoardGameRecord boardGameRecord = new BoardGameRecord();
+        boardGameRecord.setId(boardGame.getId());
+        boardGameRecord.setName(boardGame.getName());
+        boardGameRecord.setNumberOfPlayers(boardGame.getNumberOfPlayers());
+        boardGameRecord.setYearPublished(boardGame.getYearPublished());
+        boardGameRecord.setAveragePlayTime(boardGame.getAveragePlayTime());
+        boardGameRecord.setCollectionId(collectionId);
+        boardGameRepository.save(boardGameRecord);
 
+
+        collectionService.addItemToList(collectionId, boardGame.getName());
         return boardGame;
     }
 
