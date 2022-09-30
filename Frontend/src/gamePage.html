@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="gamePageStyle.css">
+</head>
+<body class="background">
+    <header class="header" id="header">
+        <div class="site-title">
+            <!-- should this be a separate form to create the game?-->
+            <a class="header_home">Board Game</a>
+        </div>
+    </header>
+<div class="card">
+    <form class="card-content" id="create-game-name-form">
+        <p class="form-field">
+            <label>Game Name</label>
+            <input type="text" required class="validated-field" id="create-game-name-field">
+        </p>
+    </form>
+    <form class="card-content" id="game-designer-form">
+        <p class="form-field">
+            <label>Designer</label>
+            <!-- does this need to be a required class? -->
+            <input type="text" required class="validated-field" id="create-game-designer-field">
+        </p>
+    </form>
+    <form class="card-content" id="create-game-publisher-form">
+        <p class="form-field">
+            <label>Publisher</label>
+            <input type="text" required class="validated-field" id="create-game-publisher-field">
+        </p>
+    </form>
+    <form class="card-content" id="create-year-published-form">
+        <p class="form-field">
+            <label>Year Published</label>
+            <input type="text" required class="validated-field" id="create-year-published-field">
+        </p>
+    </form>
+    <form class="card-content" id="create-number-of-players-form">
+        <p class="form-field">
+            <label>Number of Players</label>
+            <input type="text" required class="validated-field" id="create-number-of-players-field">
+        </p>
+    </form>
+    <form class="card-content" id="create-average-playtime-form">
+        <p class="form-field">
+            <label>Average Playtime</label>
+            <input type="text" required class="validated-field" id="create-average-playtime-field">
+        </p>
+    </form>
+    <button type="button">Add Board Game</button>
+</div>
+<div>
+    <ul>
+        <li><img src="./images/TwilightInscription.jpg" alt="Twilight Inscription"></li>
+        <li><img src="./images/CamelUp.jpg" alt="Camel Up"></li>
+    </ul>
+</div>
+</body>
+</html>
