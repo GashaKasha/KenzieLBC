@@ -1,7 +1,9 @@
 package com.kenzie.appserver.service;
 
 import com.kenzie.appserver.repositories.CollectionRepository;
+import com.kenzie.appserver.repositories.model.BoardGameRecord;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
+import org.joda.time.DateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.kenzie.appserver.service.model.Collection;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -31,7 +35,7 @@ public class CollectionServiceTest {
     private CollectionService collectionService;
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         MockitoAnnotations.initMocks(this);
         collectionService = new CollectionService(collectionRepository);
     }
@@ -80,7 +84,7 @@ public class CollectionServiceTest {
         // GIVEN
 
         assertThrows(IllegalArgumentException.class,
-                ()-> collectionService.addCollection(null),
+                () -> collectionService.addCollection(null),
                 "expected IllegalArgumentException to be thrown when null Id is entered to be saved to database.");
 
     }
@@ -111,10 +115,10 @@ public class CollectionServiceTest {
         // THEN
         Assertions.assertNotNull(collection, "The collection is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
-        Assertions.assertEquals(record.getCreationDate(),collection.getCreationDate(), "The collection creation date matches");
+        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "The collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
-        Assertions.assertEquals(record.getDescription(),collection.getDescription(), "The collection description matches");
+        Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
         Assertions.assertEquals(record.getCollectionItemNames(), collection.getCollectionItemNames(), "The collection item list matches");
     }
 
@@ -133,7 +137,47 @@ public class CollectionServiceTest {
     void deleteCollection_invalidCollectionId_IllegalArgumentExceptionThrown() throws IllegalAccessException {
 
         Assertions.assertThrows(IllegalArgumentException.class,
-                ()-> collectionService.deleteCollectionById(null),
+                () -> collectionService.deleteCollectionById(null),
                 "IllegalArgumentException should be thrown if existsById is false");
+    }
+
+    @Test
+    void addItemToList_validItem_itemAddedToList() {
+        String collectionId = randomUUID().toString();
+        String collectionName = "testName";
+        String collectionType = "MagicTheGathering";
+        String collectionDescription = "great description";
+        List<String> collectionCards = new ArrayList<>();
+        collectionCards.add("goodCard1");
+        collectionCards.add("goodCard2");
+        collectionCards.add("reallyGoodCard1");
+        collectionCards.add("kindOfOkCardButLooksCool1");
+        collectionCards.add("notGoodCard1");
+        collectionCards.add("expensiveCard1");
+        String collectionCreationDate = ZonedDateTime.now().toString();
+        Collection collection = new Collection(collectionId, collectionCreationDate, collectionName, collectionType, collectionDescription, collectionCards);
+        ArgumentCaptor<CollectionRecord> collectionRecordCaptor = ArgumentCaptor.forClass(CollectionRecord.class);
+        // WHEN
+        Collection returnedCollection = collectionService.addCollection(collection);
+        // THEN
+        Assertions.assertNotNull(returnedCollection);
+        CollectionRecord collectionRecord = new CollectionRecord();
+        collectionRecord.setId(collection.getId());
+        collectionRecord.setCreationDate(collection.getCreationDate());
+        collectionRecord.setCollectionName(collection.getCollectionName());
+        collectionRecord.setType(collection.getType());
+        collectionRecord.setDescription(collection.getDescription());
+        collectionRecord.setCollectionItemNames(collection.getCollectionItemNames());
+        when(collectionRepository.findById(collectionId)).thenReturn(Optional.of(collectionRecord));
+        collectionService.addItemToList(collectionId, "addedName");
+        verify(collectionRepository, times(2)).save(collectionRecordCaptor.capture());
+        CollectionRecord record = collectionRecordCaptor.getValue();
+        Assertions.assertNotNull(record, "The concert record is returned");
+        Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
+        Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
+        Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
+        Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
+        Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
+        assert (record.getCollectionItemNames().contains("addedName"));
     }
 }
