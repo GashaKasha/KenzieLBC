@@ -1,0 +1,74 @@
+{
+  "Collection": [
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
+          "CreationDate": {"S": "2022-10-01"},
+          "Name": {"S":"My Cool MTG Collection"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S":"MTG cards currently owned."},
+          "CollectionItemName": {
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "CreationDate": {"S": "2022-10-01"},
+          "Name": {"S":"Dez MTG Cards Nutz"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S":"Best MTG cards in my collection"},
+          "CollectionItemName": {
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "CreationDate": {"S": "2022-10-01"},
+          "Name": {"S":"Stompy EDH Deck Cards"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
+          "CollectionItemName": {
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "CreationDate": {"S": "2022-10-01"},
+          "Name": {"S":"Ajjri's Euro Board Games Collection"},
+          "Type": {"S": "BoardGame"},
+          "Description": {"S":"Euro Board Games"},
+          "CollectionItemName": {
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "CreationDate": {"S": "2022-10-01"},
+          "Name": {"S":"Pat's Board Game Collection"},
+          "Type": {"S": "BoardGame"},
+          "Description": {"S":"Current board games in my collection."},
+          "CollectionItemName": {
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+          }
+        }
+      }
+    }
+  ]
+}

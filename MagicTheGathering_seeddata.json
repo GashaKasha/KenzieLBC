@@ -1,0 +1,79 @@
+{
+  "MagicTheGathering": [
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
+          "ReleasedSet": {"S":"The Coolest Discussion Group"},
+          "CardType": {"S": "CardGame"},
+          "ManaCost": {"S": "CardGame"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
+          "Artist": {"S": "DISCUSSION_GROUP"},
+          "CollectionId": {"S": "DISCUSSION_GROUP"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "ReleasedSet": {"S":"The Coolest Discussion Group"},
+          "CardType": {"S": "CardGame"},
+          "ManaCost": {"S": "CardGame"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
+          "Artist": {"S": "DISCUSSION_GROUP"},
+          "CollectionId": {"S": "DISCUSSION_GROUP"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "ReleasedSet": {"S":"The Coolest Discussion Group"},
+          "CardType": {"S": "CardGame"},
+          "ManaCost": {"S": "CardGame"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
+          "Artist": {"S": "DISCUSSION_GROUP"},
+          "CollectionId": {"S": "DISCUSSION_GROUP"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "ReleasedSet": {"S":"The Coolest Discussion Group"},
+          "CardType": {"S": "CardGame"},
+          "ManaCost": {"S": "CardGame"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
+          "Artist": {"S": "DISCUSSION_GROUP"},
+          "CollectionId": {"S": "DISCUSSION_GROUP"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "ReleasedSet": {"S":"The Coolest Discussion Group"},
+          "CardType": {"S": "CardGame"},
+          "ManaCost": {"S": "CardGame"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
+          "Artist": {"S": "DISCUSSION_GROUP"},
+          "CollectionId": {"S": "DISCUSSION_GROUP"}
+        }
+      }
+    }
+  ]
+}
