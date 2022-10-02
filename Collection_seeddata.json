@@ -8,7 +8,7 @@
           "Name": {"S":"Billy's Cool MTG Collection"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG cards currently owned."},
-          "CollectionItemName": {
+          "CollectionItemNames": {
             "S": "[{\"cardNames\":[\"Arcanis the Omnipotent\", \"Brute Strength\", \"Sol'kanar the Swamp King\", \"Fyndhorn Pollen\", \"Vivid Meadow\", \"Collective Voyage\", \"Sphinx of the Steel Wind\"}]"
           }
         }
@@ -22,7 +22,7 @@
           "Name": {"S":"Dez MTG Cards Nutz"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"Best MTG cards in my collection"},
-          "CollectionItemName": {
+          "CollectionItemNames": {
             "S": "[{\"cardNames\":[\"Sol Ring\", \"Swords to Plowshares\", \"Beast Within\", \"Temur Ascendancy\", \"Birds of Paradise\"}]"
           }
         }
@@ -36,8 +36,8 @@
           "Name": {"S":"Stompy EDH Deck Cards"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
-          "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\" \"CardName2\"}]"
+          "CollectionItemNames": {
+            "S": "[{\"cardNames\":[\"The Mimeoplasm\", \"Arcane Signet\", \"Death Shadow\", \"Watery Grave\", \"Titanoth Rex\" \"Craterhoof Behemoth\"}]"
           }
         }
       }
@@ -50,7 +50,7 @@
           "Name": {"S":"Ajjri's Expansive Board Games Collection"},
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Some of my fav Board Games"},
-          "CollectionItemName": {
+          "CollectionItemNames": {
             "S": "[{\"cardNames\":[\"Arkham Horror\", \"Wingspan\", \"Twilight Inscription\", \"Camel Up\", \"Terraforming Mars\"}]"
           }
         }
@@ -64,7 +64,7 @@
           "Name": {"S":"Pat's Board Game Collection"},
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Current board games in my collection."},
-          "CollectionItemName": {
+          "CollectionItemNames": {
             "S": "[{\"cardNames\":[\"Gloomhaven\", \"Gloomhaven: Jaws of the Lion\", \"Twiligh Imperium: Fourth Edition\", \"Gaia Project\", \"Spirit Island\", \"7 Wonders Duel\", \"Everdell\"}]"
           }
         }
