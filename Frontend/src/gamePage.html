@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="gamePageStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/gamePageStyle.css">
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">-->
 </head>
+
 <body class="background">
-    <header class="header" id="header">
-        <div class="site-title">
-            <!-- should this be a separate form to create the game?-->
-            <a class="header_home">Board Game</a>
-        </div>
-    </header>
+
+<header class="header" id="header">
+    <div class="site-title">
+        <a class="header_home">Board Game</a>
+    </div>
+</header>
+
 <div class="card">
-    <form class="card-content" id="create-game-name-form">
+    <h3>Add a Board Game</h3>
+    <form class="card-content" id="create-game-form">
         <p class="form-field">
-            <label>Game Name</label>
-            <input type="text" required class="validated-field" id="create-game-name-field">
+            <label for="game-name"></label>
+            <input type="text" required class="validated-field" id="game-name"
+                   placeholder="Game Name" data-validation-required-message="Please enter the game name.">
+            <label for="designer"></label>
+            <input type="text" class="designer" id="designer" placeholder="Designer">
+            <label for="publisher"></label>
+            <input type="text" class="publisher" id="publisher" placeholder="Publisher">
+            <label for="year-published"></label>
+            <input type="text" class="publisher" id="year-published" placeholder="Year Published">
+            <label for="number-of-players"></label>
+            <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
+            <label for="average-playtime"></label>
+            <input type="text" required class="average-playtime" id="average-playtime" placeholder="Average Playtime">
+            <label for="collection-id"></label>
+            <input type="text" required class="validated-field" id="collection-id"
+                   placeholder="Collection Id" data-validation-required-message="Please enter the collection Id.">
         </p>
+        <button type="submit">Add Board Game</button>
     </form>
-    <form class="card-content" id="game-designer-form">
-        <p class="form-field">
-            <label>Designer</label>
-            <!-- does this need to be a required class? -->
-            <input type="text" required class="validated-field" id="create-game-designer-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-game-publisher-form">
-        <p class="form-field">
-            <label>Publisher</label>
-            <input type="text" required class="validated-field" id="create-game-publisher-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-year-published-form">
-        <p class="form-field">
-            <label>Year Published</label>
-            <input type="text" required class="validated-field" id="create-year-published-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-number-of-players-form">
-        <p class="form-field">
-            <label>Number of Players</label>
-            <input type="text" required class="validated-field" id="create-number-of-players-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-average-playtime-form">
-        <p class="form-field">
-            <label>Average Playtime</label>
-            <input type="text" required class="validated-field" id="create-average-playtime-field">
-        </p>
-    </form>
-    <button type="button">Add Board Game</button>
 </div>
-<div>
-    <ul>
-        <li><img src="./images/TwilightInscription.jpg" alt="Twilight Inscription"></li>
-        <li><img src="./images/CamelUp.jpg" alt="Camel Up"></li>
-    </ul>
+
+<div class="card">
+    <h3>Your Collections</h3>
 </div>
+
+<div class="slides slowFade">
+    <div class="slide">
+        <img src="images/CamelUp.jpg" alt="img">
+    </div>
+    <div class="slide">
+        <img src="images/TwilightInscription.jpg" alt="img">
+    </div>
+</div>
+
 </body>
 </html>
