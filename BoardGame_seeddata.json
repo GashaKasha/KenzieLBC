@@ -4,59 +4,143 @@
       "PutRequest": {
         "Item": {
           "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
-          "Name": {"S":"The Coolest Discussion Group"},
-          "NumberOfPlayers": {"S": "CardGame"},
-          "YearPublished": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "AveragePlayTime": {"S":"The Coolest Discussion Group"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Name": {"S":"Arkham Horror"},
+          "NumberOfPlayers": {"S": "1-8"},
+          "YearPublished": {"S":"2005"},
+          "AveragePlayTime": {"S":"120-240"},
+          "CollectionId": {"S": "cf17d94d-c088-4179-b6ec-3f7c8e48beb8"}
         }
       }
     },
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
-          "Name": {"S":"The Coolest Discussion Group"},
-          "NumberOfPlayers": {"S": "CardGame"},
-          "YearPublished": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "AveragePlayTime": {"S":"The Coolest Discussion Group"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "Name": {"S":"Wingspan"},
+          "NumberOfPlayers": {"S": "1-5"},
+          "YearPublished": {"S":"2019"},
+          "AveragePlayTime": {"S":"40-70"},
+          "CollectionId": {"S": "cf17d94d-c088-4179-b6ec-3f7c8e48beb8"}
         }
       }
     },
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
-          "Name": {"S":"The Coolest Discussion Group"},
-          "NumberOfPlayers": {"S": "CardGame"},
-          "YearPublished": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "AveragePlayTime": {"S":"The Coolest Discussion Group"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "Name": {"S":"Twilight Inscription"},
+          "NumberOfPlayers": {"S": "1-8"},
+          "YearPublished": {"S":"2022"},
+          "AveragePlayTime": {"S":"90-120"},
+          "CollectionId": {"S": "cf17d94d-c088-4179-b6ec-3f7c8e48beb8"}
         }
       }
     },
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
-          "Name": {"S":"The Coolest Discussion Group"},
-          "NumberOfPlayers": {"S": "CardGame"},
-          "YearPublished": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "AveragePlayTime": {"S":"The Coolest Discussion Group"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "Name": {"S":"Camel Up"},
+          "NumberOfPlayers": {"S": "2-8"},
+          "YearPublished": {"S":"2014"},
+          "AveragePlayTime": {"S":"20-30"},
+          "CollectionId": {"S": "cf17d94d-c088-4179-b6ec-3f7c8e48beb8"}
         }
       }
     },
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
-          "Name": {"S":"The Coolest Discussion Group"},
-          "NumberOfPlayers": {"S": "CardGame"},
-          "YearPublished": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "AveragePlayTime": {"S":"The Coolest Discussion Group"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "Name": {"S":"Terraforming Mars"},
+          "NumberOfPlayers": {"S": "1-5"},
+          "YearPublished": {"S":"2016"},
+          "AveragePlayTime": {"S":"120"},
+          "CollectionId": {"S": "cf17d94d-c088-4179-b6ec-3f7c8e48beb8"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Gloomhaven"},
+          "NumberOfPlayers": {"S": "1-4"},
+          "YearPublished": {"S":"2017"},
+          "AveragePlayTime": {"S":"60-120"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Gloomhaven: Jaws of the Lion"},
+          "NumberOfPlayers": {"S": "1-4"},
+          "YearPublished": {"S":"2020"},
+          "AveragePlayTime": {"S":"30-120"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Twilight Imperium: Fourth Edition"},
+          "NumberOfPlayers": {"S": "3-6"},
+          "YearPublished": {"S":"2017"},
+          "AveragePlayTime": {"S":"240-480"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Gaia Project"},
+          "NumberOfPlayers": {"S": "1-4"},
+          "YearPublished": {"S":"2017"},
+          "AveragePlayTime": {"S":"60-150"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Spirit Island"},
+          "NumberOfPlayers": {"S": "1-4"},
+          "YearPublished": {"S":"2017"},
+          "AveragePlayTime": {"S":"90-120"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"7 Wonders Duel"},
+          "NumberOfPlayers": {"S": "2"},
+          "YearPublished": {"S":"2015"},
+          "AveragePlayTime": {"S":"30"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":""},
+          "Name": {"S":"Everdell"},
+          "NumberOfPlayers": {"S": "1-6"},
+          "YearPublished": {"S":"2020"},
+          "AveragePlayTime": {"S":"40-120"},
+          "CollectionId": {"S": "308b0859-bb22-4cf9-9735-1485e340a549"}
         }
       }
     }

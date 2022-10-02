@@ -5,11 +5,11 @@
         "Item": {
           "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"My Cool MTG Collection"},
+          "Name": {"S":"Billy's Cool MTG Collection"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG cards currently owned."},
           "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+            "S": "[{\"cardNames\":[\"Arcanis the Omnipotent\", \"Brute Strength\", \"Sol'kanar the Swamp King\", \"Fyndhorn Pollen\", \"Vivid Meadow\", \"Collective Voyage\", \"Sphinx of the Steel Wind\"}]"
           }
         }
       }
@@ -23,7 +23,7 @@
           "Type": {"S": "CardGame"},
           "Description": {"S":"Best MTG cards in my collection"},
           "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+            "S": "[{\"cardNames\":[\"Sol Ring\", \"Swords to Plowshares\", \"Beast Within\", \"Temur Ascendancy\", \"Birds of Paradise\"}]"
           }
         }
       }
@@ -37,7 +37,7 @@
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
           "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\", \"CardName2\" \"CardName2\"}]"
           }
         }
       }
@@ -47,11 +47,11 @@
         "Item": {
           "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Ajjri's Euro Board Games Collection"},
+          "Name": {"S":"Ajjri's Expansive Board Games Collection"},
           "Type": {"S": "BoardGame"},
-          "Description": {"S":"Euro Board Games"},
+          "Description": {"S":"Some of my fav Board Games"},
           "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+            "S": "[{\"cardNames\":[\"Arkham Horror\", \"Wingspan\", \"Twilight Inscription\", \"Camel Up\", \"Terraforming Mars\"}]"
           }
         }
       }
@@ -65,7 +65,7 @@
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Current board games in my collection."},
           "CollectionItemName": {
-            "S": "[{\"cardNames\":[\"CardName1\", \"CardName2\"}]"
+            "S": "[{\"cardNames\":[\"Gloomhaven\", \"Gloomhaven: Jaws of the Lion\", \"Twiligh Imperium: Fourth Edition\", \"Gaia Project\", \"Spirit Island\", \"7 Wonders Duel\", \"Everdell\"}]"
           }
         }
       }

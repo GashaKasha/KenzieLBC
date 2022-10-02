@@ -4,14 +4,15 @@
       "PutRequest": {
         "Item": {
           "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
-          "ReleasedSet": {"S":"The Coolest Discussion Group"},
-          "CardType": {"S": "CardGame"},
-          "ManaCost": {"S": "CardGame"},
-          "PowerToughness": {"S": "CardGame"},
+          "Name": {"S": "Arcanis the Omnipotent"},
+          "ReleasedSet": {"S":"Onslaught, Tenth Edition, Duel Decks: Speed vs. Cunning, Eternal Masters, Commander 2017"},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "3UUU"},
+          "PowerToughness": {"S": "3/4"},
           "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
-          "Artist": {"S": "DISCUSSION_GROUP"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "NumberOfCardsOwned": {"N": "4"},
+          "Artist": {"S": "Justin Sweet"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
         }
       }
     },
@@ -19,14 +20,15 @@
       "PutRequest": {
         "Item": {
           "id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
-          "ReleasedSet": {"S":"The Coolest Discussion Group"},
-          "CardType": {"S": "CardGame"},
-          "ManaCost": {"S": "CardGame"},
-          "PowerToughness": {"S": "CardGame"},
-          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
-          "Artist": {"S": "DISCUSSION_GROUP"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Name": {"S": "Brute Strength"},
+          "ReleasedSet": {"S":"Oath of the Gatewatch, Amonkhet, Duel Decks: Merfolk vs. Goblins, Game Night 2019, Amonkhet Remastered"},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "1R"},
+          "PowerToughness": {"S": ""},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"0"},
+          "Artist": {"S": "Wayne Reynolds"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
         }
       }
     },
@@ -34,14 +36,15 @@
       "PutRequest": {
         "Item": {
           "id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
-          "ReleasedSet": {"S":"The Coolest Discussion Group"},
-          "CardType": {"S": "CardGame"},
-          "ManaCost": {"S": "CardGame"},
-          "PowerToughness": {"S": "CardGame"},
-          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
-          "Artist": {"S": "DISCUSSION_GROUP"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Name": {"S": "Sol'kanar the Swamp King"},
+          "ReleasedSet": {"S":"Legends, Time Spiral: Timeshifted, Chronicles"},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "2UBR"},
+          "PowerToughness": {"S": "5/5"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"0"},
+          "Artist": {"S": "Richard Kane Ferguson"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
         }
       }
     },
@@ -49,14 +52,15 @@
       "PutRequest": {
         "Item": {
           "id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
-          "ReleasedSet": {"S":"The Coolest Discussion Group"},
-          "CardType": {"S": "CardGame"},
-          "ManaCost": {"S": "CardGame"},
-          "PowerToughness": {"S": "CardGame"},
-          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
-          "Artist": {"S": "DISCUSSION_GROUP"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "Name": {"S": "Fyndhorn Pollen"},
+          "ReleasedSet": {"S":"Ice Age, Masters Edition II"},
+          "CardType": {"S": "Enchantment"},
+          "ManaCost": {"S": "2G"},
+          "PowerToughness": {"S": ""},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Phil Foglio"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80eP"}
         }
       }
     },
@@ -64,14 +68,239 @@
       "PutRequest": {
         "Item": {
           "id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
-          "ReleasedSet": {"S":"The Coolest Discussion Group"},
-          "CardType": {"S": "CardGame"},
-          "ManaCost": {"S": "CardGame"},
+          "Name": {"S": "Vivid Meadow"},
+          "ReleasedSet": {"S":"Lorwyn, Magic: The Gathering-Commander, Modern Masters, Commander 2015, Commander Anthology, Commander 2017, Commander Anthology 2018, Streets of New Capenna Commander"},
+          "CardType": {"S": "Land"},
+          "ManaCost": {"S": ""},
+          "PowerToughness": {"S": ""},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"10"},
+          "Artist": {"S": "Rob Alexander"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Collective Voyage"},
+          "ReleasedSet": {"S":"Magic: The Gathering-Commander, Commander 2016"},
+          "CardType": {"S": "Sorcery"},
+          "ManaCost": {"S": "G"},
           "PowerToughness": {"S": "CardGame"},
-          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
-          "NumberOfCardsOwned": {"N":"The Coolest Discussion Group"},
-          "Artist": {"S": "DISCUSSION_GROUP"},
-          "CollectionId": {"S": "DISCUSSION_GROUP"}
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Charles Urbach"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":"Alara Reborn, Premium Deck Series: Graveborn, Commander 2013 Edition, Eternal Masters"},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sol Ring"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Artifact"},
+          "ManaCost": {"S": "1C"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Add 2 Colorless Mana"},
+          "NumberOfCardsOwned": {"N":"30"},
+          "Artist": {"S": "Mike Bierek"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Swords to Plowshares"},
+          "ReleasedSet": {"S":"Fourth Edition, Summer Magic, Revised Edition, Mystery Booster, From the Vault: Twenty, Eternal Masters, Masters 25, Commander Legends"},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "W"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Exile creature; owner gains life equal to power"},
+          "NumberOfCardsOwned": {"N":"10"},
+          "Artist": {"S": "Terese Nielson"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Beast Within"},
+          "ReleasedSet": {"S":"Dominaria United Commander, Commander Legends, Kamigawa, Innistrad, Commander 2021, Time Spiral Remastered, New Phyrexia"},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "2G"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Destroy permanent. Controller creates 3/3 beast token"},
+          "NumberOfCardsOwned": {"N":"20"},
+          "Artist": {"S": "Jesper Ejsing"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Temur Ascendancy"},
+          "ReleasedSet": {"S":"Khans of Tarkir, Time Spiral Remastered"},
+          "CardType": {"S": "Enchantment"},
+          "ManaCost": {"S": "BUR"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Give your creatures haste. Card Draw"},
+          "NumberOfCardsOwned": {"N":"5"},
+          "Artist": {"S": "Jaime Jones"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Birds of Paradise"},
+          "ReleasedSet": {"S":"Secret Lair, Mystery Booster, Conspiracy, Magic 2012, Ravnica, Eight Edition, Limited Edition Alpha "},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "G"},
+          "PowerToughness": {"S": "0/1"},
+          "CardAbilities": {"S":"Flying. Mana dork"},
+          "NumberOfCardsOwned": {"N":"15"},
+          "Artist": {"S": "Marcelo Vignali"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "The Mimeoplasm"},
+          "ReleasedSet": {"S":"Double Masters 2022, Secret Lair, Commander Anthology 2018, Commander's Arsenal, MTG-Commander"},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "2BGU"},
+          "PowerToughness": {"S": "0/0"},
+          "CardAbilities": {"S":"ETB - clone, plus increased power"},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Wizard of Barge"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Arcane Signet"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Artifact"},
+          "ManaCost": {"S": "2C"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Add 1 mana of any color in commander's identity"},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S":""},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"S":""},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":""},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
         }
       }
     }
