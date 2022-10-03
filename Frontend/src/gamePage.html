@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/gamePageStyle.css">
-    <!--    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">-->
+<!--        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">-->
 </head>
-
 <body class="background">
-
 <header class="header" id="header">
     <div class="site-title">
         <a class="header_home">Board Game</a>
     </div>
 </header>
-
-<div class="card">
-    <h3>Add a Board Game</h3>
-    <form class="card-content" id="create-game-form">
-        <p class="form-field">
-            <label for="game-name"></label>
-            <input type="text" required class="validated-field" id="game-name"
-                   placeholder="Game Name" data-validation-required-message="Please enter the game name.">
-            <label for="designer"></label>
-            <input type="text" class="designer" id="designer" placeholder="Designer">
-            <label for="publisher"></label>
-            <input type="text" class="publisher" id="publisher" placeholder="Publisher">
-            <label for="year-published"></label>
-            <input type="text" class="publisher" id="year-published" placeholder="Year Published">
-            <label for="number-of-players"></label>
-            <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
-            <label for="average-playtime"></label>
-            <input type="text" required class="average-playtime" id="average-playtime" placeholder="Average Playtime">
-            <label for="collection-id"></label>
-            <input type="text" required class="validated-field" id="collection-id"
-                   placeholder="Collection Id" data-validation-required-message="Please enter the collection Id.">
-        </p>
-        <button type="submit">Add Board Game</button>
-    </form>
-</div>
-
-<div class="card">
-    <h3>Your Collections</h3>
-</div>
-
-<div class="slides slowFade">
-    <div class="slide">
-        <img src="images/CamelUp.jpg" alt="img">
-    </div>
-    <div class="slide">
-        <img src="images/TwilightInscription.jpg" alt="img">
-    </div>
-    <div class="slide">
-        <img src="images/CamelUp.jpg" alt="img">
-    </div>
-    <div class="slide">
-        <img src="images/CamelUp.jpg" alt="img">
-    </div>
-    <div class="slide">
-        <img src="images/CamelUp.jpg" alt="img">
-    </div>
-    <div class="slide">
-        <img src="images/CamelUp.jpg" alt="img">
+<div class="left-column">
+    <div class="card">
+        <h3>Add a Board Game</h3>
+        <form class="card-content" id="create-game-form">
+            <p class="form-field">
+                <label for="game-name"></label>
+                <input type="text" required class="validated-field" id="game-name"
+                       placeholder="Game Name" data-validation-required-message="Please enter the game name.">
+                <label for="designer"></label>
+                <input type="text" class="designer" id="designer" placeholder="Designer">
+                <label for="publisher"></label>
+                <input type="text" class="publisher" id="publisher" placeholder="Publisher">
+                <label for="year-published"></label>
+                <input type="text" class="publisher" id="year-published" placeholder="Year Published">
+                <label for="number-of-players"></label>
+                <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
+                <label for="average-playtime"></label>
+                <input type="text" required class="average-playtime" id="average-playtime" placeholder="Average Playtime">
+                <label for="collection-id"></label>
+                <input type="text" required class="validated-field" id="collection-id"
+                       placeholder="Collection Id" data-validation-required-message="Please enter the collection Id.">
+            </p>
+            <button type="submit">Add Board Game</button>
+        </form>
     </div>
 </div>
-
+<div class="right-column">
+    <div class="card">
+        <h3>Your Collections</h3>
+        <h4>this is where a list of collection names and ids will be</h4>
+    </div>
+        <div class="card">
+            <div class="slides slowFade">
+                <div class="slide">
+                    <img src="images/CamelUp.jpg" alt="img">
+                </div>
+                <div class="slide">
+                    <img src="images/TwilightInscription.jpg" alt="img">
+                </div>
+                <div class="slide">
+                    <img src="images/CharterStone.jpg" alt="img">
+                </div>
+                <div class="slide">
+                    <img src="images/DinosaurIsland.jpg" alt="img">
+                </div>
+                <div class="slide">
+                    <img src="images/Gloomhaven.jpg" alt="img">
+                </div>
+                <div class="slide">
+                    <img src="images/Wingspan.jpg" alt="img">
+                </div>
+            </div>
+    </div>
+</div>
 </body>
 </html>
