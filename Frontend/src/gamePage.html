@@ -8,62 +8,95 @@
 </head>
 <body class="background">
 <header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home">Board Game</a>
-    </div>
-</header>
-<div class="left-column">
-    <div class="card">
-        <h3>Add a Board Game</h3>
-        <form class="card-content" id="create-game-form">
-            <p class="form-field">
-                <label for="game-name"></label>
-                <input type="text" required class="validated-field" id="game-name"
-                       placeholder="Game Name" data-validation-required-message="Please enter the game name.">
-                <label for="designer"></label>
-                <input type="text" class="designer" id="designer" placeholder="Designer">
-                <label for="publisher"></label>
-                <input type="text" class="publisher" id="publisher" placeholder="Publisher">
-                <label for="year-published"></label>
-                <input type="text" class="publisher" id="year-published" placeholder="Year Published">
-                <label for="number-of-players"></label>
-                <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
-                <label for="average-playtime"></label>
-                <input type="text" required class="average-playtime" id="average-playtime" placeholder="Average Playtime">
-                <label for="collection-id"></label>
-                <input type="text" required class="validated-field" id="collection-id"
-                       placeholder="Collection Id" data-validation-required-message="Please enter the collection Id.">
-            </p>
-            <button type="submit">Add Board Game</button>
-        </form>
-    </div>
-</div>
-<div class="right-column">
-    <div class="card">
-        <h3>Your Collections</h3>
-        <h4>this is where a list of collection names and ids will be</h4>
-    </div>
-        <div class="card">
-            <div class="slides slowFade">
-                <div class="slide">
-                    <img src="images/CamelUp.jpg" alt="img">
-                </div>
-                <div class="slide">
-                    <img src="images/TwilightInscription.jpg" alt="img">
-                </div>
-                <div class="slide">
-                    <img src="images/CharterStone.jpg" alt="img">
-                </div>
-                <div class="slide">
-                    <img src="images/DinosaurIsland.jpg" alt="img">
-                </div>
-                <div class="slide">
-                    <img src="images/Gloomhaven.jpg" alt="img">
-                </div>
-                <div class="slide">
-                    <img src="images/Wingspan.jpg" alt="img">
+    <div class="navbar">
+        <img class="pbandj-logo" src="images/PBANDJ Logo.jpg">
+        <a href="mainPage.html">Home</a>
+        <a class="collections" href="gamePage.html">Collections Page</a>
+        <a class="boardgame" href="gamePage.html">Board Game</a>
+        <div class="dropdown">
+            <button class="dropbtn">Card Game
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="gamePage.html">Magic The Gathering</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="topnav-right">
+            <div class="dropdown">
+                <button class="dropbtn">Account
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="gamePage.html">Login</a>
+                    <a href="#">Create Account</a>
                 </div>
             </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="flavor-image">
+        <img src="images/bg-hp1.jpeg" alt="Shelves">
+    </div>
+    <div class="left-column">
+        <div class="card">
+            <h3>Add a Board Game</h3>
+            <form class="card-content" id="create-game-form">
+                <p class="form-field">
+                    <label for="game-name"></label>
+                    <input type="text" required class="validated-field" id="game-name"
+                           placeholder="Game Name (required)" data-validation-required-message="Please enter the game name.">
+                    <label for="designer"></label>
+                    <input type="text" class="designer" id="designer" placeholder="Designer">
+                    <label for="publisher"></label>
+                    <input type="text" class="publisher" id="publisher" placeholder="Publisher">
+                    <label for="year-published"></label>
+                    <input type="text" class="publisher" id="year-published" placeholder="Year Published">
+                    <label for="number-of-players"></label>
+                    <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
+                    <label for="average-playtime"></label>
+                    <input type="text" required class="average-playtime" id="average-playtime" placeholder="Average Playtime">
+                    <label for="collection-id"></label>
+                    <input type="text" required class="validated-field" id="collection-id"
+                           placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
+                </p>
+                <button type="submit">Add Board Game</button>
+            </form>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="card">
+            <h3>Your Collections</h3>
+            <div class="card" id="collections-display">
+                <h4>this is where a list of collection names and ids will be</h4>
+            </div>
+        </div>
+            <div class="card">
+                <div class="slides slowFade">
+                    <div class="slide">
+                        <img src="images/CamelUp.jpg" alt="Camel Up">
+                    </div>
+                    <div class="slide">
+                        <img src="images/TwilightInscription.jpg" alt="Twilight Inscription">
+                    </div>
+                    <div class="slide">
+                        <img src="images/CharterStone.jpg" alt="Charterstone">
+                    </div>
+                    <div class="slide">
+                        <img src="images/DinosaurIsland.jpg" alt="Dinosaur Island">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Gloomhaven.jpg" alt="Gloomhaven">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Wingspan.jpg" alt="Wingspan">
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
 </body>

@@ -8,6 +8,13 @@
 	width: 50%;
 }
 
+.flavor-image {
+  max-height: 7rem;
+  width: 100%;
+  border-radius: 5px;
+  /*border: 1px solid #4CAF50;*/
+  overflow: hidden;
+}
 /*Add Board Game Form*/
 label {
     padding: 7px;
@@ -20,6 +27,7 @@ label {
   height: auto;
   border-radius: 5px;
   padding: 15px;
+  margin: 18px;
 }
 
 .card:hover {
@@ -44,6 +52,9 @@ label {
     flex-direction: column;
 }
 
+/*.container {
+flex-direction: column;
+}*/
 /*Picture Carousel*/
 img {
     width: 100%;
@@ -116,4 +127,87 @@ img {
   40% {
     opacity: 0;
   }
+}
+.navbar {
+  overflow: hidden;
+  background-image: linear-gradient(to right, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 18px;
+}
+
+.pbandj-logo {
+  float: left;
+  padding: 12px 16px;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 20px 16px;
+  text-decoration: none;
+}
+
+.search-bar {
+  font-weight: bold;
+  color: black;
+  padding: 18px 18px;
+  float: right;
+  height: 24px;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: white;
+  padding: 20px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  float: center;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-image: linear-gradient(to right top, aqua, purple);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-image: linear-gradient(to left, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  min-width: 160px;
+  box-shadow: inherit;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
