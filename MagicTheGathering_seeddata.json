@@ -15,7 +15,7 @@
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "3UUU"},
           "PowerToughness": {"S": "3/4"},
-          "CardAbilities": {"S":"c7827a77-0b6b-4de4-90d5-8b4a47b52559"},
+          "CardAbilities": {"S":"Card Draw. Bounce Arcanis (2UU)"},
           "NumberOfCardsOwned": {"N": "4"},
           "Artist": {"S": "Justin Sweet"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -36,8 +36,8 @@
           ]},
           "CardType": {"S": "Instant"},
           "ManaCost": {"S": "1R"},
-          "PowerToughness": {"S": ""},
-          "CardAbilities": {"S":""},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Target creature gets +3/+1 and gains trample until end of turn."},
           "NumberOfCardsOwned": {"N":"0"},
           "Artist": {"S": "Wayne Reynolds"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -57,7 +57,7 @@
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "2UBR"},
           "PowerToughness": {"S": "5/5"},
-          "CardAbilities": {"S":""},
+          "CardAbilities": {"S":"Swampwalk. Gain 1 life when a black spell is cast."},
           "NumberOfCardsOwned": {"N":"0"},
           "Artist": {"S": "Richard Kane Ferguson"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -75,8 +75,8 @@
           ]},
           "CardType": {"S": "Enchantment"},
           "ManaCost": {"S": "2G"},
-          "PowerToughness": {"S": ""},
-          "CardAbilities": {"S":""},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Cumulative Upkeep (1C). All creatures get -1/-0 at beginning of turn unless pay upkeep cost. 1G All creatures get -1/-0 until end of turn"},
           "NumberOfCardsOwned": {"N":"1"},
           "Artist": {"S": "Phil Foglio"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80eP"}
@@ -99,9 +99,9 @@
             {"S":"Streets of New Capenna Commander"}
             ]},
           "CardType": {"S": "Land"},
-          "ManaCost": {"S": ""},
-          "PowerToughness": {"S": ""},
-          "CardAbilities": {"S":""},
+          "ManaCost": {"S": "ETB tapped with 2 charge counters. Tap - add W. Tap - remove charge counter and add 1 mana of any color"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"50"},
           "NumberOfCardsOwned": {"N":"10"},
           "Artist": {"S": "Rob Alexander"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -120,7 +120,7 @@
           "CardType": {"S": "Sorcery"},
           "ManaCost": {"S": "G"},
           "PowerToughness": {"S": "CardGame"},
-          "CardAbilities": {"S":""},
+          "CardAbilities": {"S":"Join forces - Starting with you, each player may pay any amount of mana. Each player searches library for up to X basic lands. Add to battlefield tapped; shuffle."},
           "NumberOfCardsOwned": {"N":"1"},
           "Artist": {"S": "Charles Urbach"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -141,7 +141,7 @@
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "5WUB"},
           "PowerToughness": {"S": "6/6"},
-          "CardAbilities": {"S":""},
+          "CardAbilities": {"S":"Flying, first strike, vigilance, lifelink, protection from red and from green."},
           "NumberOfCardsOwned": {"N":"1"},
           "Artist": {"S": "Kev Walker"},
           "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
@@ -236,7 +236,7 @@
           "CardType": {"S": "Enchantment"},
           "ManaCost": {"S": "BUR"},
           "PowerToughness": {"S": "N/A"},
-          "CardAbilities": {"S":"Give your creatures haste. Card Draw"},
+          "CardAbilities": {"S":"Gives your creatures haste. Card Draw"},
           "NumberOfCardsOwned": {"N":"5"},
           "Artist": {"S": "Jaime Jones"},
           "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
