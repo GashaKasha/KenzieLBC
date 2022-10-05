@@ -3,17 +3,34 @@
     {
       "PutRequest": {
         "Item": {
-          "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
-          "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Billy's Cool MTG Collection"},
-          "Type": {"S": "CardGame"},
-          "Description": {"S":"MTG cards currently owned."},
+          "Id": {
+            "S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"
+          },
+          "CreationDate": {
+            "S": "2022-10-01"
+          },
+          "Name": {
+            "S": "Billy's Cool MTG Collection"
+          },
+          "Type": {
+            "S": "CardGame"
+          },
+          "Description": {
+            "S": "MTG cards currently owned."
+          },
           "CollectionItemNames": {
-            "S": "[{\"cardNames\":[\"Arcanis the Omnipotent\", \"Brute Strength\", \"Sol'kanar the Swamp King\", \"Fyndhorn Pollen\", \"Vivid Meadow\", \"Collective Voyage\", \"Sphinx of the Steel Wind\"}]"
+            "L": [
+              {"S": "Arcanis the Omnipotent"},
+              {"S": "Brute Strength"},
+              {"S": "Sol'kanar the Swamp King"},
+              {"S": "Fyndhorn Pollen"},
+              {"S": "Vivid Meadow"},
+              {"S": "Collective Voyage"},
+              {"S": "Sphinx of the Steel Wind"}
+            ]}
           }
         }
-      }
-    },
+      },
     {
       "PutRequest": {
         "Item": {
@@ -23,8 +40,13 @@
           "Type": {"S": "CardGame"},
           "Description": {"S":"Best MTG cards in my collection"},
           "CollectionItemNames": {
-            "S": "[{\"cardNames\":[\"Sol Ring\", \"Swords to Plowshares\", \"Beast Within\", \"Temur Ascendancy\", \"Birds of Paradise\"}]"
-          }
+            "L": [
+            {"S": "Sol Ring"},
+            {"S": "Swords to Plowshares"},
+            {"S": "Beast Within"},
+            {"S": "Temur Ascendancy"},
+            {"S": "Birds of Paradise"}
+          ]}
         }
       }
     },
@@ -37,8 +59,14 @@
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
           "CollectionItemNames": {
-            "S": "[{\"cardNames\":[\"The Mimeoplasm\", \"Arcane Signet\", \"Death Shadow\", \"Watery Grave\", \"Titanoth Rex\" \"Craterhoof Behemoth\"}]"
-          }
+            "L": [
+            {"S": "The Mimeoplasm"},
+            {"S": "Arcane Signet"},
+            {"S": "Death Shadow"},
+            {"S": "Watery Grave"},
+            {"S": "Titanoth Rex"},
+            {"S": "Craterhoof Behemoth"}
+          ]}
         }
       }
     },
@@ -51,8 +79,13 @@
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Some of my fav Board Games"},
           "CollectionItemNames": {
-            "S": "[{\"cardNames\":[\"Arkham Horror\", \"Wingspan\", \"Twilight Inscription\", \"Camel Up\", \"Terraforming Mars\"}]"
-          }
+            "L": [
+            {"S": "Arkham Horror"},
+            {"S": "Wingspan"},
+            {"S": "Twilight Inscription"},
+            {"S": "Camel Up"},
+            {"S": "Terraforming Mars"}
+          ]}
         }
       }
     },
@@ -65,8 +98,15 @@
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Current board games in my collection."},
           "CollectionItemNames": {
-            "S": "[{\"cardNames\":[\"Gloomhaven\", \"Gloomhaven: Jaws of the Lion\", \"Twiligh Imperium: Fourth Edition\", \"Gaia Project\", \"Spirit Island\", \"7 Wonders Duel\", \"Everdell\"}]"
-          }
+            "L": [
+              {"S": "Gloomhaven"},
+              {"S": "Gloomhaven: Jaws of the Lion"},
+              {"S": "Twiligh Imperium: Fourth Edition"},
+              {"S": "Gaia Project"},
+              {"S": "Spirit Island"},
+              {"S": "7 Wonders Duel"},
+              {"S": "Everdell"}
+          ]}
         }
       }
     }
