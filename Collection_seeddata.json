@@ -36,7 +36,7 @@
         "Item": {
           "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Dez MTG Cards Nutz"},
+          "Name": {"S":"Deez MTG Cards Nutz"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"Best MTG cards in my collection"},
           "CollectionItemNames": {
