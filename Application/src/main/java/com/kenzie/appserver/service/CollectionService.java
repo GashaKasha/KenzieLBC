@@ -6,6 +6,7 @@ import com.kenzie.appserver.service.model.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -77,6 +78,22 @@ public class CollectionService {
         collectionRecord.setDescription(collection.getDescription());
         collectionRecord.setCollectionItemNames(itemList);
         collectionRepository.save(collectionRecord);
+    }
+
+    public List<Collection> getAllCollections(){
+        List<Collection> listOfCollections = new ArrayList<>();
+        Iterable<CollectionRecord> collectionofCollections = collectionRepository.findAll();
+        for (CollectionRecord record:collectionofCollections) {
+            Collection collection = new Collection(
+                    record.getId(),
+                    record.getCreationDate(),
+                    record.getCollectionName(),
+                    record.getType(),
+                    record.getDescription(),
+                    record.getCollectionItemNames());
+            listOfCollections.add(collection);
+        }
+        return listOfCollections;
     }
 
     public boolean doesExist(String collectionId) {

@@ -173,6 +173,39 @@ public class CollectionControllerTest {
         assertThat(collectionService.getCollectionById(collectionId)).isNotNull();
     }
 
+    @Test
+    public void getAllCollections_2Collections_returns2Collections() throws Exception {
+        // GIVEN
+        String collectionId = UUID.randomUUID().toString();
+        String collectionDate = LocalDate.now().toString();
+        String collectionName = mockNeat.strings().valStr();
+        String type = "Card Game";
+        String description = "Patti's MTG Collection";
+        List<String> collectionItemNames = new ArrayList<>();
+
+        Collection collection = new Collection(collectionId, collectionDate, collectionName, type, description, collectionItemNames);
+        Collection newCollection = collectionService.addCollection(collection);
+
+        String collectionId2 = UUID.randomUUID().toString();
+        String collectionDate2 = LocalDate.now().toString();
+        String collectionName2 = mockNeat.strings().valStr();
+        String type2 = "Card Game";
+        String description2 = "Jake's MTG Collection";
+        List<String> collectionItemNames2 = new ArrayList<>();
+
+        Collection collection1 = new Collection(collectionId2, collectionDate2, collectionName2, type2, description2, collectionItemNames2);
+        Collection newCollection2 = collectionService.addCollection(collection1);
+
+        mapper.registerModule(new JavaTimeModule());
+
+        // WHEN
+        mvc.perform(get("/collections")
+                        .accept(MediaType.APPLICATION_JSON))
+
+                // THEN
+                .andExpect(status().isOk());
+    }
+
     // TODO: Add method to clean up test data in the database
     // Add method here or in service class?
 }

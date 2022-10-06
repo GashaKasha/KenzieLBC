@@ -41,7 +41,7 @@ public class CollectionServiceTest {
     }
 
     @Test
-    void addCollection_validCollection_concertIsReturnedWithCorrectData() {
+    void addCollection_validCollection_collectionIsReturnedWithCorrectData() {
         // GIVEN
         String collectionId = randomUUID().toString();
         String collectionName = "testName";
@@ -70,7 +70,7 @@ public class CollectionServiceTest {
 
         CollectionRecord record = collectionRecordCaptor.getValue();
 
-        Assertions.assertNotNull(record, "The concert record is returned");
+        Assertions.assertNotNull(record, "The collection record is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
         Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
@@ -172,12 +172,62 @@ public class CollectionServiceTest {
         collectionService.addItemToList(collectionId, "addedName");
         verify(collectionRepository, times(2)).save(collectionRecordCaptor.capture());
         CollectionRecord record = collectionRecordCaptor.getValue();
-        Assertions.assertNotNull(record, "The concert record is returned");
+        Assertions.assertNotNull(record, "The collection record is returned");
         Assertions.assertEquals(record.getId(), collection.getId(), "The collection id matches");
         Assertions.assertEquals(record.getCreationDate(), collection.getCreationDate(), "the collection creation date matches");
         Assertions.assertEquals(record.getCollectionName(), collection.getCollectionName(), "The collection name matches");
         Assertions.assertEquals(record.getType(), collection.getType(), "The collection type matches");
         Assertions.assertEquals(record.getDescription(), collection.getDescription(), "The collection description matches");
         assert (record.getCollectionItemNames().contains("addedName"));
+    }
+
+    @Test
+    void findAllcollections_two_collections() {
+        // GIVEN
+        CollectionRecord record1 = new CollectionRecord();
+        record1.setId(randomUUID().toString());
+        record1.setCollectionName("fakeName1");
+        record1.setDescription("Fun Description 1");
+        record1.setType("a type");
+        record1.setCreationDate(LocalDateTime.now().toString());
+        record1.setCollectionItemNames(new ArrayList<>());
+
+        CollectionRecord record2 = new CollectionRecord();
+        record2.setId(randomUUID().toString());
+        record2.setCollectionName("fakeName2");
+        record2.setDescription("Fun Description 2");
+        record2.setType("b type");
+        record2.setCreationDate(LocalDateTime.now().toString());
+        record2.setCollectionItemNames(new ArrayList<>());
+
+        List<CollectionRecord> recordList = new ArrayList<>();
+        recordList.add(record1);
+        recordList.add(record2);
+        when(collectionRepository.findAll()).thenReturn(recordList);
+
+        // WHEN
+        List<Collection> collections = collectionService.getAllCollections();
+
+        // THEN
+        Assertions.assertNotNull(collections, "The collection list is returned");
+        Assertions.assertEquals(2, collections.size(), "There are two collections");
+
+        for (Collection collection : collections) {
+            if (collection.getId() == record1.getId()) {
+                Assertions.assertEquals(record1.getId(), collection.getId(), "The collection id matches");
+                Assertions.assertEquals(record1.getCollectionName(), collection.getCollectionName(), "The collection name matches");
+                Assertions.assertEquals(record1.getType(), collection.getType(), "The collection type matches");
+                Assertions.assertEquals(record1.getDescription(), collection.getDescription(), "The collection description matches");
+                Assertions.assertEquals(record1.getCreationDate(), collection.getCreationDate(), "The collection creation date matches");
+            } else if (collection.getId() == record2.getId()) {
+                Assertions.assertEquals(record2.getId(), collection.getId(), "The collection id matches");
+                Assertions.assertEquals(record2.getCollectionName(), collection.getCollectionName(), "The collection name matches");
+                Assertions.assertEquals(record2.getType(), collection.getType(), "The collection type matches");
+                Assertions.assertEquals(record2.getDescription(), collection.getDescription(), "The collection description matches");
+                Assertions.assertEquals(record2.getCreationDate(), collection.getCreationDate(), "The collection creation date matches");
+            } else {
+                Assertions.assertTrue(false, "collection returned that was not in the records!");
+            }
+        }
     }
 }

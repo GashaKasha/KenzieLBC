@@ -73,6 +73,22 @@ public class CollectionController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping
+    public ResponseEntity<List<CollectionResponse>> getAllCollections() {
+        List<Collection> collections = collectionService.getAllCollections();
+
+        if (collections == null ||  collections.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        List<CollectionResponse> response = new ArrayList<>();
+        for (Collection collection : collections) {
+            response.add(this.createCollectionResponse(collection));
+        }
+
+        return ResponseEntity.ok(response);
+    }
+
     private CollectionResponse createCollectionResponse(Collection collection) {
         CollectionResponse collectionResponse = new CollectionResponse();
         collectionResponse.setCollectionId(collection.getId());
