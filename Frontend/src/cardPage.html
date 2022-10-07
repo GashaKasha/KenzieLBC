@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/mtgPage2.css">
+</head>
+<body class="background">
+<header class="header" id="header">
+    <div class="navbar">
+        <img class="pbandj-logo" src="images/PBANDJ Logo.jpg">
+        <a href="mainPage.html">Home</a>
+        <a class="collections" href="gamePage.html">Collections Page</a>
+        <a class="boardgame" href="gamePage.html">Board Game</a>
+        <div class="dropdown">
+            <button class="dropbtn">Card Game
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="gamePage.html">Magic The Gathering</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="topnav-right">
+            <div class="dropdown">
+                <button class="dropbtn">Account
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="gamePage.html">Login</a>
+                    <a href="#">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-name">
+        <a class="header_home" >Magic The Gathering</a>
+    </div>
+</header>
+<div class="container">
+    <div class="flavor-image">
+        <img src="images/MTG-GateWatch.png" alt="GateWatch">
+    </div>
+    <div class="left-column">
+        <div class="card">
+            <h3>Add a Magic The Gathering Card</h3>
+            <form class="card-content" id="create-game-form">
+                <p class="form-field">
+                    <label for="card-name"></label>
+                    <input type="text" required class="validated-field" id="card-name"
+                           placeholder="Card Name (required)" data-validation-required-message="Please enter the card name.">
+                    <label for="released-set"></label>
+                    <input type="text" class="released-set" id="released-set" placeholder="Released Set">
+                    <label for="card-type"></label>
+                    <input type="text" class="card-type" id="card-type" placeholder="Card Type">
+                    <label for="mana-cost"></label>
+                    <input type="text" class="mana-cost" id="mana-cost" placeholder="Mana Cost">
+                    <label for="power-and-toughness"></label>
+                    <input type="text" class="power-and-toughness" id="power-and-toughness" placeholder="Power and Toughness">
+                    <label for="card-abilities"></label>
+                    <input type="text" class="card-abilities" id="card-abilities" placeholder="Card Abilities">
+                    <label for="number-of-cards-owned"></label>
+                    <input type="text" class="number-of-cards-owned" id="number-of-cards-owned" placeholder="Number of Cards Owned">
+                    <label for="artist"></label>
+                    <input type="text" class="artist" id="artist" placeholder="Artist">
+                    <label for="collection-id"></label>
+                    <input type="text" required class="validated-field" id="collection-id"
+                           placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
+                </p>
+                <button type="submit">Add Board Game</button>
+            </form>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="card">
+            <h3>Your Collections</h3>
+            <div class="card" id="collections-display">
+                <h4>this is where a list of collection names and ids will be</h4>
+            </div>
+        </div>
+        <div class="card-image">
+            <div class="slides slowFade">
+                <div class="slide">
+                    <img src="images/MTG-Vivien-Resize.jpg" alt="MTG Vivien">
+                </div>
+                <div class="slide">
+                    <img src="images/MTG-Jace-Resize.jpg" alt="MTG Jace">
+                </div>
+                <div class="slide">
+                    <img src="images/MTG-NicolBolas-Resize.jpg" alt="MTG Nicol Bolas">
+                </div>
+                <div class="slide">
+                    <img src="images/MTG-Ajari-Resize.jpg" alt="MTG Ajari">
+                </div>
+                <div class="slide">
+                    <img src="images/MTG-Chandra-Resize.jpg" alt="MTG Chandra">
+                </div>
+                <div class="slide">
+                    <img src="images/MTG-Liliana-Resize.png" alt="MTG Liliana">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
