@@ -8,7 +8,8 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
+    mainPage: path.resolve(__dirname, 'src', 'pages', 'mainPage.js'),
+    collectionPage: path.resolve(__dirname, 'src', 'pages', 'collectionPage.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,11 +32,24 @@ module.exports = {
       filename: 'index.html',
       inject: false
     }),
+    new HtmlWebpackPlugin({
+      template: './src/collectionPage.html',
+      filename: 'collectionPage.html',
+      inject: false
+    }),
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve('src/css'),
           to: path.resolve("dist/css")
+        }
+      ]
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve('src/images'),
+          to: path.resolve("dist/images")
         }
       ]
     }),
