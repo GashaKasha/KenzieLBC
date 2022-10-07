@@ -82,8 +82,8 @@ public class CollectionService {
 
     public List<Collection> getAllCollections(){
         List<Collection> listOfCollections = new ArrayList<>();
-        Iterable<CollectionRecord> collectionofCollections = collectionRepository.findAll();
-        for (CollectionRecord record:collectionofCollections) {
+        Iterable<CollectionRecord> collectionOfCollections = collectionRepository.findAll();
+        for (CollectionRecord record:collectionOfCollections) {
             Collection collection = new Collection(
                     record.getId(),
                     record.getCreationDate(),

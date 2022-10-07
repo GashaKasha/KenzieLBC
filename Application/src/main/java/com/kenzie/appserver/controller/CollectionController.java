@@ -74,16 +74,16 @@ public class CollectionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CollectionResponse>> getAllCollections() {
+    public ResponseEntity<List<CollectionGetResponse>> getAllCollections() {
         List<Collection> collections = collectionService.getAllCollections();
 
         if (collections == null ||  collections.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-        List<CollectionResponse> response = new ArrayList<>();
+        List<CollectionGetResponse> response = new ArrayList<>();
         for (Collection collection : collections) {
-            response.add(this.createCollectionResponse(collection));
+            response.add(this.getCollectionResponse(collection));
         }
 
         return ResponseEntity.ok(response);

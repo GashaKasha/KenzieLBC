@@ -201,9 +201,21 @@ public class CollectionControllerTest {
         // WHEN
         mvc.perform(get("/collections")
                         .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(collectionId)))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(collectionDate)))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(collectionName)))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(type)))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(description)))
+//                .andExpect(jsonPath("$[0]")
+//                        .value(is(collectionItemNames)))
+                .andExpect(status().isOk());
 
                 // THEN
-                .andExpect(status().isOk());
     }
 
     // TODO: Add method to clean up test data in the database
