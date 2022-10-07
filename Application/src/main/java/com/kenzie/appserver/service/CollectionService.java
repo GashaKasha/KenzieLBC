@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.DateCreatedComparator;
 import com.kenzie.appserver.repositories.CollectionRepository;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.Collection;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -93,6 +95,7 @@ public class CollectionService {
                     record.getCollectionItemNames());
             listOfCollections.add(collection);
         }
+        Collections.sort(listOfCollections, Collections.reverseOrder(new DateCreatedComparator()));
         return listOfCollections;
     }
 
