@@ -1,5 +1,34 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ /*The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ /*Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 60px;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /*background-color: #000000;*/
 }
 
 /*Screen Split*/
@@ -7,20 +36,18 @@ html {
     float:left;
     width: 50%;
 }
+
 .right-column{
     float:right;
     width: 50%;
 }
 
 .flavor-image {
-    max-height: 300px;
+    max-height: 30%;
+    height: 30%;
     width: 100%;
-    /*border: 1px solid #4CAF50;*/
     overflow: hidden;
     border-radius: 5px;
-    /*float: left;*/
-    /*width: 33.33%;*/
-    /*padding: 1px;*/
 }
 
 .flavor-image img {
@@ -33,7 +60,6 @@ html {
     margin-right: auto;
     margin-left: auto;
     display: flex;
-    /*justify-content: stretch;*/
 }
 
 /*.flavor-image-row::after {*/
@@ -46,16 +72,25 @@ html {
 /*Add Board Game Form*/
 label {
     padding: 7px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #2d3748;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     transition: 0.3s;
     width: 85%;
     height: auto;
     border-radius: 5px;
     padding: 25px;
     margin: 15px;
+    position: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #F8F8F8;
 }
 
 .card:hover {
@@ -112,7 +147,7 @@ h2.create-collection-result {
     flex-direction: column;
 }
 
-.card-image{
+.card-image {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 88%;
@@ -126,6 +161,7 @@ h2.create-collection-result {
 /*.container {
 flex-direction: column;
 }*/
+
 /*Picture Carousel*/
 img {
     height: 100%;
@@ -199,6 +235,7 @@ img {
         opacity: 0;
     }
 }
+
 .navbar {
     overflow: hidden;
     background-image: linear-gradient(to right, #051937, #004d7a, #008793, #00bf72, #a8eb12);
@@ -208,8 +245,6 @@ img {
 .pbandj-logo {
     float: left;
     padding: 12px 16px;
-    max-width: 3rem;
-    max-height: 3rem;
 }
 
 .navbar a {
@@ -225,9 +260,49 @@ img {
 .search-bar {
     font-weight: bold;
     color: black;
-    padding: 18px 18px;
+    padding: 16px 16px;
     float: right;
     height: 24px;
+    margin-bottom: 40px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#search-input {
+    margin: 0 auto;
+}
+
+/* Style the search submit button */
+button.search-button[type='submit'] {
+    /*text-indent: -999px;*/
+    overflow: hidden;
+    height: 30px;
+    /* Try width 30px once alignment issue fixed*/
+    width: 40px;
+    padding: 0;
+    /*margin: auto;*/
+    margin-top: 7px;
+    margin-right: 20px;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    cursor: pointer;
+    background: dimgrey no-repeat center;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+input#search-input[type='submit'] {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-appearance: textfield;
+}
+
+button.search-button[type='submit']:hover {
+    opacity: 1;
+    background-color: #9E9FA0;
+    color: white;
 }
 
 .topnav-right {
@@ -249,7 +324,7 @@ img {
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-    float: center;
+    /*float: center;*/
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -281,30 +356,22 @@ img {
     display: block;
 }
 
-.page-name{
+.page-name {
     text-align: center;
     padding: 10px;
     font-weight: bold;
     font-size: 40px;
 }
 
-/*.collection-btn {*/
-/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
-/*    transition: 0.3s;*/
-/*    width: 85%;*/
-/*    height: auto;*/
-/*    border-radius: 5px;*/
-/*    padding: 15px;*/
-/*    margin: 18px;*/
-/*}*/
 
+/* Style the form submit button */
 button#form-submit {
     text-align: center;
     position: relative;
     cursor: pointer;
     transition-duration: 0.4s;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 85px;
     height: 30px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -325,7 +392,6 @@ button#form-submit {
 .collection-btn button {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition-duration: 0.4s;
     width: 85px;
-    /*border: 0 solid white;*/
     padding: 5px 5px;
     text-align: center;
     position: center;
@@ -342,8 +408,10 @@ button#form-submit {
     color: white;
 }
 
-/* Carousel - Test */
-* {box-sizing:border-box}
+/* Carousel Styling */
+* {
+    box-sizing:border-box
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -384,37 +452,40 @@ button#form-submit {
     background-color: rgba(0,0,0,0.8);
 }
 
+/* Styles carousel text */
 /* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 24px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
+/*.text {*/
+/*    color: #f2f2f2;*/
+/*    font-size: 24px;*/
+/*    padding: 8px 12px;*/
+/*    position: absolute;*/
+/*    bottom: 8px;*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*}*/
 
+/* Styles carousel numbers */
 /* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
+/*.numbertext {*/
+/*    color: #f2f2f2;*/
+/*    font-size: 12px;*/
+/*    padding: 8px 12px;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*}*/
 
+/* Styles carousel dot indicators*/
 /* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
+/*.dot {*/
+/*    cursor: pointer;*/
+/*    height: 15px;*/
+/*    width: 15px;*/
+/*    margin: 0 2px;*/
+/*    background-color: #bbb;*/
+/*    border-radius: 50%;*/
+/*    display: inline-block;*/
+/*    transition: background-color 0.6s ease;*/
+/*}*/
 
 .active, .dot:hover {
     background-color: #717171;
@@ -430,5 +501,122 @@ button#form-submit {
     from {opacity: .4}
     to {opacity: 1}
 }
+/* End of Carousel Styling */
 
-/* End of Carousel - Test */
+/* Form Styling */
+input::placeholder {
+    color: #a0aec0;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #a0aec0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    background-clip: padding-box;
+}
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea {
+    /* uniform text field size */
+    box-sizing: border-box;
+    width: 275px;
+    padding: 5px;
+    /* match form field borders */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    /* Set uniform font setting for the form */
+    font: 1em sans-serif;
+}
+
+textarea {
+    /* Align multi-line text fields with their labels */
+    vertical-align: top;
+    /* Provide space to type some text */
+    height: 5em;
+    color: #a0aec0;
+}
+
+.control-group .form-group {
+    margin-bottom: 2rem;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.form-control {
+    justify-content: center;
+    position: center;
+}
+
+/*!* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.placeholder {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+    color: #808097;
+}
+
+.input:focus ~ .placeholder {
+    color: #dc2f55;
+}
+
+/* End of Form Styling */
+
+/* Footer */
+
+.row-footer {
+    color: #000000;
+    font-size: 0.7em;
+    float: left;
+    position: fixed;
+    bottom: 0;
+}
+
+.back-to-top {
+    position: relative;
+    z-index: 2; }
+.back-to-top .btn-dark {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #008793;
+    border-color: #2e2e2e;
+    display: none;
+    z-index: 999;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear; }
+.back-to-top .btn-dark:hover {
+    cursor: pointer;
+    background: #00bf72;
+    border-color: #2e2e2e; }

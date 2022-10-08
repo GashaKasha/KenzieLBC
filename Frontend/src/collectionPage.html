@@ -6,6 +6,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="Content-type" content="text/html"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Collection Page - Game Organizer Service</title>
+  <!-- icon link -->
+  <link rel="icon" href="images/collectionPageImages/pbandj2-mod.png" type="image/x-icon">
+  <!-- /.end of icon link -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/collectionPage.css">
@@ -13,7 +19,7 @@
 <body class="background">
 <header class="header" id="header">
   <div class="navbar">
-    <img class="pbandj-logo" src="images/PBANDJ Logo.jpg">
+    <img class="pbandj-logo" src="images/PBANDJ%20Logo.jpg" alt="">
     <a href="index.html">Home</a>
     <a class="collections" href="collectionPage.html">Collections Page</a>
     <a class="boardgame" href="gamePage.html">Board Game</a>
@@ -22,12 +28,14 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="gamePage.html">Magic The Gathering</a>
+        <a href="cardPage.html">Magic The Gathering</a>
       </div>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Search..">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <label for="search-input">
+        <input id="search-input" type="text" placeholder="Search...">
+      </label>
+      <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
     </div>
     <div class="topnav-right">
       <div class="dropdown">
@@ -60,12 +68,17 @@
     <img src="images/collectionPageImages/gatewatch-ulamog.jpeg" style="width:100%" alt="">
 <!--    <div class="text">Card Games</div>-->
   </div>
-
+  <div class="mySlides fade">
+    <!--    <div class="numbertext">3 / 3</div>-->
+    <img src="images/collectionPageImages/bg-collection4-new.jpeg" style="width:100%" alt="">
+    <!--    <div class="text">Board Games</div>-->
+  </div>
   <div class="mySlides fade">
 <!--    <div class="numbertext">3 / 3</div>-->
-    <img src="images/collectionPageImages/bg-collection.png" style="width:100%" alt="">
+    <img src="images/collectionPageImages/card-game-collection.jpg" style="width:100%" alt="">
 <!--    <div class="text">Board Games</div>-->
   </div>
+
 
 <!--   Next and previous buttons-->
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -80,39 +93,39 @@
 <!--  <span class="dot" onclick="currentSlide(3)"></span>-->
 <!--</div>-->
 <div class="flavor-image-row">
-<!--  <div class="flavor-image">-->
-<!--    <img src="images/collectionPageImages/bg-hp1-collection3.jpeg" alt="bg-collection">-->
-<!--  </div>-->
   <div class="left-column">
     <div class="card">
       <h3>Create a Collection</h3>
       <form class="card-content" id="create-game-form">
-        <p class="form-field">
-          <label for="card-name"></label>
-          <input type="text" required class="validated-field" id="card-name"
-                 placeholder="Card Name (required)" data-validation-required-message="Please enter the card name.">
-          <label for="released-set"></label>
-          <input type="text" class="released-set" id="released-set" placeholder="Released Set">
-          <label for="card-type"></label>
-          <input type="text" class="card-type" id="card-type" placeholder="Card Type">
-          <label for="mana-cost"></label>
-          <input type="text" class="mana-cost" id="mana-cost" placeholder="Mana Cost">
-          <label for="power-and-toughness"></label>
-          <input type="text" class="power-and-toughness" id="power-and-toughness" placeholder="Power and Toughness">
-          <label for="card-abilities"></label>
-          <input type="text" class="card-abilities" id="card-abilities" placeholder="Card Abilities">
-          <label for="number-of-cards-owned"></label>
-          <input type="text" class="number-of-cards-owned" id="number-of-cards-owned" placeholder="Number of Cards Owned">
-          <label for="artist"></label>
-          <input type="text" class="artist" id="artist" placeholder="Artist">
-          <label for="collection-id"></label>
-          <input type="text" required class="validated-field" id="collection-id"
-                 placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
-        </p>
+        <div class="collection-form">
+          <form name="createCollection" id="create-collection-form" novalidate>
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="collection-name"></label>
+                <input type="text" class="form-control" id="collection-name" placeholder="Collection Name (required)" required data-validation-required-message="Please enter a name for the collection.">
+                <p class="help-block"></p>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <label for="collection-type"></label>
+              <select class="form-select" id="collection-type" data-validation-required-message="Please select the type of items that will be in the collection.">
+                <option value="" disabled selected hidden>Select collection type</option>
+                <option id="select-board-game" >Board Game</option>
+                <option id="select-card-game">Card Game</option>
+              </select>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="collection-description"></label>
+                <textarea rows="2" cols="56" class="form-control" id="collection-description" placeholder="Collection Description" maxlength="50" style="..."></textarea>
+              </div>
+            </div>
+            <div id="success"></div>
+          </form>
+        </div>
         <button id="form-submit" type="submit">Submit</button>
       </form>
       <div id="create-collection-results">
-<!--        <h4>Collection ID:</h4>-->
         <div class="card" id="collection-results">
           <div class="collection-results-header">Collection ID:</div>
           <p id="collection-result-info"></p>
@@ -122,7 +135,7 @@
   </div>
   </div>
   <div class="right-column">
-    <div class="card">
+    <div class="card" id="card-mods">
       <h3>Collection Options</h3>
       <div class="card" id="collection-options">
         <div class="collection-btn">
@@ -153,31 +166,26 @@
           <img src="images/collectionPageImages/mtg3.jpg" alt="mtg-collection">
         </div>
       </div>
-<!--      <div class="slides slowFade">-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="">-->
-<!--        </div>-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="">-->
-<!--        </div>-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="">-->
-<!--        </div>-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="">-->
-<!--        </div>-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="MTG Chandra">-->
-<!--        </div>-->
-<!--        <div class="slide">-->
-<!--          <img src="" alt="">-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
-  </div>
 </div>
 
+<!-- Footer -->
+<footer>
+  <div class="row-footer">
+    <p>Copyright &copy; PBANDJ, 2022</p>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-to-top" class="back-to-top">
+  <button onclick="topFunction()" class="btn btn-dark" title="Back to Top" style="display: block;">
+    <i class="fa fa-angle-up"></i>
+  </button>
+</div>
+<!-- End Back to top -->
+
 <script>
+  /* JS for Automatic Slideshow */
   let slideIndex = 1;
   showSlides(slideIndex);
 
@@ -207,7 +215,6 @@
     dots[slideIndex-1].className += " active";
   }
 
-  /* JS for Automatic Slideshow */
   // let slideIndex = 0;
   // showSlides();
   //
@@ -222,7 +229,29 @@
   //   slides[slideIndex-1].style.display = "block";
   //   setTimeout(showSlides, 2000); // Change image every 2 seconds
   // }
-  /*JS for Automatic Slideshow */
+  /* End of JS for Automatic Slideshow */
+
+  /* Back to Top */
+  // Get the button:
+  let backToTopBtn = document.getElementById("back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
 </script>
 </body>
 </html>
