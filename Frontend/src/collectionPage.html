@@ -20,7 +20,7 @@
 <header class="header" id="header">
   <div class="navbar">
     <img class="pbandj-logo" src="images/PBANDJ%20Logo.jpg" alt="">
-    <a href="index.html">Home</a>
+    <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
     <a class="collections" href="collectionPage.html">Collections Page</a>
     <a class="boardgame" href="gamePage.html">Board Game</a>
     <div class="dropdown">
@@ -81,8 +81,8 @@
 
 
 <!--   Next and previous buttons-->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!--  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>-->
+<!--  <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
 </div>
 <br>
 
@@ -109,7 +109,7 @@
             <div class="control-group form-group">
               <label for="collection-type"></label>
               <select class="form-select" id="collection-type" data-validation-required-message="Please select the type of items that will be in the collection.">
-                <option value="" disabled selected hidden>Select collection type</option>
+                <option value="" disabled selected hidden>Select Collection Type</option>
                 <option id="select-board-game" >Board Game</option>
                 <option id="select-card-game">Card Game</option>
               </select>
@@ -186,49 +186,49 @@
 
 <script>
   /* JS for Automatic Slideshow */
-  let slideIndex = 1;
-  showSlides(slideIndex);
-
-  // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-  }
-
-  // let slideIndex = 0;
-  // showSlides();
+  // let slideIndex = 4;
+  // showSlides(slideIndex);
   //
-  // function showSlides() {
+  // // Next/previous controls
+  // function plusSlides(n) {
+  //   showSlides(slideIndex += n);
+  // }
+  //
+  // // Thumbnail image controls
+  // function currentSlide(n) {
+  //   showSlides(slideIndex = n);
+  // }
+  //
+  // function showSlides(n) {
   //   let i;
   //   let slides = document.getElementsByClassName("mySlides");
+  //   let dots = document.getElementsByClassName("dot");
+  //   if (n > slides.length) {slideIndex = 1}
+  //   if (n < 1) {slideIndex = slides.length}
   //   for (i = 0; i < slides.length; i++) {
   //     slides[i].style.display = "none";
   //   }
-  //   slideIndex++;
-  //   if (slideIndex > slides.length) {slideIndex = 1}
+  //   for (i = 0; i < dots.length; i++) {
+  //     dots[i].className = dots[i].className.replace(" active", "");
+  //   }
   //   slides[slideIndex-1].style.display = "block";
-  //   setTimeout(showSlides, 2000); // Change image every 2 seconds
+  //   dots[slideIndex-1].className += " active";
   // }
+
+  let slideIndex = 4;
+  showSlides();
+
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+  }
   /* End of JS for Automatic Slideshow */
 
   /* Back to Top */

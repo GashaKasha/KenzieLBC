@@ -534,6 +534,10 @@ textarea {
     vertical-align: top;
     /* Provide space to type some text */
     height: 5em;
+    color: #000000;
+}
+
+textarea::placeholder {
     color: #a0aec0;
 }
 
@@ -552,6 +556,7 @@ textarea {
 .form-control {
     justify-content: center;
     position: center;
+    box-sizing: border-box;
 }
 
 /*!* Clear floats after the columns */
