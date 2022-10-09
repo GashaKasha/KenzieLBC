@@ -447,12 +447,12 @@ class CollectionPage extends BaseClass {
         var td8 = document.createElement("td");
         var td9 = document.createElement("td");
 
-        var colId = document.createTextNode(id);
-        var colCreationDate = document.createTextNode(date);
-        var colName = document.createTextNode(name);
-        var colType = document.createTextNode(type);
-        var colDesc = document.createTextNode(description);
-        var colItemNames = document.createTextNode(itemNames);
+        var colId = document.createTextNode();
+        var colCreationDate = document.createTextNode();
+        var colName = document.createTextNode();
+        var colType = document.createTextNode();
+        var colDesc = document.createTextNode();
+        var colItemNames = document.createTextNode();
 
         td1.appendChild(colId);
         td2.appendChild(colCreationDate);
