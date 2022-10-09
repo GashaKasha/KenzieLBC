@@ -100,6 +100,7 @@ class CollectionPage extends BaseClass {
         } else {
             console.log("ERROR: Unable to process current state!");
         }
+        // TODO: Add Get All collections - pass in the response from getAllCollections (reference 'create')
         // } else if (getState === 'DELETE') {
         //     // Do delete things
         // } else {
@@ -199,6 +200,24 @@ class CollectionPage extends BaseClass {
         }
     }
 
+    async onGetAllCollections(event) {
+        console.log("Entering onGetAllCollections method...");
+        event.preventDefault();
+
+        const allCollections = await this.client.getAllCollections(this.errorHandler);
+
+        if (allCollections && allCollections.length > 0) {
+            this.showMessage("Listing All Collections!");
+            this.dataStore.setState({
+                [CURRENT_STATE]: "GET_ALL",
+                ["getAllCollections"]: getAllCollections
+            });
+        } else {
+            this.errorHandler("Error retrieving all collections. Try again ... ");
+            console.log("GET ALL isn't working...");
+        }
+    }
+
     async onDeleteCollection(event) {
         console.log("Entering onDeleteCollection method...");
         event.preventDefault();
@@ -287,6 +306,101 @@ class CollectionPage extends BaseClass {
         if (itemNames.size === 0) {
             itemNames = "null";
         }
+
+        console.log(name);
+
+        // Get reference for the body - if method used
+        //var tableDiv = document.getElementById('');
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Set table id
+        table.setAttribute('id', 'get-collection-table');
+        var tr = document.createElement("tr");
+
+        // Add header rows
+        const headerRowNames = [
+            "Collection ID",
+            "Collection Creation Date",
+            "Collection Name",
+            "Collection Type",
+            "Collection Description",
+            "Collection Item Names",
+            "Delete Collection",
+            "Add Items To Collection",
+            "Close Table"
+        ];
+
+        for (var i = 0; i < headerRowNames.length; i++) {
+            // Create column element
+            var th = document.createElement("th");
+            // Create cell element
+            var text = document.createTextNode(headerRowNames[i]);
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+        table.appendChild(tr);
+
+        var trData = document.createElement("tr");
+
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+        var td8 = document.createElement("td");
+        var td9 = document.createElement("td");
+
+        var colId = document.createTextNode(id);
+        var colCreationDate = document.createTextNode(date);
+        var colName = document.createTextNode(name);
+        var colType = document.createTextNode(type);
+        var colDesc = document.createTextNode(description);
+        var colItemNames = document.createTextNode(itemNames);
+
+        td1.appendChild(colId);
+        td2.appendChild(colCreationDate);
+        td3.appendChild(colName);
+        td4.appendChild(colType);
+        td5.appendChild(colDesc);
+        td6.appendChild(colItemNames);
+        td7.innerHTML = "<button type='button' id='table-delete-btn'>DELETE</button>";
+        td8.innerHTML = "<button type='button' id='table-add-items-btn'>Add To Collection</button>";
+        td9.innerHTML = "<input type='button' id='close-table' value='CLOSE' onclick=document.getElementById(\"get-collection-table\").style.display='none'>";
+
+        trData.appendChild(td1);
+        trData.appendChild(td2);
+        trData.appendChild(td3);
+        trData.appendChild(td4);
+        trData.appendChild(td5);
+        trData.appendChild(td6);
+        trData.appendChild(td7);
+        trData.appendChild(td8);
+        trData.appendChild(td9);
+
+        table.appendChild(trData);
+
+        document.body.appendChild(table);
+        // table.setAttribute("border-collapse", "collapse");
+        // td.setAttribute("border", "1px solid #cecfd5");
+        // td.setAttribute("padding", "10px 15px");
+    }
+
+    async generateAllTable(collections) {
+        // Dynamically render HTML for getCollectionById results
+        console.log("Entering generateTable method...");
+
+        // TODO: Extract each of the values from the get all request
+        // TODO: This time the data append should be in a for loop
+
+        // if (itemNames.size === 0) {
+        //     itemNames = "null";
+        // }
+
+        console.log(name);
 
         // Get reference for the body - if method used
         //var tableDiv = document.getElementById('');
