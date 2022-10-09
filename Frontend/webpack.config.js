@@ -37,6 +37,11 @@ module.exports = {
       filename: 'collectionPage.html',
       inject: false
     }),
+    new HtmlWebpackPlugin({
+      template: './src/gamePage.html',
+      filename: 'gamePage.html',
+      inject: false
+    }),
     new CopyPlugin({
       patterns: [
         {

@@ -10,7 +10,7 @@ var CURRENT_STATE;
 class CollectionPage extends BaseClass {
     constructor() {
         super();
-        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'renderCollection'], this);
+        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'confirmDeleteCollection', 'renderCollection'], this);
         this.dataStore = new DataStore();
     }
 
@@ -21,7 +21,6 @@ class CollectionPage extends BaseClass {
         // document.getElementById
         document.getElementById('create-collection-form').addEventListener('submit', this.onCreateCollection);
         document.getElementById('search-collection').addEventListener('submit', this.onGetCollection);
-        document.getElementById('table-delete-btn').addEventListener('click', this.onDeleteCollection);
         // TODO: Add listeners for form-delete-btn + add-items btn
 
         this.client = new CollectionClient();
@@ -82,6 +81,8 @@ class CollectionPage extends BaseClass {
                     collectionType,
                     collectionDesc,
                     collectionItems);
+
+                document.getElementById('table-delete-btn').addEventListener('click', this.onDeleteCollection);
             } else {
                 this.errorHandler("Error Getting Collection! Try Again... ");
                 console.log("Error Getting Collection!");
@@ -204,29 +205,31 @@ class CollectionPage extends BaseClass {
         event.preventDefault();
 
         let collectionId = document.getElementById('search-input').value;
+        console.log(collectionId);
         if (collectionId === '' || collectionId.trim().length === 0) {
             this.errorHandler("ERROR: Must enter valid Collection ID!");
-            console.log("Collection ID is empty" + " " + collectionId);
+            console.log("Collection ID: " + collectionId + " is empty");
         }
 
         //localStorage.setItem("collectionId", collectionId);
-        let getCollection = await this.client.getCollectionById(collectionId, this.errorHandler);
+        try {
+            const getCollection = await this.client.getCollectionById(collectionId, this.errorHandler);
 
-        if (getCollection) {
-            //         // TODO: What format should the collection return; table?
-            //         // TODO: If 'collectionItemNames' is empty, result empty
-            this.showMessage(`Found Collection: ${collectionId}`);
-        } else {
-            this.errorHandler("Error retrieving collection by ID: " + `${collectionId}` + "Try again with a valid collection ID");
-            console.log("GET isn't working...");
+            if (getCollection) {
+                //         // TODO: What format should the collection return; table?
+                //         // TODO: If 'collectionItemNames' is empty, result empty
+                this.showMessage(`Found Collection: ${collectionId}`);
+                this.dataStore.setState({
+                    [CURRENT_STATE]: "GET",
+                    ["getCollection"]: getCollection
+                });
+            } else {
+                this.errorHandler("Error retrieving collection by ID: " + `${collectionId}` + "Try again with a valid collection ID");
+                console.log("GET isn't working...");
+            }
+        } catch(e) {
+            console.log(e);
         }
-
-        this.dataStore.setState({
-            [CURRENT_STATE]: "GET",
-            ["getCollection"]: getCollection
-        });
-        // this.dataStore.set("collection", getCollection);
-        // this.dataStore.set("CURRENT_STATE", CURRENT_STATE);
     }
 
 
@@ -281,10 +284,10 @@ class CollectionPage extends BaseClass {
     async confirmDeleteCollection(collectionId) {
         // TODO: Add html or js for button confirmation
         console.log("Entering the confirmDeleteCollection method...");
+        // event.preventDefault();
 
         var msg = prompt("Are you sure you want to delete this collection? Enter 'yes' or 'no'");
         var response = msg.toLowerCase();
-        var returnMsg;
 
         if (response === null || response === "") {
             this.errorHandler("ERROR: Must enter either yes or no!");
@@ -297,11 +300,12 @@ class CollectionPage extends BaseClass {
             // TODO: retrieve collectionId from dataStore
             let collectionId = this.dataStore.get("collection");
             // TODO: Does this need to be saved in a variable?
-            deleteCollection = await this.client.getCollectionById(collectionId, this.errorHandler);
+            deleteCollection = await this.client.deleteCollectionById(collectionId, this.errorHandler);
             // returnMsg about successful delete (showMessage())?
+            this.showMessage("Collection Deleted!");
         } else if (response === 'no') {
             // do something - can request; exit
-            returnMsg = "Collection Not Deleted!";
+            this.showMessage("Collection Not Deleted!");
         } else {
             this.errorHandler("ERROR: Must enter either yes or no!");
             // Or a different returnMsg?
@@ -310,7 +314,7 @@ class CollectionPage extends BaseClass {
         this.dataStore.setState({
             [CURRENT_STATE]: "DELETE",
             ["deleteCollection"]: deleteCollection,
-            [deleteCollectionId]: collectionId
+            ["deleteCollectionId"]: collectionId
         });
 
         // Alternative method
@@ -334,11 +338,10 @@ class CollectionPage extends BaseClass {
     async generateTable(id, date, name, type, description, itemNames) {
         // TODO: How to confirm the correct collections are being retrieved from the dataStore?
         // TODO: Get the 'collection' from the DataStore & extract values that are needed
-
         // Create scaffolding for table in
         // html file first
-
         console.log("Entering generateTable method...");
+        // event.preventDefault();
 
         if (itemNames.size === 0) {
             itemNames = "null";
