@@ -79,7 +79,7 @@ class GamePage extends BaseClass {
         const createdBoardGame = await this.client.addBoardGame(name, numPlayers, yearPublished, avgPlayTime, collectionId, this.errorHandler);
 
         if (createdBoardGame) {
-            this.showMessage(`Created ${createdBoardGame.name}!`);
+            this.showMessage(`Created ${name}!`);
         } else {
             this.errorHandler("Error adding a board game!  Try again...");
         }
