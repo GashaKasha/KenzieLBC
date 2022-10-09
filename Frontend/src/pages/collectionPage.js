@@ -40,7 +40,6 @@ class CollectionPage extends BaseClass {
         }
 
         if (getState === 'CREATE') {
-            // Do create things
             console.log("State = CREATE");
             let resultArea = document.getElementById('collection-result-info');
 
@@ -57,8 +56,6 @@ class CollectionPage extends BaseClass {
                 resultArea.innerHTML = "Error Creating Collection! Try Again... ";
             }
         } else if (getState === 'GET') {
-            // Do get things
-            // retrieve values
             console.log("State = GET");
             const getCollection = this.dataStore.get("getCollection");
 
@@ -94,7 +91,7 @@ class CollectionPage extends BaseClass {
 
             if (deleteCollectionId) {
                 console.log(deleteCollectionId);
-                this.showMessage(`Collection: ${deleteCollectionId} has been deleted!`);
+                this.showMessage(`Request submitted to delete: ${deleteCollectionId}`);
             } else {
                 this.errorHandler(`Error Deleting Collection ID: ${deleteCollectionId}`);
                 console.log("Error Deleting Collection ID...");
@@ -112,25 +109,6 @@ class CollectionPage extends BaseClass {
     //     console.log("ERROR: Unable to retrieve state!");
     // }
 
-    // TODO: Need to figure out why this isn't working - needed for different actions
-    // Add conditional to distinguish between the different endpoints
-    // if (endpoint === 'createCollection') {
-    //     // Render collection id in a popup window
-    //     // with a copy id button
-    //     if (collection) {
-    //         resultArea.innerHTML = `
-    //         <div>Collection ID: ${collection.collectionId}</div>
-    //     `
-    //     } else {
-    //         resultArea.innerHTML = "Error Creating Collection! Try Again... ";
-    //     }
-    // } else if (endpoint === 'deleteCollection') {
-    //     // Enter a collectionId, click 'Delete'
-    //     // onClick, render a confirmation window
-    //     // if yes clicked, confirm deletion
-    //     // if no clicked, exit
-    //
-    //
     // } else if (endpoint === 'getCollection') {
     //     // Enter a collectionId in search bar
     //     // onClick, render a table with options
@@ -169,8 +147,6 @@ class CollectionPage extends BaseClass {
             this.errorHandler
         );
 
-        // this.dataStore.set("collection", createCollection);
-
         if (createCollection) {
             this.showMessage('Collection Created!');
         } else {
@@ -184,8 +160,6 @@ class CollectionPage extends BaseClass {
             [CURRENT_STATE]: "CREATE",
             ["collection"]: createCollection
         });
-        // this.dataStore.set("collection", createCollection);
-        // this.dataStore.set("CURRENT_STATE", CURRENT_STATE);
     }
 
     // Get collection for a given ID
@@ -216,8 +190,6 @@ class CollectionPage extends BaseClass {
             const getCollection = await this.client.getCollectionById(collectionId, this.errorHandler);
 
             if (getCollection) {
-                //         // TODO: What format should the collection return; table?
-                //         // TODO: If 'collectionItemNames' is empty, result empty
                 this.showMessage(`Found Collection: ${collectionId}`);
                 this.dataStore.setState({
                     [CURRENT_STATE]: "GET",
@@ -232,22 +204,20 @@ class CollectionPage extends BaseClass {
         }
     }
 
-
     // Delete collection for a given ID
     async onDeleteCollection(event) {
         console.log("Entering onDeleteCollection method...");
         event.preventDefault();
 
-        // TODO: Retrieve the collectionId
+        // Retrieve the collectionId
         let collectionId = document.getElementById('search-input').value;
 
-        // TODO: Validate the collectionId
+        // Validate the collectionId
         if (collectionId === '' || collectionId.trim().length === 0) {
             this.errorHandler("ERROR: Must enter valid Collection ID!");
             console.log("Collection ID is empty" + " " + collectionId);
         }
 
-        // TODO: If CollectionId, save to dataStore
         if (collectionId) {
             await this.confirmDeleteCollection(collectionId);
         } else {
@@ -282,9 +252,7 @@ class CollectionPage extends BaseClass {
     }
 
     async confirmDeleteCollection(collectionId) {
-        // TODO: Add html or js for button confirmation
         console.log("Entering the confirmDeleteCollection method...");
-        // event.preventDefault();
 
         var msg = prompt("Are you sure you want to delete this collection? Enter 'yes' or 'no'");
         var response = msg.toLowerCase();
@@ -296,15 +264,11 @@ class CollectionPage extends BaseClass {
         let deleteCollection;
 
         if (response === 'yes') {
-            // do something - make api call
-            // TODO: retrieve collectionId from dataStore
-            let collectionId = this.dataStore.get("collection");
             // TODO: Does this need to be saved in a variable?
             deleteCollection = await this.client.deleteCollectionById(collectionId, this.errorHandler);
             // returnMsg about successful delete (showMessage())?
-            this.showMessage("Collection Deleted!");
+            this.showMessage(`Collection: ${collectionId} - Deleted!`);
         } else if (response === 'no') {
-            // do something - can request; exit
             this.showMessage("Collection Not Deleted!");
         } else {
             this.errorHandler("ERROR: Must enter either yes or no!");
@@ -327,27 +291,17 @@ class CollectionPage extends BaseClass {
         // }
     }
 
-    // Do popup the 'easy' way
-    // async popupForm(form, windowname) {
-    //     if (! window.focus) return true;
-    //     window.open('', windowname, 'height=200, width=400, scrollbars=yes');
-    //     form.target=windowname;
-    //     return true;
-    // }
-
     async generateTable(id, date, name, type, description, itemNames) {
         // TODO: How to confirm the correct collections are being retrieved from the dataStore?
         // TODO: Get the 'collection' from the DataStore & extract values that are needed
-        // Create scaffolding for table in
-        // html file first
+        // Dynamically render HTML for getCollectionById results
         console.log("Entering generateTable method...");
-        // event.preventDefault();
 
         if (itemNames.size === 0) {
             itemNames = "null";
         }
 
-        // Get reference for the body
+        // Get reference for the body - if method used
         //var tableDiv = document.getElementById('');
 
         // Create a table element
@@ -356,10 +310,6 @@ class CollectionPage extends BaseClass {
         // Set table id
         table.setAttribute('id', 'get-collection-table');
         var tr = document.createElement("tr");
-
-        // Define column count
-        let columnCount = 8;
-        let rowCount = 2;
 
         // Add the header row
         const headerRowNames = [
@@ -374,23 +324,16 @@ class CollectionPage extends BaseClass {
             "Close Table"
         ];
 
-        // let row = table.insertRow(-1);
         for (var i = 0; i < headerRowNames.length; i++) {
             // Create column element
             var th = document.createElement("th");
             // Create cell element
             var text = document.createTextNode(headerRowNames[i]);
-            // headerCell.innerHTML = headerRowNames[i];
             th.appendChild(text);
             tr.appendChild(th);
-            // row.appendChild(headerCell);
         }
         table.appendChild(tr);
 
-        // TODO: Populate table with data (separate method?)
-        // Does this even need to be in a for loop,
-        // Data will only populate a single row, the header will populate the other
-        // Loop through the data returned and add
         var trData = document.createElement("tr");
 
         var td1 = document.createElement("td");
@@ -403,10 +346,6 @@ class CollectionPage extends BaseClass {
         var td8 = document.createElement("td");
         var td9 = document.createElement("td");
 
-
-        // The below variables are to be populated with
-        // the results from the API call to the
-        // getCollectionById endpoint + buttons
         var colId = document.createTextNode(id);
         var colCreationDate = document.createTextNode(date);
         var colName = document.createTextNode(name);
