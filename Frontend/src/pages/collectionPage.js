@@ -310,7 +310,7 @@ class CollectionPage extends BaseClass {
         console.log(name);
 
         // Get reference for the body - if method used
-        //var tableDiv = document.getElementById('');
+        var tableDiv = document.getElementById("collection-table-results");
 
         // Create a table element
         var table = document.createElement("table");
@@ -383,7 +383,9 @@ class CollectionPage extends BaseClass {
 
         table.appendChild(trData);
 
-        document.body.appendChild(table);
+        //document.body.appendChild(table);
+        tableDiv.appendChild(table);
+
         // table.setAttribute("border-collapse", "collapse");
         // td.setAttribute("border", "1px solid #cecfd5");
         // td.setAttribute("padding", "10px 15px");
