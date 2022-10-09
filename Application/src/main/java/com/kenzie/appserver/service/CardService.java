@@ -8,6 +8,10 @@ import com.kenzie.appserver.service.model.MagicTheGathering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.smartcardio.Card;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CardService {
 
@@ -49,6 +53,26 @@ public class CardService {
         collectionService.addItemToList(collectionId, magicTheGathering.getName());
 
         return magicTheGathering;
+    }
+
+    public List<MagicTheGathering> getAllCards(){
+        List<MagicTheGathering> listOfCards = new ArrayList<>();
+        Iterable<MagicTheGatheringRecord> records = magicTheGatheringRepository.findAll();
+        for (MagicTheGatheringRecord record:records) {
+            MagicTheGathering magicTheGathering = new MagicTheGathering(
+                    record.getId(),
+                    record.getName(),
+                    record.getReleasedSet(),
+                    record.getCardType(),
+                    record.getManaCost(),
+                    record.getPowerToughness(),
+                    record.getCardAbilities(),
+                    record.getNumberOfCardsOwned(),
+                    record.getArtist(),
+                    record.getCollectionId());
+            listOfCards.add(magicTheGathering);
+        }
+        return listOfCards;
     }
 
 //    public void updateCardInCollection(MagicTheGathering magicTheGathering) {

@@ -24,8 +24,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @IntegrationTest
@@ -126,6 +125,53 @@ public class BoardGameControllerTest {
         // THEN
                 .andExpect(status().isNotFound());
 
+    }
+
+    @Test
+    public void getAllBoardGames_2BoardGames_Return2BoardGames() throws Exception {
+        String collectionId = UUID.randomUUID().toString();
+        String creationDate = LocalDate.now().toString();
+        String collectionName = "Best with Two";
+        String type = "Board Game";
+        String description = "Games that really shine with two players";
+        List<String> collectionItems = new ArrayList<>();
+
+        Collection newCollection = new Collection(collectionId, creationDate, collectionName, type, description, collectionItems);
+        collectionService.addCollection(newCollection);
+
+        String id = UUID.randomUUID().toString();
+        String name = "Testorini";
+        String numberOfPlayers = "2-4";
+        String yearPublished = "2016";
+        String averagePlayTime = "20";
+        BoardGame boardGame = new BoardGame(
+                id,
+                name,
+                numberOfPlayers,
+                yearPublished,
+                averagePlayTime,
+                collectionId);
+        boardGameService.addBoardGameToCollection(boardGame);
+
+        String id2 = UUID.randomUUID().toString();
+        String name2 = "Chess";
+        String numberOfPlayers2 = "2";
+        String yearPublished2 = "A While Ago";
+        String averagePlayTime2 = "Depends on if you suck";
+        BoardGame boardGame2 = new BoardGame(
+                id2,
+                name2,
+                numberOfPlayers2,
+                yearPublished2,
+                averagePlayTime2,
+                collectionId);
+        boardGameService.addBoardGameToCollection(boardGame2);
+
+        mapper.registerModule(new JavaTimeModule());
+
+        mvc.perform(get("/boardGame")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
 //    @Test

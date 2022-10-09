@@ -5,6 +5,7 @@ import com.kenzie.appserver.controller.model.CardCreateRequest;
 import com.kenzie.appserver.service.CardService;
 import com.kenzie.appserver.service.CollectionService;
 import com.kenzie.appserver.service.model.Collection;
+import com.kenzie.appserver.service.model.MagicTheGathering;
 import net.andreinc.mockneat.MockNeat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -149,6 +151,71 @@ public class CardControllerTest {
                 .andExpect(status().isNotFound());
 
         assertThat(collectionService.checkCollectionItemNames(collectionId)).isFalse();
+    }
+
+    @Test
+    public void getAllCards_2Cards_returns2Cards() throws Exception {
+        String collectionId = UUID.randomUUID().toString();
+        String creationDate = LocalDate.now().toString();
+        String collectionName = "Pat's MTG Library";
+        String type = "Card Game";
+        String description = "Pat MTG Card Collection";
+        List<String> collectionItems = new ArrayList<>();
+
+        Collection newCollection = new Collection(collectionId, creationDate, collectionName, type, description, collectionItems);
+        collectionService.addCollection(newCollection);
+
+        String id1 = UUID.randomUUID().toString();
+        String name = "cardName1";
+        List<String> releasedSet = new ArrayList<>();
+        String cardType = "cardType1";
+        String manaCost = "manaCost1";
+        String powerToughness = "powerToughness1";
+        String cardAbilities = "someCoolAbilities";
+        int numberOfCardsOwned = 1;
+        String artist = "Toby is the Scranton Strangler";
+
+        MagicTheGathering magicTheGathering1 = new MagicTheGathering(
+                id1,
+                name,
+                releasedSet,
+                cardType,
+                manaCost,
+                powerToughness,
+                cardAbilities,
+                numberOfCardsOwned,
+                artist,
+                collectionId);
+        cardService.addCardToCollection(magicTheGathering1);
+
+        String id2 = UUID.randomUUID().toString();
+        String name2 = "cardName2";
+        List<String> releasedSet2 = new ArrayList<>();
+        String cardType2 = "cardType2";
+        String manaCost2 = "manaCost2";
+        String powerToughness2 = "powerToughness2";
+        String cardAbilities2 = "someLameAbilities";
+        int numberOfCardsOwned2 = 2;
+        String artist2 = "Dwight";
+
+        MagicTheGathering magicTheGathering2 = new MagicTheGathering(
+                id2,
+                name2,
+                releasedSet2,
+                cardType2,
+                manaCost2,
+                powerToughness2,
+                cardAbilities2,
+                numberOfCardsOwned2,
+                artist2,
+                collectionId);
+        cardService.addCardToCollection(magicTheGathering2);
+
+        mapper.registerModule(new JavaTimeModule());
+
+        mvc.perform(get("/cards")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
     // TODO: Happy case for updateCardInCollection
