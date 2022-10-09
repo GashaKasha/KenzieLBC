@@ -10,7 +10,7 @@ var CURRENT_STATE;
 class CollectionPage extends BaseClass {
     constructor() {
         super();
-        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'confirmDeleteCollection', 'renderCollection'], this);
+        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'confirmDeleteCollection', 'addItemsToTable', 'renderCollection'], this);
         this.dataStore = new DataStore();
     }
 
@@ -80,6 +80,7 @@ class CollectionPage extends BaseClass {
                     collectionItems);
 
                 document.getElementById('table-delete-btn').addEventListener('click', this.onDeleteCollection);
+                document.getElementById('table-add-items-btn').addEventListener('click', this.addItemsToTable);
             } else {
                 this.errorHandler("Error Getting Collection! Try Again... ");
                 console.log("Error Getting Collection!");
@@ -131,11 +132,10 @@ class CollectionPage extends BaseClass {
     // get global working and then focus on passing the collectionId automatically later
 
     // Event Handlers --------------------------------------------------------------------------------------------------
-    // Create a new collection
     async onCreateCollection(event) {
         console.log("Entering onCreateCollection method...");
         event.preventDefault();
-        // CURRENT_STATE = "create";
+
         let collectionName = document.getElementById('collection-name').value;
         let collectionType = document.getElementById('collection-type').value;
         let collectionDescription = document.getElementById('collection-description').value;
@@ -162,18 +162,13 @@ class CollectionPage extends BaseClass {
         });
     }
 
-    // Get collection for a given ID
     async onGetCollection(event) {
 
         /* Add to place where it's needed
         *   item.style.setProperty('--display', 'none');
         * */
         // TODO: Add some sort of id validation?
-        // TODO: Question about saving objects to the DataStore
-        // TODO: When objects are saved to the DataStore or LocalStorage...
-        // TODO: Question - Does the API call response hit this method?
         console.log("Entering onGetCollection method...");
-        CURRENT_STATE = "get";
 
         // // Prevent the page from refreshing on form submit
         event.preventDefault();
@@ -204,7 +199,6 @@ class CollectionPage extends BaseClass {
         }
     }
 
-    // Delete collection for a given ID
     async onDeleteCollection(event) {
         console.log("Entering onDeleteCollection method...");
         event.preventDefault();
@@ -230,14 +224,13 @@ class CollectionPage extends BaseClass {
     // TODO: CollectionPage 'Delete Collection' could use window.prompt()
 
     async onCollectionPageDelete(event) {
-        // TODO: Workflow
+        // TODO: Workflow - Is this needed? State needs to be different from table delete button!
         // 1. When user clicks the 'DeleteCollection' button, this method is called
         // 2. Prompt user to enter a collection id
         // 3. Validate collection id entered
         // 4. If collection Id valid, save the collection id to the dataStore
         // 5. Call the delete confirmation method
         console.log("Entering onCollectionPageDelete method...");
-        // CURRENT_STATE = "delete";
 
         event.preventDefault();
 
@@ -248,7 +241,6 @@ class CollectionPage extends BaseClass {
         // TODO: If CollectionId, save to dataStore
 
         // TODO: Call the delete confirmation by id method - to be created
-        // this.dataStore.set("CURRENT_STATE", CURRENT_STATE);
     }
 
     async confirmDeleteCollection(collectionId) {
@@ -264,15 +256,12 @@ class CollectionPage extends BaseClass {
         let deleteCollection;
 
         if (response === 'yes') {
-            // TODO: Does this need to be saved in a variable?
             deleteCollection = await this.client.deleteCollectionById(collectionId, this.errorHandler);
-            // returnMsg about successful delete (showMessage())?
             this.showMessage(`Collection: ${collectionId} - Deleted!`);
         } else if (response === 'no') {
             this.showMessage("Collection Not Deleted!");
         } else {
             this.errorHandler("ERROR: Must enter either yes or no!");
-            // Or a different returnMsg?
         }
 
         this.dataStore.setState({
@@ -281,7 +270,7 @@ class CollectionPage extends BaseClass {
             ["deleteCollectionId"]: collectionId
         });
 
-        // Alternative method
+        // Alternative method - potentially use for on-screen button functionality
         // Try with prompt first
         // if (confirm("Are you sure you want to delete this collection? Select 'OK' to confirm deletion.")) {
         //     Make API Call
@@ -292,8 +281,6 @@ class CollectionPage extends BaseClass {
     }
 
     async generateTable(id, date, name, type, description, itemNames) {
-        // TODO: How to confirm the correct collections are being retrieved from the dataStore?
-        // TODO: Get the 'collection' from the DataStore & extract values that are needed
         // Dynamically render HTML for getCollectionById results
         console.log("Entering generateTable method...");
 
@@ -311,7 +298,7 @@ class CollectionPage extends BaseClass {
         table.setAttribute('id', 'get-collection-table');
         var tr = document.createElement("tr");
 
-        // Add the header row
+        // Add header rows
         const headerRowNames = [
             "Collection ID",
             "Collection Creation Date",
@@ -375,25 +362,37 @@ class CollectionPage extends BaseClass {
 
         table.appendChild(trData);
 
-        // The last two cells should be populated with buttons
-
-        // TODO: Before exiting loop, append the variables to the td
-        // i.e. td1.appendChild(colId);
-        // And append td to tr
-        // i.e. trData.appendChild(td1);
-        // Finally append tr to the table element
-        // table.appendChild(tr);
-        // TODO: append table to document body
-        // i.e. document.body.appendChild(table);
-        // TODO: Method to handle page direction
-        // on click of 'addToCollection'
-        // retrieve collectionType from localStorage
-        // depending on collectionType, redirect to correct page
-
         document.body.appendChild(table);
         // table.setAttribute("border-collapse", "collapse");
         // td.setAttribute("border", "1px solid #cecfd5");
         // td.setAttribute("padding", "10px 15px");
+    }
+
+    async addItemsToTable() {
+        // TODO:
+        // 1. Try to figure out how to pass or retrieve collection id and add to the form
+        // 2. Update with the correct html page for the mtg card game page
+        // Get CollectionId and CollectionType from localStorage
+        //let collectionId = localStorage.getItem("collectionId");
+        let collectionType = localStorage.getItem("collectionType");
+        // If type = card game redirect to cardGamePage
+        // else if type = board game redirect to board game page
+
+        if (collectionType === '' || collectionType.trim().length === 0) {
+            console.log("ERROR: Unable to retrieve the collection type from local Storage");
+        } else {
+            collectionType = collectionType.replaceAll(' ', '');
+            console.log(collectionType);
+        }
+
+        if (collectionType.toLowerCase() === 'cardgame') {
+            // TODO: Needs to be changed to w/e the card game page url will be
+            window.location.href = `http://localhost:5001/index.html`
+        } else if (collectionType.toLowerCase() === 'boardgame') {
+            window.location.href = `http://localhost:5001/gamePage.html`
+        }
+
+
     }
 }
 
