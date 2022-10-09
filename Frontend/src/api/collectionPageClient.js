@@ -4,7 +4,7 @@ import axios from "axios";
 export default class CollectionClient extends BaseClass {
     constructor(props = {}) {
         super();
-        const methodsToBind = ['clientLoaded', 'createCollection', 'getCollectionById'];
+        const methodsToBind = ['clientLoaded', 'createCollection', 'getCollectionById', 'deleteCollectionById'];
         this.bindClassMethods(methodsToBind, this);
         this.props = props;
         this.clientLoaded(axios);

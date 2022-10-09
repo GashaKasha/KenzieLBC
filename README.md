@@ -38,8 +38,8 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 ### Seed Game Organizer Service database tables using the below commands
 
 ```bash
-aws dynamodb batch-write-item --request-items file://Collection_seeddata.json
-aws dynamodb batch-write-item --request-items file://BoardGame_seeddata.json
-aws dynamodb batch-write-item --request-items file://MagicTheGathering_seeddata.json
+aws dynamodb batch-write-item --request-items file://Collection_seeddata.json --endpoint-url http://localhost:8000
+aws dynamodb batch-write-item --request-items file://BoardGame_seeddata.json --endpoint-url http://localhost:8000
+aws dynamodb batch-write-item --request-items file://MagicTheGathering_seeddata.json --endpoint-url http://localhost:8000
 
 ```

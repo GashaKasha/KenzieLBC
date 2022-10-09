@@ -11,7 +11,7 @@
             {"S":"Duel Decks: Speed vs. Cunning"},
             {"S":"Eternal Masters"},
             {"S":"Commander 2017"}
-            ]},
+          ]},
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "3UUU"},
           "PowerToughness": {"S": "3/4"},
@@ -25,7 +25,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
           "Name": {"S": "Brute Strength"},
           "ReleasedSet": {"L": [
             {"S":"Oath of the Gatewatch"},
@@ -47,13 +47,13 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
           "Name": {"S": "Sol'kanar the Swamp King"},
           "ReleasedSet": {"L": [
             {"S":"Legends"},
             {"S":"Time Spiral: Timeshifted"},
             {"S":"Chronicles"}
-            ]},
+          ]},
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "2UBR"},
           "PowerToughness": {"S": "5/5"},
@@ -67,7 +67,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
           "Name": {"S": "Fyndhorn Pollen"},
           "ReleasedSet": {"L": [
             {"S":"Ice Age"},
@@ -86,7 +86,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
           "Name": {"S": "Vivid Meadow"},
           "ReleasedSet": {"L": [
             {"S":"Lorwyn"},
@@ -97,7 +97,7 @@
             {"S":"Commander 2017"},
             {"S":"Commander Anthology 2018"},
             {"S":"Streets of New Capenna Commander"}
-            ]},
+          ]},
           "CardType": {"S": "Land"},
           "ManaCost": {"S": "ETB tapped with 2 charge counters. Tap - add W. Tap - remove charge counter and add 1 mana of any color"},
           "PowerToughness": {"S": "N/A"},
@@ -111,12 +111,12 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"c5670906-ad5a-4af8-be6e-6e5d5e7fb84f"},
+          "Id": {"S":"c5670906-ad5a-4af8-be6e-6e5d5e7fb84f"},
           "Name": {"S": "Collective Voyage"},
           "ReleasedSet": {"L": [
             {"S":"Magic: The Gathering-Commander"},
             {"S":"Commander 2016"}
-            ]},
+          ]},
           "CardType": {"S": "Sorcery"},
           "ManaCost": {"S": "G"},
           "PowerToughness": {"S": "CardGame"},
@@ -130,14 +130,14 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"8066074a-f883-4e6b-bb19-72ae5271ef55"},
+          "Id": {"S":"8066074a-f883-4e6b-bb19-72ae5271ef55"},
           "Name": {"S": "Sphinx of the Steel Wind"},
           "ReleasedSet": {"L": [
             {"S":"Alara Reborn"},
             {"S":"Premium Deck Series: Graveborn"},
             {"S":"Commander 2013 Edition"},
             {"S":"Eternal Masters"}
-            ]},
+          ]},
           "CardType": {"S": "Creature"},
           "ManaCost": {"S": "5WUB"},
           "PowerToughness": {"S": "6/6"},
@@ -151,7 +151,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"b41482cf-c9e8-4637-b9b0-ec3b978400c8"},
+          "Id": {"S":"b41482cf-c9e8-4637-b9b0-ec3b978400c8"},
           "Name": {"S": "Sol Ring"},
           "ReleasedSet": {"L": [
             {"S":"Alpha"},
@@ -180,7 +180,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"7f66382e-1c9d-4030-a781-c55fb1acc177"},
+          "Id": {"S":"7f66382e-1c9d-4030-a781-c55fb1acc177"},
           "Name": {"S": "Swords to Plowshares"},
           "ReleasedSet": {"L": [
             {"S":"Fourth Edition"},
@@ -205,7 +205,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":""},
+          "Id": {"S":"6e6eaff7-6ae7-43a1-ad75-f5ffd42b9c0d"},
           "Name": {"S": "Beast Within"},
           "ReleasedSet": {"L": [
             {"S":"Dominaria United Commander"},
@@ -227,7 +227,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"9dca3595-0537-49d6-965c-3eba06212eb4"},
+          "Id": {"S":"9dca3595-0537-49d6-965c-3eba06212eb4"},
           "Name": {"S": "Temur Ascendancy"},
           "ReleasedSet": {"L": [
             {"S":"Khans of Tarkir"},
@@ -246,7 +246,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"600fd10d-e18e-4811-b5c8-3c5e5bf13b25"},
+          "Id": {"S":"600fd10d-e18e-4811-b5c8-3c5e5bf13b25"},
           "Name": {"S": "Birds of Paradise"},
           "ReleasedSet": {"L": [
             {"S":"Secret Lair"},
@@ -270,7 +270,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"5462c062-f2fa-446d-a9ff-e0649861badf"},
+          "Id": {"S":"5462c062-f2fa-446d-a9ff-e0649861badf"},
           "Name": {"S": "The Mimeoplasm"},
           "ReleasedSet": {"L": [
             {"S":"Double Masters 2022"},
@@ -292,7 +292,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"46201c10-6377-430e-bf70-5369e677420d"},
+          "Id": {"S":"46201c10-6377-430e-bf70-5369e677420d"},
           "Name": {"S": "Arcane Signet"},
           "ReleasedSet": {"L": [
             {"S":"Throne of Eldraine"},
@@ -314,7 +314,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"3263e797-5562-4e0c-b4cf-bac22ec415ff"},
+          "Id": {"S":"3263e797-5562-4e0c-b4cf-bac22ec415ff"},
           "Name": {"S": "Death Shadow"},
           "ReleasedSet": {"L": [
             {"S":"Worldwake"},
@@ -335,7 +335,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"ef4f61f0-0ef4-46fa-9404-a8a1b0ce9aee"},
+          "Id": {"S":"ef4f61f0-0ef4-46fa-9404-a8a1b0ce9aee"},
           "Name": {"S": "Buried Alive"},
           "ReleasedSet": {"L": [
             {"S":"Weatherlight"},
@@ -357,7 +357,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"e89ad08e-9c25-4138-8d59-506f406554e6"},
+          "Id": {"S":"e89ad08e-9c25-4138-8d59-506f406554e6"},
           "Name": {"S": "Watery Grave"},
           "ReleasedSet": {"L": [
             {"S":"Guilds of Ravnica"},
@@ -377,7 +377,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"e9682451-4699-4e89-a0c2-7da2e3f5e676"},
+          "Id": {"S":"e9682451-4699-4e89-a0c2-7da2e3f5e676"},
           "Name": {"S": "Titanoth Rex"},
           "ReleasedSet": {"L": [
             {"S":"Ikoria: Lair of Behemoths"}
@@ -395,7 +395,7 @@
     {
       "PutRequest": {
         "Item": {
-          "id": {"S":"27601689-f0cd-4be6-a930-3ed4bab5e311"},
+          "Id": {"S":"27601689-f0cd-4be6-a930-3ed4bab5e311"},
           "Name": {"S": "Craterhoof Behemoth"},
           "ReleasedSet": {"L": [
             {"S":"Secret Lair"},

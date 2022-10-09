@@ -100,7 +100,7 @@ label {
 #create-collection-results {
     /* Causes results screen to not show up until changed to something
     like 'flex' */
-    display: flex;
+    display: none;
     flex-direction: column;
     text-align: center;
     padding: 5px;
@@ -625,3 +625,38 @@ textarea::placeholder {
     cursor: pointer;
     background: #00bf72;
     border-color: #2e2e2e; }
+
+
+/* Table Styling */
+table {
+    border-collapse: collapse;
+    border: 1px solid #7f7f7f;
+    border-spacing: 0;
+    color: #4a4a4d;
+    font: 12px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+th,
+td {
+    padding: 10px 15px;
+    vertical-align: middle;
+}
+
+th {
+    background: #395870;
+    background: linear-gradient(#49708f, #293f50);
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+td {
+    border: 1px solid #7f7f7f;
+    /*width: 50px;*/
+    /*height: 50px;*/
+    /*text-align: center;*/
+}
+
+
+
+
