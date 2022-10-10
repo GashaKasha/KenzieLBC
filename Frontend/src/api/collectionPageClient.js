@@ -64,7 +64,7 @@ export default class CollectionClient extends BaseClass {
         try {
             const response = await this.client.post(`/collections`, {
                 // JSON object
-                "name": name,
+                "collectionName": name,
                 "type": type,
                 "description": description
             });
