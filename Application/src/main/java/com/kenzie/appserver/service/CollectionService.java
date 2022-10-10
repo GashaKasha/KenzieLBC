@@ -95,7 +95,7 @@ public class CollectionService {
                     record.getCollectionItemNames());
             listOfCollections.add(collection);
         }
-        Collections.sort(listOfCollections, Collections.reverseOrder(new DateCreatedComparator()));
+//        Collections.sort(listOfCollections, Collections.reverseOrder(new DateCreatedComparator()));
         return listOfCollections;
     }
 

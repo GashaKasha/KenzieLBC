@@ -1,6 +1,7 @@
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
 import GamePageClient from "../api/gamePageClient";
+import CollectionClient from "../api/collectionPageClient";
 
 /**
  * Logic needed for the view playlist page of the website.
@@ -9,40 +10,56 @@ class GamePage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods([/*'onGet',*/ 'onCreate'/*, 'renderExample'*/], this);
+        this.bindClassMethods([/*'onGet',*/ 'onCreate', 'renderExample'], this);
         this.dataStore = new DataStore();
+        console.log(this.dataStore);
     }
 
     /**
      * Once the page has loaded, set up the event handlers and fetch the concert list.
      */
     async mount() {
-        /*document.getElementById('get-by-id-form').addEventListener('submit', this.onGet);*/
+//        document.getElementById('get-by-id-form').addEventListener('submit', this.onGet);
         document.getElementById('create-game-form').addEventListener('submit', this.onCreate);
         this.client = new GamePageClient();
-
-        /*this.dataStore.addChangeListener(this.renderExample)*/
+        this.collectionClient = new CollectionClient();
+        let result = await this.collectionClient.getAllCollections(this.errorHandler);
+        console.log(result)
+        this.dataStore.set("allCollections", result);
+        console.log("the collections are" + result);
+        this.renderExample();
+        this.dataStore.addChangeListener(this.renderExample)
     }
 
     // Render Methods --------------------------------------------------------------------------------------------------
 
-    /*async renderExample() {
-        let resultArea = document.getElementById("result-info");
+    async renderExample() {
+        let resultArea = document.getElementById("collections-display");
 
-        const example = this.dataStore.get("example");
+        const allCollections = this.dataStore.get("allCollections");
 
-        if (example) {
-            resultArea.innerHTML = `
-                <div>ID: ${example.id}</div>
-                <div>Name: ${example.name}</div>
-            `
+        const toArray = Object.entries(allCollections);
+        console.log(toArray);
+
+        if (allCollections) {
+            const ul = document.createElement("ul");
+            for (let i = 0; i < allCollections.length; i++) {
+                const li = document.createElement("li");
+                console.log("inside the for loop " + allCollections[i]);
+                li.innerHTML += `
+                    ${allCollections[i].collectionName} ............. ${allCollections[i].collectionId}
+                `;
+                ul.append(li);
+            }
+            resultArea.append(ul);
         } else {
             resultArea.innerHTML = "No Item";
         }
-    }*/
+    }
 
     // Event Handlers --------------------------------------------------------------------------------------------------
 
+////Todo
 //    async onGet(event) {
 //        // Prevent the page from refreshing on form submit
 //        event.preventDefault();

@@ -4,7 +4,8 @@ import axios from "axios";
 export default class CollectionClient extends BaseClass {
     constructor(props = {}) {
         super();
-        const methodsToBind = ['clientLoaded', 'createCollection', 'getCollectionById', 'deleteCollectionById'];
+        //added getAllCollections for testing
+        const methodsToBind = ['clientLoaded', 'createCollection', 'getCollectionById', 'deleteCollectionById', 'getAllCollections'];
         this.bindClassMethods(methodsToBind, this);
         this.props = props;
         this.clientLoaded(axios);
@@ -89,6 +90,15 @@ export default class CollectionClient extends BaseClass {
         if (errorCallback) {
             errorCallback(method + " failed - " + error);
             console.log(method + " failed - " + error);
+        }
+    }
+    /*JUST FOR TESTING*/
+    async getAllCollections(errorCallback) {
+        try {
+            const response = await this.client.get(`/collections`);
+            return response.data;
+        } catch (error) {
+            this.handleError("getAllCollections", error, errorCallback)
         }
     }
 }
