@@ -36,6 +36,8 @@ class GamePage extends BaseClass {
     async renderExample() {
         let resultArea = document.getElementById("collections-display");
 
+        resultArea.innerHTML = ""
+
         const allCollections = this.dataStore.get("allCollections");
 
         const toArray = Object.entries(allCollections);
@@ -46,13 +48,13 @@ class GamePage extends BaseClass {
             for (let i = 0; i < allCollections.length; i++) {
                 const li = document.createElement("li");
                 console.log("inside the for loop " + allCollections[i]);
-                li.innerHTML += `
+                li.innerHTML = `
                     ${allCollections[i].collectionName} ............. ${allCollections[i].collectionId}
                 `;
                 ul.append(li);
             }
             resultArea.append(ul);
-        } else {
+        }else {
             resultArea.innerHTML = "No Item";
         }
     }
