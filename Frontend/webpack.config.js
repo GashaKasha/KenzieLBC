@@ -10,8 +10,8 @@ module.exports = {
   entry: {
     mainPage: path.resolve(__dirname, 'src', 'pages', 'mainPage.js'),
     collectionPage: path.resolve(__dirname, 'src', 'pages', 'collectionPage.js'),
-    gamePage: path.resolve(__dirname, 'src', 'pages', 'gamePage.js')
-//    cardPage: path.resolve(__dirname, 'src', 'pages', 'cardPage.js')
+    gamePage: path.resolve(__dirname, 'src', 'pages', 'gamePage.js'),
+    cardPage: path.resolve(__dirname, 'src', 'pages', 'cardPage.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -44,11 +44,11 @@ module.exports = {
       filename: 'gamePage.html',
       inject: false
     }),
-//    new HtmlWebpackPlugin({
-//      template: './src/cardPage.html',
-//      filename: 'cardPage.html',
-//      inject: false
-//    }),
+    new HtmlWebpackPlugin({
+      template: './src/cardPage.html',
+      filename: 'cardPage.html',
+      inject: false
+    }),
     new CopyPlugin({
       patterns: [
         {
