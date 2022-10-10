@@ -101,6 +101,8 @@ class GamePage extends BaseClass {
             this.errorHandler("Error adding a board game!  Try again...");
         }
 
+        document.getElementById("game-name").value = '';
+        document.getElementById("collection-id").value = '';
         this.dataStore.set("boardGame", createdBoardGame);
     }
 }
