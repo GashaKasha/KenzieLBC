@@ -20,9 +20,14 @@ body {
 .search-bar {
   font-weight: bold;
   color: black;
-  padding: 18px 18px;
+  padding: 14px 18px;
   float: right;
   height: 24px;
+}
+
+.search-box {
+  height: 24px;
+  width: 300px;
 }
 
 .topnav-right {
