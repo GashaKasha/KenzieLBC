@@ -62,6 +62,7 @@ class CollectionPage extends BaseClass {
             const getCollection = this.dataStore.get("getCollection");
 
             if (getCollection) {
+                document.getElementById("collection-results-header").innerHTML = "Collection ID:";
                 console.log(getCollection);
 
                 let collectionId = getCollection.collectionId;
@@ -109,6 +110,7 @@ class CollectionPage extends BaseClass {
         } else if (getState === 'GET_ALL') {
             console.log("State === 'GET_ALL'");
             let resultArea = document.getElementById('collection-result-info');
+            resultArea.innerHTML = "";
 
             const getAllCollections = this.dataStore.get("getAllCollections");
             const convertCollections = Object.entries(getAllCollections);
@@ -116,12 +118,14 @@ class CollectionPage extends BaseClass {
 
             if (getAllCollections) {
                 document.getElementById("create-collection-results").style.display = "flex";
+                document.getElementById("collection-results-header").innerHTML = "All Collections:";
                 const ul = document.createElement("ul");
                 for (let i = 0; i < getAllCollections.length; i++) {
                     const li = document.createElement("li");
                     console.log("inside the for loop " + getAllCollections[i]);
-                    li.innerHTML += `Collection Name: ${getAllCollections[i].collectionName}`;
-                    li.innerHTML += `Collection ID: ${getAllCollections[i].collectionId}`;
+                    li.innerHTML += `
+                    Collection Name: ${getAllCollections[i].collectionName}
+                    Collection ID: ${getAllCollections[i].collectionId}`;
                     ul.append(li);
                 }
                 resultArea.append(ul);
