@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="mtgPage.js"></script>
     <title>Title</title>
     <meta charset="UTF-8">
+    <!-- icon link -->
+    <link rel="icon" href="images/PBANDJ%20Logo.jpg" type="image/x-icon">
+    <!-- /.end of icon link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/mtgPage2.css">
 </head>
@@ -18,7 +22,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="gamePage.html">Magic The Gathering</a>
+                <a href="mtgPage.html">Magic The Gathering</a>
             </div>
         </div>
         <div class="search-bar">
@@ -48,7 +52,7 @@
     <div class="left-column">
         <div class="card">
             <h3>Add a Magic The Gathering Card</h3>
-            <form class="card-content" id="create-game-form">
+            <form class="card-content" id="add-card-form">
                 <p class="form-field">
                     <label for="card-name"></label>
                     <input type="text" required class="validated-field" id="card-name"
@@ -71,8 +75,14 @@
                     <input type="text" required class="validated-field" id="collection-id"
                            placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
                 </p>
-                <button type="submit">Add Board Game</button>
+                <button type="submit">Add MTG Card</button>
             </form>
+        </div>
+        <div id="mtg-card-name">
+            <div class="card" id="card-name-results">
+                <div class="card-name-header">Magic:The Gathering card name:</div>
+                <p id="mtg-card-info"></p>
+            </div>
         </div>
     </div>
     <div class="right-column">

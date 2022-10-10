@@ -11,7 +11,7 @@ module.exports = {
     mainPage: path.resolve(__dirname, 'src', 'pages', 'mainPage.js'),
     collectionPage: path.resolve(__dirname, 'src', 'pages', 'collectionPage.js'),
     gamePage: path.resolve(__dirname, 'src', 'pages', 'gamePage.js'),
-    cardPage: path.resolve(__dirname, 'src', 'pages', 'cardPage.js')
+    mtgPage: path.resolve(__dirname, 'src', 'pages', 'mtgPage.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -45,8 +45,8 @@ module.exports = {
       inject: false
     }),
     new HtmlWebpackPlugin({
-      template: './src/cardPage.html',
-      filename: 'cardPage.html',
+      template: './src/mtgPage.html',
+      filename: 'mtgPage.html',
       inject: false
     }),
     new CopyPlugin({

@@ -9,7 +9,7 @@
           "CreationDate": {
             "S": "2022-10-01"
           },
-          "Name": {
+          "CollectionName": {
             "S": "Billy's Cool MTG Collection"
           },
           "Type": {
@@ -36,7 +36,7 @@
         "Item": {
           "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Deez MTG Cards Nutz"},
+          "CollectionName": {"S":"Deez MTG Cards Nutz"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"Best MTG cards in my collection"},
           "CollectionItemNames": {
@@ -55,7 +55,7 @@
         "Item": {
           "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Stompy EDH Deck Cards"},
+          "CollectionName": {"S":"Stompy EDH Deck Cards"},
           "Type": {"S": "CardGame"},
           "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
           "CollectionItemNames": {
@@ -75,7 +75,7 @@
         "Item": {
           "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Ajjri's Expansive Board Games Collection"},
+          "CollectionName": {"S":"Ajjri's Expansive Board Games Collection"},
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Some of my fav Board Games"},
           "CollectionItemNames": {
@@ -94,7 +94,7 @@
         "Item": {
           "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
           "CreationDate": {"S": "2022-10-01"},
-          "Name": {"S":"Pat's Board Game Collection"},
+          "CollectionName": {"S":"Pat's Board Game Collection"},
           "Type": {"S": "BoardGame"},
           "Description": {"S":"Current board games in my collection."},
           "CollectionItemNames": {

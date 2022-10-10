@@ -20,6 +20,36 @@ label {
     padding: 7px;
 }
 
+#mtg-card-name {
+    /* Causes results screen to not show up until changed to something
+    like 'flex' */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+
+.card-name-header {
+    color: #000000;
+    text-align: left;
+    background-size: cover;
+    height: 30%;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0;
+}
+
+p.card-name-result {
+    font-size: 14px;
+    color: #7f8c9b /* #848586*/;
+    line-height: 150%;
+}
+
+h2.card-name-result {
+    color: #FFFFFF;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
