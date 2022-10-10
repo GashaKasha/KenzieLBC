@@ -74,6 +74,7 @@ label {
     padding: 7px;
     font-weight: bold;
     display: block;
+    /*display: flex;*/
     margin-bottom: 0.25rem;
     color: #2d3748;
 }
@@ -269,9 +270,10 @@ img {
     display: flex;
 }
 
-#search-input {
-    margin: 0 auto;
-}
+/*#search-input {*/
+/*    margin: 0 auto;*/
+/*    padding: 15px;*/
+/*}*/
 
 /* Style the search submit button */
 button.search-button[type='submit'] {
@@ -292,11 +294,12 @@ button.search-button[type='submit'] {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-input#search-input[type='submit'] {
+#search-input[type='submit'] {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     -webkit-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 button.search-button[type='submit']:hover {
@@ -365,7 +368,7 @@ button.search-button[type='submit']:hover {
 
 
 /* Style the form submit button */
-button#form-submit {
+#form-submit {
     text-align: center;
     position: relative;
     cursor: pointer;
@@ -504,15 +507,17 @@ button#form-submit {
 /* End of Carousel Styling */
 
 /* Form Styling */
-input::placeholder {
-    color: #a0aec0;
+input {
+    width: 208px;
+    height: 30px;
+    position: center;
 }
 
-input:focus, textarea:focus {
-    outline: none;
-    border: 1px solid #a0aec0;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    background-clip: padding-box;
+#collection-name {
+    width: 275px;
+    height: 33px;
+    position: center;
+    padding: 5px;
 }
 
 /* Style inputs, select elements and textareas */
@@ -527,6 +532,18 @@ input[type=text], select, textarea {
     resize: vertical;
     /* Set uniform font setting for the form */
     font: 1em sans-serif;
+    position: center;
+}
+
+input::placeholder {
+    color: #a0aec0;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #a0aec0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    background-clip: padding-box;
 }
 
 textarea {
@@ -553,11 +570,16 @@ textarea::placeholder {
     margin-top: 20px;
 }
 
-.form-control {
-    justify-content: center;
-    position: center;
-    box-sizing: border-box;
-}
+/*.form-control {*/
+/*    height: 2em;*/
+/*}*/
+
+/*.form-control {*/
+/*    justify-content: center;*/
+/*    position: center;*/
+/*    padding: 15px;*/
+/*    !*box-sizing: border-box;*!*/
+/*}*/
 
 /*!* Clear floats after the columns */
 .row:after {
@@ -605,7 +627,9 @@ textarea::placeholder {
 
 .back-to-top {
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+}
+
 .back-to-top .btn-dark {
     width: 35px;
     height: 35px;
@@ -620,7 +644,9 @@ textarea::placeholder {
     z-index: 999;
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
-    transition: all 0.3s linear; }
+    transition: all 0.3s linear;
+}
+
 .back-to-top .btn-dark:hover {
     cursor: pointer;
     background: #00bf72;

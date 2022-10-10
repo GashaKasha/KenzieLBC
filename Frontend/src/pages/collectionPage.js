@@ -10,7 +10,7 @@ var CURRENT_STATE;
 class CollectionPage extends BaseClass {
     constructor() {
         super();
-        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'confirmDeleteCollection', 'addItemsToTable', 'renderCollection'], this);
+        this.bindClassMethods(['onCreateCollection', 'onGetCollection', 'onDeleteCollection', 'confirmDeleteCollection', 'addItemsToTable', 'onCollectionPageDelete', 'onGetAllCollections','renderCollection'], this);
         this.dataStore = new DataStore();
     }
 
@@ -21,6 +21,8 @@ class CollectionPage extends BaseClass {
         // document.getElementById
         document.getElementById('create-collection-form').addEventListener('submit', this.onCreateCollection);
         document.getElementById('search-collection').addEventListener('submit', this.onGetCollection);
+        document.getElementById('delete-collection').addEventListener('click', this.onCollectionPageDelete);
+        document.getElementById('collection-list').addEventListener('click', this.onGetAllCollections);
         // TODO: Add listeners for form-delete-btn + add-items btn
 
         this.client = new CollectionClient();
@@ -61,16 +63,23 @@ class CollectionPage extends BaseClass {
 
             if (getCollection) {
                 console.log(getCollection);
+
+                let collectionId = getCollection.collectionId;
+                console.log(collectionId);
                 // Save in dataStore or localStorage
                 localStorage.setItem("collectionId", getCollection.collectionId);
-                let collectionId = getCollection.collectionId;
                 let collectionDate = getCollection.creationDate;
+                console.log(collectionDate);
                 let collectionName = getCollection.collectionName;
+                console.log(collectionName);
+                let collectionType = getCollection.type;
+                console.log(collectionType);
                 // Save in dataStore or localstorage
                 localStorage.setItem("collectionType", getCollection.type);
-                let collectionType = getCollection.type;
                 let collectionDesc = getCollection.description;
+                console.log(collectionDesc);
                 let collectionItems = getCollection.collectionItemNames;
+                console.log(collectionItems);
 
                 await this.generateTable(collectionId,
                     collectionDate,
@@ -97,9 +106,32 @@ class CollectionPage extends BaseClass {
                 this.errorHandler(`Error Deleting Collection ID: ${deleteCollectionId}`);
                 console.log("Error Deleting Collection ID...");
             }
+        } else if (getState === 'GET_ALL') {
+            console.log("State === 'GET_ALL'");
+            let resultArea = document.getElementById('collection-result-info');
+
+            const getAllCollections = this.dataStore.get("getAllCollections");
+            const convertCollections = Object.entries(getAllCollections);
+            console.log(convertCollections);
+
+            if (getAllCollections) {
+                document.getElementById("create-collection-results").style.display = "flex";
+                const ul = document.createElement("ul");
+                for (let i = 0; i < getAllCollections.length; i++) {
+                    const li = document.createElement("li");
+                    console.log("inside the for loop " + getAllCollections[i]);
+                    li.innerHTML += `Collection Name: ${getAllCollections[i].collectionName}`;
+                    li.innerHTML += `Collection ID: ${getAllCollections[i].collectionId}`;
+                    ul.append(li);
+                }
+                resultArea.append(ul);
+            } else {
+                resultArea.innerHTML = "Error Printing Collections...";
+            }
         } else {
             console.log("ERROR: Unable to process current state!");
         }
+        // TODO: Add Get All collections - pass in the response from getAllCollections (reference 'create')
         // } else if (getState === 'DELETE') {
         //     // Do delete things
         // } else {
@@ -139,6 +171,10 @@ class CollectionPage extends BaseClass {
         let collectionName = document.getElementById('collection-name').value;
         let collectionType = document.getElementById('collection-type').value;
         let collectionDescription = document.getElementById('collection-description').value;
+
+        if (collectionName === null || collectionType === null) {
+            this.errorHandler("Must enter valid data for Collection Name and Collection Type");
+        }
 
         const createCollection = await this.client.createCollection(
             collectionName,
@@ -199,6 +235,25 @@ class CollectionPage extends BaseClass {
         }
     }
 
+    async onGetAllCollections(event) {
+        // TODO: Make a call to getAllCollections endpoints, render table in render() method
+        console.log("Entering onGetAllCollections method...");
+        event.preventDefault();
+
+        const allCollections = await this.client.getAllCollections(this.errorHandler);
+
+        if (allCollections && allCollections.length > 0) {
+            this.showMessage("Listing All Collections!");
+            this.dataStore.setState({
+                [CURRENT_STATE]: "GET_ALL",
+                ["getAllCollections"]: allCollections
+            });
+        } else {
+            this.errorHandler("Error retrieving all collections. Try again ... ");
+            console.log("GET ALL isn't working...");
+        }
+    }
+
     async onDeleteCollection(event) {
         console.log("Entering onDeleteCollection method...");
         event.preventDefault();
@@ -234,13 +289,24 @@ class CollectionPage extends BaseClass {
 
         event.preventDefault();
 
-        // TODO: Retrieve the collectionId
+        var deleteCollectionId = prompt("Enter Collection ID for Collection to Delete");
+        console.log(deleteCollectionId);
 
-        // TODO: Validate the collectionId
+        if (deleteCollectionId === null || deleteCollectionId=== "") {
+            this.errorHandler("ERROR: Must enter a valid Collection ID");
+        }
 
-        // TODO: If CollectionId, save to dataStore
+        if (deleteCollectionId) {
+            await this.confirmDeleteCollection(deleteCollectionId);
+        } else {
+            this.errorHandler(`ERROR: Collection ID: ${deleteCollectionId} is Invalid!`);
+        }
 
-        // TODO: Call the delete confirmation by id method - to be created
+        this.dataStore.setState({
+            [CURRENT_STATE]: "DELETE",
+            ["deleteCollection"]: deleteCollection,
+            ["deleteCollectionId"]: deleteCollectionId
+        });
     }
 
     async confirmDeleteCollection(collectionId) {
@@ -288,8 +354,10 @@ class CollectionPage extends BaseClass {
             itemNames = "null";
         }
 
+        console.log(name);
+
         // Get reference for the body - if method used
-        //var tableDiv = document.getElementById('');
+        var tableDiv = document.getElementById("collection-table-results");
 
         // Create a table element
         var table = document.createElement("table");
@@ -320,6 +388,8 @@ class CollectionPage extends BaseClass {
             tr.appendChild(th);
         }
         table.appendChild(tr);
+
+
 
         var trData = document.createElement("tr");
 
@@ -362,6 +432,102 @@ class CollectionPage extends BaseClass {
 
         table.appendChild(trData);
 
+        //document.body.appendChild(table);
+        tableDiv.appendChild(table);
+
+        // table.setAttribute("border-collapse", "collapse");
+        // td.setAttribute("border", "1px solid #cecfd5");
+        // td.setAttribute("padding", "10px 15px");
+    }
+
+    async generateAllTable(collections) {
+        // Dynamically render HTML for getCollectionById results
+        console.log("Entering generateTable method...");
+
+        // TODO: Extract each of the values from the get all request
+        // TODO: This time the data append should be in a for loop
+
+        // if (itemNames.size === 0) {
+        //     itemNames = "null";
+        // }
+
+        console.log(name);
+
+        // Get reference for the body - if method used
+        //var tableDiv = document.getElementById('');
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Set table id
+        table.setAttribute('id', 'get-collection-table');
+        var tr = document.createElement("tr");
+
+        // Add header rows
+        const headerRowNames = [
+            "Collection ID",
+            "Collection Creation Date",
+            "Collection Name",
+            "Collection Type",
+            "Collection Description",
+            "Collection Item Names",
+            "Delete Collection",
+            "Add Items To Collection",
+            "Close Table"
+        ];
+
+        for (var i = 0; i < headerRowNames.length; i++) {
+            // Create column element
+            var th = document.createElement("th");
+            // Create cell element
+            var text = document.createTextNode(headerRowNames[i]);
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+        table.appendChild(tr);
+
+        collections.forEach(collection => {
+            var trData = document.createElement("tr");
+
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+            var td6 = document.createElement("td");
+            var td7 = document.createElement("td");
+            var td8 = document.createElement("td");
+            var td9 = document.createElement("td");
+
+            var colId = document.createTextNode();
+            var colCreationDate = document.createTextNode();
+            var colName = document.createTextNode();
+            var colType = document.createTextNode();
+            var colDesc = document.createTextNode();
+            var colItemNames = document.createTextNode();
+
+            td1.appendChild(colId);
+            td2.appendChild(colCreationDate);
+            td3.appendChild(colName);
+            td4.appendChild(colType);
+            td5.appendChild(colDesc);
+            td6.appendChild(colItemNames);
+            td7.innerHTML = "<button type='button' id='table-delete-btn'>DELETE</button>";
+            td8.innerHTML = "<button type='button' id='table-add-items-btn'>Add To Collection</button>";
+            td9.innerHTML = "<input type='button' id='close-table' value='CLOSE' onclick=document.getElementById(\"get-collection-table\").style.display='none'>";
+
+            trData.appendChild(td1);
+            trData.appendChild(td2);
+            trData.appendChild(td3);
+            trData.appendChild(td4);
+            trData.appendChild(td5);
+            trData.appendChild(td6);
+            trData.appendChild(td7);
+            trData.appendChild(td8);
+            trData.appendChild(td9);
+
+            table.appendChild(trData);
+        })
         document.body.appendChild(table);
         // table.setAttribute("border-collapse", "collapse");
         // td.setAttribute("border", "1px solid #cecfd5");

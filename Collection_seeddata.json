@@ -3,21 +3,11 @@
     {
       "PutRequest": {
         "Item": {
-          "Id": {
-            "S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"
-          },
-          "CreationDate": {
-            "S": "2022-10-01"
-          },
-          "CollectionName": {
-            "S": "Billy's Cool MTG Collection"
-          },
-          "Type": {
-            "S": "CardGame"
-          },
-          "Description": {
-            "S": "MTG cards currently owned."
-          },
+          "Id": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S": "Billy's Cool MTG Collection"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S": "MTG cards currently owned."},
           "CollectionItemNames": {
             "L": [
               {"S": "Arcanis the Omnipotent"},

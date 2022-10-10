@@ -4,7 +4,6 @@ import axios from "axios";
 export default class CollectionClient extends BaseClass {
     constructor(props = {}) {
         super();
-        //added getAllCollections for testing
         const methodsToBind = ['clientLoaded', 'createCollection', 'getCollectionById', 'deleteCollectionById', 'getAllCollections'];
         this.bindClassMethods(methodsToBind, this);
         this.props = props;
@@ -35,6 +34,20 @@ export default class CollectionClient extends BaseClass {
             return response.data;
         } catch (error) {
             this.handleError("getCollectionById", error, errorCallback)
+        }
+    }
+
+    /**
+     * Get all collections
+     * @param errorCallback (Optional) A function to execute if the call fails
+     * @returns An array of collections
+     */
+    async getAllCollections(errorCallback) {
+        try {
+            const response = await this.client.get(`/collections`);
+            return response.data;
+        } catch (error) {
+            this.handleError("getAllCollections", error, errorCallback);
         }
     }
 
