@@ -92,13 +92,4 @@ export default class CollectionClient extends BaseClass {
             console.log(method + " failed - " + error);
         }
     }
-    /*JUST FOR TESTING*/
-    async getAllCollections(errorCallback) {
-        try {
-            const response = await this.client.get(`/collections`);
-            return response.data;
-        } catch (error) {
-            this.handleError("getAllCollections", error, errorCallback)
-        }
-    }
 }

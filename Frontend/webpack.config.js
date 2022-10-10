@@ -27,17 +27,17 @@ module.exports = {
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
     overlay: true,
-        proxy: [
-          {
-            context: [
-              '/boardGame',
-              '/cards',
-              '/collections'
-            ],
-            target: 'http://localhost:5001/'
-          }
-        ]
-      },
+//        proxy: [
+//          {
+//            context: [
+//              '/boardGame',
+//              '/cards',
+//              '/collections'
+//            ],
+//            target: 'http://localhost:5001/'
+//          }
+//        ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
