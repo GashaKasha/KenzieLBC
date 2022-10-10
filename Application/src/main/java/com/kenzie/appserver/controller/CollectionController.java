@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +29,7 @@ public class CollectionController {
     public ResponseEntity<CollectionResponse> createCollection(@RequestBody CollectionCreateRequest collectionCreateRequest) {
 
         String generateCollectionId = UUID.randomUUID().toString();
-        LocalDate creationDate = LocalDate.now();
+        LocalDateTime creationDate = LocalDateTime.now();
         List<String> collectionItems = new ArrayList<>();
 
         Collection collection = new Collection(generateCollectionId,
