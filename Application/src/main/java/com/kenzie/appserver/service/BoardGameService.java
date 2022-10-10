@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.BoardGameNameComparator;
 import com.kenzie.appserver.CollectionNotFoundException;
 import com.kenzie.appserver.repositories.BoardGameRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -78,6 +80,7 @@ public class BoardGameService {
                     record.getCollectionId());
             listOfBoardGames.add(boardGame);
         }
+        listOfBoardGames.sort(new BoardGameNameComparator());
         return listOfBoardGames;
     }
 

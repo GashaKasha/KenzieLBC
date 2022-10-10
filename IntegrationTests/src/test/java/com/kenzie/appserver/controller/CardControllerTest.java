@@ -166,7 +166,7 @@ public class CardControllerTest {
         collectionService.addCollection(newCollection);
 
         String id1 = UUID.randomUUID().toString();
-        String name = "cardName1";
+        String name = "CardName1";
         List<String> releasedSet = new ArrayList<>();
         String cardType = "cardType1";
         String manaCost = "manaCost1";
@@ -189,7 +189,7 @@ public class CardControllerTest {
         cardService.addCardToCollection(magicTheGathering1);
 
         String id2 = UUID.randomUUID().toString();
-        String name2 = "cardName2";
+        String name2 = "CardName2";
         List<String> releasedSet2 = new ArrayList<>();
         String cardType2 = "cardType2";
         String manaCost2 = "manaCost2";
@@ -215,6 +215,46 @@ public class CardControllerTest {
 
         mvc.perform(get("/cards")
                         .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("[0].Id")
+                        .value(is(id1)))
+                .andExpect(jsonPath("[0].name")
+                        .value(is(name)))
+                .andExpect(jsonPath("[0].releasedSet")
+                        .value(is(releasedSet)))
+                .andExpect(jsonPath("[0].cardType")
+                        .value(is(cardType)))
+                .andExpect(jsonPath("[0].manaCost")
+                        .value(is(manaCost)))
+                .andExpect(jsonPath("[0].powerToughness")
+                        .value(is(powerToughness)))
+                .andExpect(jsonPath("[0].cardAbilities")
+                        .value(is(cardAbilities)))
+                .andExpect(jsonPath("[0].numberOfCardsOwned")
+                        .value(is(numberOfCardsOwned)))
+                .andExpect(jsonPath("[0].artist")
+                        .value(is(artist)))
+                .andExpect(jsonPath("[0].collectionId")
+                        .value(is(collectionId)))
+                .andExpect(jsonPath("[1].Id")
+                        .value(is(id2)))
+                .andExpect(jsonPath("[1].name")
+                        .value(is(name2)))
+                .andExpect(jsonPath("[1].releasedSet")
+                        .value(is(releasedSet2)))
+                .andExpect(jsonPath("[1].cardType")
+                        .value(is(cardType2)))
+                .andExpect(jsonPath("[1].manaCost")
+                        .value(is(manaCost2)))
+                .andExpect(jsonPath("[1].powerToughness")
+                        .value(is(powerToughness2)))
+                .andExpect(jsonPath("[1].cardAbilities")
+                        .value(is(cardAbilities2)))
+                .andExpect(jsonPath("[1].numberOfCardsOwned")
+                        .value(is(numberOfCardsOwned2)))
+                .andExpect(jsonPath("[1].artist")
+                        .value(is(artist2)))
+                .andExpect(jsonPath("[1].collectionId")
+                        .value(is(collectionId)))
                 .andExpect(status().isOk());
     }
 
