@@ -35,7 +35,6 @@ export default class GamePageClient extends BaseClass {
      * @param id Unique identifier for a concert
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns The concert
-     TODO NEW ENDPOINT TO GET ALL COLLECTIONS JUST DISPLAY NAME AND ID
      */
     /*async getAllCollections(id, errorCallback) {
         try {

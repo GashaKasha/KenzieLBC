@@ -26,7 +26,17 @@ module.exports = {
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
-    overlay: true
+    overlay: true,
+//        proxy: [
+//          {
+//            context: [
+//              '/boardGame',
+//              '/cards',
+//              '/collections'
+//            ],
+//            target: 'http://localhost:5001/'
+//          }
+//        ]
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -5,8 +5,11 @@ import com.kenzie.appserver.controller.model.CollectionResponse;
 import com.kenzie.appserver.controller.model.CollectionGetResponse;
 import com.kenzie.appserver.service.CollectionService;
 import com.kenzie.appserver.service.model.Collection;
+import org.apache.http.protocol.HTTP;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
 import java.time.LocalDate;

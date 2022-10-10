@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <script type="text/javascript" src="gamePage.js"></script>
-    <title>Title</title>
     <meta charset="UTF-8">
+    <title>Board Game - Game Organizer Service</title>
+    <!-- icon link -->
+    <link rel="icon" href="images/PBANDJ%20Logo.jpg" type="image/x-icon">
+    <!-- /.end of icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/gamePageStyle.css">
 <!--        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">-->
 </head>
 <body class="background">
 <header class="header" id="header">
     <div class="navbar">
-        <img class="pbandj-logo" src="images/PBANDJ%20Logo.jpg">
+        <img class="pbandj-logo" src="images/PBANDJ%20Logo.jpg" alt="">
         <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
         <a class="collections" href="collectionPage.html">Collections Page</a>
         <a class="boardgame" href="gamePage.html">Board Game</a>
@@ -22,10 +26,14 @@
                 <a href="mtgPage.html">Magic The Gathering</a>
             </div>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search..">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
+        <form id="search-collection">
+            <div class="search-bar">
+                <label for="search-input">
+                    <input id="search-input" type="text" placeholder="Search...">
+                </label>
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
         <div class="topnav-right">
             <div class="dropdown">
                 <button class="dropbtn">Account
@@ -65,15 +73,16 @@
                     <input type="text" required class="validated-field" id="collection-id"
                            placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
                 </p>
-                <button type="submit">Add Board Game</button>
+                <p align="right">
+                    <button type="submit" id="addGameButton" >Add Board Game</button>
+                </p>
             </form>
         </div>
     </div>
     <div class="right-column">
         <div class="card">
-            <h3>Your Collections</h3>
+            <h3>Collections</h3>
             <div class="collection-container" id="collections-display">
-                <h4>this is where a list of collection names and ids will be</h4>
             </div>
         </div>
             <div class="card">
