@@ -23,18 +23,19 @@ export default class MTGPageClient extends BaseClass {
     }
 
 
-    async addMTGCard(name, releasedSet, cardType, manaCost, powerToughness, cardAbilities, numOfCardsOwned, artist, collectionId, errorCallback) {
+    async addMTGCard(name, releasedSet, cardType, manaCost, powerToughness, cardAbilities, numOfCardsOwned, artist, collectionId, errorCallback = console.error) {
+        console.log("Entering addMTGCard in Client.")
         try {
             const response = await this.client.post(`/cards/mtg`, {
-                "Name": name,
-                "ReleasedSet": releasedSet,
-                "CardType": cardType,
-                "ManaCost": manaCost,
-                "PowerAndToughness": powerToughness,
-                "CardAbilities": cardAbilities,
-                "NumberOfCardsOwned": numOfCardsOwned,
-                "Artist": artist,
-                "CollectionId": collectionId
+                "name": name,
+                "releasedSet": releasedSet,
+                "cardType": cardType,
+                "manaCost": manaCost,
+                "powerToughness": powerToughness,
+                "cardAbilities": cardAbilities,
+                "numberOfCardsOwned": numOfCardsOwned,
+                "artist": artist,
+                "collectionId": collectionId
             });
             return response.data;
         } catch (error) {
@@ -53,7 +54,7 @@ export default class MTGPageClient extends BaseClass {
             console.error(error.response.data.message);
         }
         if (errorCallback) {
-            errorCallback(method + " failed - " + error);
+            errorCallback(method + " failed - " + error, error);
         }
     }
 }

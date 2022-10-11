@@ -107,4 +107,19 @@ public class CardCreateRequest {
     public void setCollectionId(String collectionId) {
         this.collectionId = collectionId;
     }
+
+    @Override
+    public String toString() {
+        return "CardCreateRequest{" +
+                "name='" + name + '\'' +
+                ", releasedSet=" + releasedSet +
+                ", cardType='" + cardType + '\'' +
+                ", manaCost='" + manaCost + '\'' +
+                ", powerToughness='" + powerToughness + '\'' +
+                ", cardAbilities='" + cardAbilities + '\'' +
+                ", numberOfCardsOwned=" + numberOfCardsOwned +
+                ", artist='" + artist + '\'' +
+                ", collectionId='" + collectionId + '\'' +
+                '}';
+    }
 }

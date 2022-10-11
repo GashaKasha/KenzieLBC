@@ -107,7 +107,11 @@ class MTGPage extends BaseClass {
         let numOfCardsOwned = document.getElementById("number-of-cards-owned").value;
         let artist = document.getElementById("artist").value;
         let collectionId = document.getElementById("collection-id").value;
+        console.log("Values");
 
+        if (releasedSet.length === 0) {
+            releasedSet = [];
+        }
         const createdMTGCard = await this.client.addMTGCard(name, releasedSet, cardType, manaCost, powerToughness, cardAbilities, numOfCardsOwned, artist, collectionId, this.errorHandler);
 
         if (createdMTGCard) {
