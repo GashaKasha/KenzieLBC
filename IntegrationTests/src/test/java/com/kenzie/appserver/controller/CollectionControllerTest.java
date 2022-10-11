@@ -21,14 +21,12 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_DATE_TIME;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @IntegrationTest
 public class CollectionControllerTest {
@@ -203,7 +201,12 @@ public class CollectionControllerTest {
 
         // WHEN
         mvc.perform(get("/collections"))
-                .andExpect(jsonPath("$", hasSize(2)));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(collectionId)))
+                .andExpect(content().string(containsString(collectionId2)));
+//                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+//                        "{\"collectionId\":\"" + collectionId + "\"}")));
+//                .andExpect(jsonPath("$", hasSize(2)));
 //        mvc.perform(get("/collections")
 //                        .accept(MediaType.APPLICATION_JSON))
 //                .andExpect(jsonPath("$[0].collectionId")
