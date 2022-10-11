@@ -51,6 +51,7 @@ class CollectionPage extends BaseClass {
 
             if (collection) {
                 document.getElementById("create-collection-results").style.display = "flex";
+                document.getElementById("collection-results-header").innerHTML = "COLLECTION ID:";
                 resultArea.innerHTML = `
             <div>${collection.collectionId}</div>
             `
@@ -62,7 +63,6 @@ class CollectionPage extends BaseClass {
             const getCollection = this.dataStore.get("getCollection");
 
             if (getCollection) {
-                document.getElementById("collection-results-header").innerHTML = "COLLECTION ID:";
                 console.log(getCollection);
 
                 let collectionId = getCollection.collectionId;
