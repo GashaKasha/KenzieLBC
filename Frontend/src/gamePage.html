@@ -1,62 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Title</title>
+    <script type="text/javascript" src="gamePage.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="gamePageStyle.css">
+    <title>Board Game - Game Organizer Service</title>
+    <!-- icon link -->
+    <link rel="icon" href="images/PBANDJ%20Logo.jpg" type="image/x-icon">
+    <!-- /.end of icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/gamePageStyle.css">
+<!--        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">-->
 </head>
 <body class="background">
-    <header class="header" id="header">
-        <div class="site-title">
-            <!-- should this be a separate form to create the game?-->
-            <a class="header_home">Board Game</a>
+<header class="header" id="header">
+    <div class="navbar">
+        <img class="pbandj-logo" src="images/PBANDJ%20Logo.jpg" alt="">
+        <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+        <a class="collections" href="collectionPage.html">Collections Page</a>
+        <a class="boardgame" href="gamePage.html">Board Game</a>
+        <div class="dropdown">
+            <button class="dropbtn">Card Game
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="mtgPage.html">Magic The Gathering</a>
+            </div>
         </div>
-    </header>
-<div class="card">
-    <form class="card-content" id="create-game-name-form">
-        <p class="form-field">
-            <label>Game Name</label>
-            <input type="text" required class="validated-field" id="create-game-name-field">
-        </p>
-    </form>
-    <form class="card-content" id="game-designer-form">
-        <p class="form-field">
-            <label>Designer</label>
-            <!-- does this need to be a required class? -->
-            <input type="text" required class="validated-field" id="create-game-designer-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-game-publisher-form">
-        <p class="form-field">
-            <label>Publisher</label>
-            <input type="text" required class="validated-field" id="create-game-publisher-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-year-published-form">
-        <p class="form-field">
-            <label>Year Published</label>
-            <input type="text" required class="validated-field" id="create-year-published-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-number-of-players-form">
-        <p class="form-field">
-            <label>Number of Players</label>
-            <input type="text" required class="validated-field" id="create-number-of-players-field">
-        </p>
-    </form>
-    <form class="card-content" id="create-average-playtime-form">
-        <p class="form-field">
-            <label>Average Playtime</label>
-            <input type="text" required class="validated-field" id="create-average-playtime-field">
-        </p>
-    </form>
-    <button type="button">Add Board Game</button>
-</div>
-<div>
-    <ul>
-        <li><img src="./images/TwilightInscription.jpg" alt="Twilight Inscription"></li>
-        <li><img src="./images/CamelUp.jpg" alt="Camel Up"></li>
-    </ul>
+        <form id="search-collection">
+            <div class="search-bar">
+                <label for="search-input">
+                    <input class="search-box" id="search-input" type="text" placeholder="Search...">
+                </label>
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        <div class="topnav-right">
+            <div class="dropdown">
+                <button class="dropbtn">Account
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="gamePage.html">Login</a>
+                    <a href="#">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-name">
+        <a class="header_home">Board Games</a>
+    </div>
+</header>
+<div class="container">
+    <div class="flavor-image">
+        <img src="images/bg-hp1.jpeg" alt="Shelves">
+    </div>
+    <div class="left-column">
+        <div class="card">
+            <h3>Add a Board Game</h3>
+            <form class="card-content" id="create-game-form">
+                <p class="form-field">
+                    <label for="game-name"></label>
+                    <input type="text" required class="validated-field" id="game-name"
+                           placeholder="Game Name (required)" data-validation-required-message="Please enter the game name.">
+<!--                    <label for="designer"></label>-->
+<!--                    <input type="text" class="designer" id="designer" placeholder="Designer">-->
+<!--                    <label for="publisher"></label>-->
+<!--                    <input type="text" class="publisher" id="publisher" placeholder="Publisher">-->
+                    <label for="year-published"></label>
+                    <input type="text" class="year-published" id="year-published" placeholder="Year Published">
+                    <label for="number-of-players"></label>
+                    <input type="text" class="number-of-players" id="number-of-players" placeholder="Number of Players">
+                    <label for="average-playtime"></label>
+                    <input type="text" class="average-playtime" id="average-playtime" placeholder="Average Playtime">
+                    <label for="collection-id"></label>
+                    <input type="text" required class="validated-field" id="collection-id"
+                           placeholder="Collection Id (required)" data-validation-required-message="Please enter the collection Id.">
+                </p>
+                <p align="right">
+                    <button type="submit" id="addGameButton" >Add Board Game</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="card">
+            <h3>Collections</h3>
+            <div class="collection-container" id="collections-display">
+            </div>
+        </div>
+        <div class="card">
+            <div class="slides slowFade">
+                <div class="slide">
+                    <img src="images/CamelUp.jpg" alt="Camel Up">
+                </div>
+                <div class="slide">
+                    <img src="images/TwilightInscription.jpg" alt="Twilight Inscription">
+                </div>
+                <div class="slide">
+                    <img src="images/Charterstone.jpg" alt="Charterstone">
+                </div>
+                <div class="slide">
+                    <img src="images/DinosaurIsland.jpg" alt="Dinosaur Island">
+                </div>
+                <div class="slide">
+                    <img src="images/Gloomhaven.jpg" alt="Gloomhaven">
+                </div>
+                <div class="slide">
+                    <img src="images/Wingspan.jpg" alt="Wingspan">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

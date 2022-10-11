@@ -1,10 +1,9 @@
 package com.kenzie.appserver.controller;
 
-import com.kenzie.appserver.controller.model.CardCreateRequest;
-import com.kenzie.appserver.controller.model.CardResponse;
-import com.kenzie.appserver.controller.model.CardUpdateRequest;
+import com.kenzie.appserver.controller.model.*;
 import com.kenzie.appserver.service.CardService;
 import com.kenzie.appserver.service.CollectionService;
+import com.kenzie.appserver.service.model.Collection;
 import com.kenzie.appserver.service.model.MagicTheGathering;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +27,7 @@ public class CardController {
     public ResponseEntity<CardResponse> addMtgCardToCollection(@RequestBody CardCreateRequest cardCreateRequest) {
         // Check if collection Id exists
         // TODO: This should actually return an error message or something
+        System.out.println(cardCreateRequest.toString());
         String collectionId = cardCreateRequest.getCollectionId();
         if (!cardService.doesExist(collectionId)) {
             return ResponseEntity.notFound().build();
@@ -49,7 +49,22 @@ public class CardController {
         cardService.addCardToCollection(magicTheGathering);
         CardResponse cardResponse = createCardResponse(magicTheGathering);
 
-        return ResponseEntity.created(URI.create("/cards/mtg" + cardResponse.getCollectionId())).body(cardResponse);
+        return ResponseEntity.created(URI.create("/cards" + cardResponse.getCollectionId())).body(cardResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CardGetResponse>> getAllMagicTheGathering() {
+        List<MagicTheGathering> magicTheGathering = cardService.getAllCards();
+
+        if (magicTheGathering == null || magicTheGathering.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        List<CardGetResponse> response = new ArrayList<>();
+        for (MagicTheGathering magicTheGathering1 : magicTheGathering) {
+            response.add(this.createCardGetResponse(magicTheGathering1));
+        }
+        return ResponseEntity.ok(response);
     }
 
 //    @PutMapping("/mtg")
@@ -83,4 +98,21 @@ public class CardController {
         cardResponse.setCollectionId(magicTheGathering.getCollectionId());
         return cardResponse;
     }
+
+    private CardGetResponse createCardGetResponse(MagicTheGathering magicTheGathering){
+        CardGetResponse cardGetResponse = new CardGetResponse();
+        cardGetResponse.setId(magicTheGathering.getId());
+        cardGetResponse.setName(magicTheGathering.getName());
+        cardGetResponse.setReleasedSet(magicTheGathering.getReleasedSet());
+        cardGetResponse.setCardType(magicTheGathering.getCardType());
+        cardGetResponse.setManaCost(magicTheGathering.getManaCost());
+        cardGetResponse.setPowerToughness(magicTheGathering.getPowerToughness());
+        cardGetResponse.setCardAbilities(magicTheGathering.getCardAbilities());
+        cardGetResponse.setNumberOfCardsOwned(magicTheGathering.getNumberOfCardsOwned());
+        cardGetResponse.setArtist(magicTheGathering.getArtist());
+        cardGetResponse.setCollectionId(magicTheGathering.getCollectionId());
+        return cardGetResponse;
+    }
+
+
 }

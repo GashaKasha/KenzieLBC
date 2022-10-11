@@ -8,7 +8,10 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
+    mainPage: path.resolve(__dirname, 'src', 'pages', 'mainPage.js'),
+    collectionPage: path.resolve(__dirname, 'src', 'pages', 'collectionPage.js'),
+    gamePage: path.resolve(__dirname, 'src', 'pages', 'gamePage.js'),
+    mtgPage: path.resolve(__dirname, 'src', 'pages', 'mtgPage.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,7 +26,17 @@ module.exports = {
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
-    overlay: true
+    overlay: true,
+//        proxy: [
+//          {
+//            context: [
+//              '/boardGame',
+//              '/cards',
+//              '/collections'
+//            ],
+//            target: 'http://localhost:5001/'
+//          }
+//        ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -31,11 +44,34 @@ module.exports = {
       filename: 'index.html',
       inject: false
     }),
+    new HtmlWebpackPlugin({
+      template: './src/collectionPage.html',
+      filename: 'collectionPage.html',
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/gamePage.html',
+      filename: 'gamePage.html',
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/mtgPage.html',
+      filename: 'mtgPage.html',
+      inject: false
+    }),
     new CopyPlugin({
       patterns: [
         {
           from: path.resolve('src/css'),
           to: path.resolve("dist/css")
+        }
+      ]
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve('src/images'),
+          to: path.resolve("dist/images")
         }
       ]
     }),

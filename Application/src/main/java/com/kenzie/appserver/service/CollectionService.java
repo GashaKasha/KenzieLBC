@@ -1,11 +1,14 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.DateCreatedComparator;
 import com.kenzie.appserver.repositories.CollectionRepository;
 import com.kenzie.appserver.repositories.model.CollectionRecord;
 import com.kenzie.appserver.service.model.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -77,6 +80,23 @@ public class CollectionService {
         collectionRecord.setDescription(collection.getDescription());
         collectionRecord.setCollectionItemNames(itemList);
         collectionRepository.save(collectionRecord);
+    }
+
+    public List<Collection> getAllCollections(){
+        List<Collection> listOfCollections = new ArrayList<>();
+        Iterable<CollectionRecord> collectionOfCollections = collectionRepository.findAll();
+        for (CollectionRecord record:collectionOfCollections) {
+            Collection collection = new Collection(
+                    record.getId(),
+                    record.getCreationDate(),
+                    record.getCollectionName(),
+                    record.getType(),
+                    record.getDescription(),
+                    record.getCollectionItemNames());
+            listOfCollections.add(collection);
+        }
+//        Collections.sort(listOfCollections, Collections.reverseOrder(new DateCreatedComparator()));
+        return listOfCollections;
     }
 
     public boolean doesExist(String collectionId) {

@@ -3,13 +3,17 @@ package com.kenzie.appserver.controller;
 import com.kenzie.appserver.controller.model.BoardGameCreateRequest;
 import com.kenzie.appserver.controller.model.BoardGameResponse;
 import com.kenzie.appserver.controller.model.BoardGameUpdateRequest;
+import com.kenzie.appserver.controller.model.CollectionGetResponse;
 import com.kenzie.appserver.service.BoardGameService;
 import com.kenzie.appserver.service.model.BoardGame;
+import com.kenzie.appserver.service.model.Collection;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -59,6 +63,22 @@ public class BoardGameController {
 //
 //        return ResponseEntity.ok(boardGameResponse);
 //    }
+
+    @GetMapping
+    public ResponseEntity<List<BoardGameResponse>> getAllCollections() {
+        List<BoardGame> boardGames = boardGameService.getAllBoardGames();
+
+        if (boardGames == null ||  boardGames.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        List<BoardGameResponse> response = new ArrayList<>();
+        for (BoardGame boardGame : boardGames) {
+            response.add(this.createBoardGameResponse(boardGame));
+        }
+
+        return ResponseEntity.ok(response);
+    }
 
     private BoardGameResponse createBoardGameResponse(BoardGame boardGame) {
         BoardGameResponse boardGameResponse = new BoardGameResponse();

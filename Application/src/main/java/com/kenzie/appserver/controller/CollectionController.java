@@ -5,11 +5,14 @@ import com.kenzie.appserver.controller.model.CollectionResponse;
 import com.kenzie.appserver.controller.model.CollectionGetResponse;
 import com.kenzie.appserver.service.CollectionService;
 import com.kenzie.appserver.service.model.Collection;
+import org.apache.http.protocol.HTTP;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +32,7 @@ public class CollectionController {
     public ResponseEntity<CollectionResponse> createCollection(@RequestBody CollectionCreateRequest collectionCreateRequest) {
 
         String generateCollectionId = UUID.randomUUID().toString();
-        LocalDate creationDate = LocalDate.now();
+        LocalDateTime creationDate = LocalDateTime.now();
         List<String> collectionItems = new ArrayList<>();
 
         Collection collection = new Collection(generateCollectionId,
@@ -71,6 +74,22 @@ public class CollectionController {
 
         collectionService.deleteCollectionById(collectionId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CollectionGetResponse>> getAllCollections() {
+        List<Collection> collections = collectionService.getAllCollections();
+
+        if (collections == null ||  collections.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        List<CollectionGetResponse> response = new ArrayList<>();
+        for (Collection collection : collections) {
+            response.add(this.getCollectionResponse(collection));
+        }
+
+        return ResponseEntity.ok(response);
     }
 
     private CollectionResponse createCollectionResponse(Collection collection) {

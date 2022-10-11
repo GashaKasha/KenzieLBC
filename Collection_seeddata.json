@@ -1,0 +1,104 @@
+{
+  "Collection": [
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S": "Billy's Cool MTG Collection"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S": "MTG cards currently owned."},
+          "CollectionItemNames": {
+            "L": [
+              {"S": "Arcanis the Omnipotent"},
+              {"S": "Brute Strength"},
+              {"S": "Sol'kanar the Swamp King"},
+              {"S": "Fyndhorn Pollen"},
+              {"S": "Vivid Meadow"},
+              {"S": "Collective Voyage"},
+              {"S": "Sphinx of the Steel Wind"}
+            ]}
+          }
+        }
+      },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S":"Deez MTG Cards Nutz"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S":"Best MTG cards in my collection"},
+          "CollectionItemNames": {
+            "L": [
+            {"S": "Sol Ring"},
+            {"S": "Swords to Plowshares"},
+            {"S": "Beast Within"},
+            {"S": "Temur Ascendancy"},
+            {"S": "Birds of Paradise"}
+          ]}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S":"Stompy EDH Deck Cards"},
+          "Type": {"S": "CardGame"},
+          "Description": {"S":"MTG Cards in my stompy EDH deck (BGU)"},
+          "CollectionItemNames": {
+            "L": [
+            {"S": "The Mimeoplasm"},
+            {"S": "Arcane Signet"},
+            {"S": "Death Shadow"},
+            {"S": "Watery Grave"},
+            {"S": "Titanoth Rex"},
+            {"S": "Craterhoof Behemoth"}
+          ]}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S":"Ajjri's Expansive Board Games Collection"},
+          "Type": {"S": "BoardGame"},
+          "Description": {"S":"Some of my fav Board Games"},
+          "CollectionItemNames": {
+            "L": [
+            {"S": "Arkham Horror"},
+            {"S": "Wingspan"},
+            {"S": "Twilight Inscription"},
+            {"S": "Camel Up"},
+            {"S": "Terraforming Mars"}
+          ]}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "CreationDate": {"S": "2022-10-01"},
+          "CollectionName": {"S":"Pat's Board Game Collection"},
+          "Type": {"S": "BoardGame"},
+          "Description": {"S":"Current board games in my collection."},
+          "CollectionItemNames": {
+            "L": [
+              {"S": "Gloomhaven"},
+              {"S": "Gloomhaven: Jaws of the Lion"},
+              {"S": "Twiligh Imperium: Fourth Edition"},
+              {"S": "Gaia Project"},
+              {"S": "Spirit Island"},
+              {"S": "7 Wonders Duel"},
+              {"S": "Everdell"}
+          ]}
+        }
+      }
+    }
+  ]
+}

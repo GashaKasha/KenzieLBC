@@ -1,40 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script type="text/javascript" src="examplePage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="mainPage.js"></script>
+    <meta charset="UTF-8">
+    <title>Game Organizer Service</title>
+    <!-- icon link -->
+    <link rel="icon" href="images/PBANDJ%20Logo.jpg" type="image/x-icon">
+    <!-- /.end of icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/mainPage.css">
 </head>
-<body class="background">
-<header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home" href="index.html">Example App</a>
+<body>
+    <div class="navbar">
+        <img class="pbandj-logo" src="images/PBANDJ Logo.jpg">
+        <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+        <a class="collections" href="collectionPage.html">Collections Page</a>
+        <a class="boardgame" href="gamePage.html">Board Game</a>
+        <div class="dropdown">
+            <button class="dropbtn">Card Game
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="mtgPage.html">Magic The Gathering</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input class="search-box" type="text" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="topnav-right">
+            <div class="dropdown">
+                <button class="dropbtn">Account
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="gamePage.html">Login</a>
+                    <a href="#">Create Account</a>
+                </div>
+            </div>
+        </div>
     </div>
-</header>
-<div class="card">
-    <h2>Create Example</h2>
-    <form class="card-content" id="create-form">
-        <p class="form-field">
-            <label>Name</label>
-            <input type="text" required class="validated-field" id="create-name-field">
-        </p>
-        <button type="submit">Create</button>
-    </form>
-</div>
-<div class="card">
-    <h2>Get By ID</h2>
-    <form class="card-content" id="get-by-id-form">
-        <p class="form-field">
-            <label>ID</label>
-            <input type="text" required class="validated-field" id="id-field">
-        </p>
-        <button type="submit">Get</button>
-    </form>
-</div>
-<div class="card" id="result">
-    <h2>Result:</h2>
-    <p id="result-info"></p>
-</div>
+    <div class="header">
+        <h1>Welcome to the Game Organizer Service</h1>
+    </div>
+    <div class="slides slowFade">
+        <div class="slide">
+            <img src="images/boardcardgames.jpg" alt="img">
+        </div>
+        <div class="slide">
+            <img src="images/CamelUp.jpg" alt="img">
+        </div>
+        <div class="slide">
+            <img src="images/monopoly.jpg" alt="img">
+        </div>
+        <div class="slide">
+            <img src="images/MTG.jpg" alt="img">
+        </div>
+        <div class="slide">
+            <img src="images/MTG1.jpg" alt="img">
+        </div>
+        <div class="slide">
+            <img src="images/TwilightInscription.jpg" alt="img">
+        </div>
+    </div>
+
+<!--    &lt;!&ndash; Slider &ndash;&gt;-->
+<!--    <div id="slider">-->
+<!--        <div class="slides">-->
+<!--            <div class="slider">-->
+<!--                <div class="image">-->
+<!--                    <img src="images/boardcardgames.jpg">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="slider">-->
+<!--                <div class="image">-->
+<!--                    <img src="images/MTG1.jpg">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="slider">-->
+<!--                <div class="image">-->
+<!--                    <img src="images/MTG.jpg">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="slider">-->
+<!--                <div class="image">-->
+<!--                    <img src="images/monopoly.jpg">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
 
 </body>
 </html>

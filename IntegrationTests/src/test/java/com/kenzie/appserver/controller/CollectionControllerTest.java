@@ -14,11 +14,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_DATE_TIME;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -171,6 +173,63 @@ public class CollectionControllerTest {
         // THEN
                 .andExpect(status().isNotFound());
         assertThat(collectionService.getCollectionById(collectionId)).isNotNull();
+    }
+
+    @Test
+    public void getAllCollections_2Collections_returns2Collections() throws Exception {
+        // GIVEN
+        String collectionId = UUID.randomUUID().toString();
+        String collectionDate = LocalDateTime.now().toString();
+        String collectionName = mockNeat.strings().valStr();
+        String type = "Card Game";
+        String description = "Patti's MTG Collection";
+        List<String> collectionItemNames = new ArrayList<>();
+
+        Collection collection = new Collection(collectionId, collectionDate, collectionName, type, description, collectionItemNames);
+        Collection newCollection = collectionService.addCollection(collection);
+
+        String collectionId2 = UUID.randomUUID().toString();
+        String collectionDate2 = LocalDateTime.now().toString();
+        String collectionName2 = mockNeat.strings().valStr();
+        String type2 = "Card Game";
+        String description2 = "Jake's MTG Collection";
+        List<String> collectionItemNames2 = new ArrayList<>();
+
+        Collection collection1 = new Collection(collectionId2, collectionDate2, collectionName2, type2, description2, collectionItemNames2);
+        Collection newCollection2 = collectionService.addCollection(collection1);
+
+        mapper.registerModule(new JavaTimeModule());
+
+        // WHEN
+        mvc.perform(get("/collections")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].collectionId")
+                        .value(is(collectionId2)))
+                .andExpect(jsonPath("$[0].creationDate")
+                        .value(is(collectionDate2)))
+                .andExpect(jsonPath("$[0].collectionName")
+                        .value(is(collectionName2)))
+                .andExpect(jsonPath("$[0].type")
+                        .value(is(type2)))
+                .andExpect(jsonPath("$[0].description")
+                        .value(is(description2)))
+                .andExpect(jsonPath("$[0].collectionItemNames")
+                        .value(is(collectionItemNames2)))
+                .andExpect(jsonPath("$[1].collectionId")
+                        .value(is(collectionId)))
+                .andExpect(jsonPath("$[1].creationDate")
+                        .value(is(collectionDate)))
+                .andExpect(jsonPath("$[1].collectionName")
+                        .value(is(collectionName)))
+                .andExpect(jsonPath("$[1].type")
+                        .value(is(type)))
+                .andExpect(jsonPath("$[1].description")
+                        .value(is(description)))
+                .andExpect(jsonPath("$[1].collectionItemNames")
+                        .value(is(collectionItemNames)))
+                .andExpect(status().isOk());
+
+                // THEN
     }
 
     // TODO: Add method to clean up test data in the database

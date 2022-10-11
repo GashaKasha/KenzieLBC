@@ -1,0 +1,417 @@
+{
+  "MagicTheGathering": [
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"05a0ba20-a83e-4d78-a07e-0635cca9a80e"},
+          "Name": {"S": "Arcanis the Omnipotent"},
+          "ReleasedSet": {"L": [
+            {"S":"Onslaught"},
+            {"S":"Tenth Edition"},
+            {"S":"Duel Decks: Speed vs. Cunning"},
+            {"S":"Eternal Masters"},
+            {"S":"Commander 2017"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "3UUU"},
+          "PowerToughness": {"S": "3/4"},
+          "CardAbilities": {"S":"Card Draw. Bounce Arcanis (2UU)"},
+          "NumberOfCardsOwned": {"N": "4"},
+          "Artist": {"S": "Justin Sweet"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"008d2a9f-ca74-4e03-93fd-b954ebcca71a"},
+          "Name": {"S": "Brute Strength"},
+          "ReleasedSet": {"L": [
+            {"S":"Oath of the Gatewatch"},
+            {"S":"Amonkhet"},
+            {"S":"Duel Decks: Merfolk vs. Goblins"},
+            {"S":"Game Night 2019"},
+            {"S":"Amonkhet Remastered"}
+          ]},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "1R"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Target creature gets +3/+1 and gains trample until end of turn."},
+          "NumberOfCardsOwned": {"N":"0"},
+          "Artist": {"S": "Wayne Reynolds"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"2c2e0904-6f07-4e34-a73b-aa6daa8e490f"},
+          "Name": {"S": "Sol'kanar the Swamp King"},
+          "ReleasedSet": {"L": [
+            {"S":"Legends"},
+            {"S":"Time Spiral: Timeshifted"},
+            {"S":"Chronicles"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "2UBR"},
+          "PowerToughness": {"S": "5/5"},
+          "CardAbilities": {"S":"Swampwalk. Gain 1 life when a black spell is cast."},
+          "NumberOfCardsOwned": {"N":"0"},
+          "Artist": {"S": "Richard Kane Ferguson"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"cf17d94d-c088-4179-b6ec-3f7c8e48beb8"},
+          "Name": {"S": "Fyndhorn Pollen"},
+          "ReleasedSet": {"L": [
+            {"S":"Ice Age"},
+            {"S":"Masters Edition II"}
+          ]},
+          "CardType": {"S": "Enchantment"},
+          "ManaCost": {"S": "2G"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Cumulative Upkeep (1C). All creatures get -1/-0 at beginning of turn unless pay upkeep cost. 1G All creatures get -1/-0 until end of turn"},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Phil Foglio"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80eP"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"308b0859-bb22-4cf9-9735-1485e340a549"},
+          "Name": {"S": "Vivid Meadow"},
+          "ReleasedSet": {"L": [
+            {"S":"Lorwyn"},
+            {"S":"Magic: The Gathering-Commander"},
+            {"S":"Modern Masters"},
+            {"S":"Commander 2015"},
+            {"S":"Commander Anthology"},
+            {"S":"Commander 2017"},
+            {"S":"Commander Anthology 2018"},
+            {"S":"Streets of New Capenna Commander"}
+          ]},
+          "CardType": {"S": "Land"},
+          "ManaCost": {"S": "ETB tapped with 2 charge counters. Tap - add W. Tap - remove charge counter and add 1 mana of any color"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"50"},
+          "NumberOfCardsOwned": {"N":"10"},
+          "Artist": {"S": "Rob Alexander"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"c5670906-ad5a-4af8-be6e-6e5d5e7fb84f"},
+          "Name": {"S": "Collective Voyage"},
+          "ReleasedSet": {"L": [
+            {"S":"Magic: The Gathering-Commander"},
+            {"S":"Commander 2016"}
+          ]},
+          "CardType": {"S": "Sorcery"},
+          "ManaCost": {"S": "G"},
+          "PowerToughness": {"S": "CardGame"},
+          "CardAbilities": {"S":"Join forces - Starting with you, each player may pay any amount of mana. Each player searches library for up to X basic lands. Add to battlefield tapped; shuffle."},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Charles Urbach"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"8066074a-f883-4e6b-bb19-72ae5271ef55"},
+          "Name": {"S": "Sphinx of the Steel Wind"},
+          "ReleasedSet": {"L": [
+            {"S":"Alara Reborn"},
+            {"S":"Premium Deck Series: Graveborn"},
+            {"S":"Commander 2013 Edition"},
+            {"S":"Eternal Masters"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5WUB"},
+          "PowerToughness": {"S": "6/6"},
+          "CardAbilities": {"S":"Flying, first strike, vigilance, lifelink, protection from red and from green."},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Kev Walker"},
+          "CollectionId": {"S": "05a0ba20-a83e-4d78-a07e-0635cca9a80e"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"b41482cf-c9e8-4637-b9b0-ec3b978400c8"},
+          "Name": {"S": "Sol Ring"},
+          "ReleasedSet": {"L": [
+            {"S":"Alpha"},
+            {"S":"Beta"},
+            {"S":"Revised Edition"},
+            {"S":"Commander 2013"},
+            {"S":"Vintage Masters"},
+            {"S":"Kaladesh Inventions"},
+            {"S":"Commander Sets"},
+            {"S":"Ikoria"},
+            {"S":"Zendikar Rising Commander"},
+            {"S":"Commander Legends"},
+            {"S":"Secret Lair"},
+            {"S":"Kaldheim Commander"}
+          ]},
+          "CardType": {"S": "Artifact"},
+          "ManaCost": {"S": "1C"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Add 2 Colorless Mana"},
+          "NumberOfCardsOwned": {"N":"30"},
+          "Artist": {"S": "Mike Bierek"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"7f66382e-1c9d-4030-a781-c55fb1acc177"},
+          "Name": {"S": "Swords to Plowshares"},
+          "ReleasedSet": {"L": [
+            {"S":"Fourth Edition"},
+            {"S":"Summer Magic"},
+            {"S":"Revised Edition"},
+            {"S":"Mystery Booster"},
+            {"S":"From the Vault: Twenty"},
+            {"S":"Eternal Masters"},
+            {"S":"Masters 25"},
+            {"S":"Commander Legends"}
+          ]},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "W"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Exile creature; owner gains life equal to power"},
+          "NumberOfCardsOwned": {"N":"10"},
+          "Artist": {"S": "Terese Nielson"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"6e6eaff7-6ae7-43a1-ad75-f5ffd42b9c0d"},
+          "Name": {"S": "Beast Within"},
+          "ReleasedSet": {"L": [
+            {"S":"Dominaria United Commander"},
+            {"S":"Commander Legends"},
+            {"S":"Kamigawa, Innistrad"},
+            {"S":"Commander 2021"},
+            {"S":"Time Spiral Remastered, New Phyrexia"}
+          ]},
+          "CardType": {"S": "Instant"},
+          "ManaCost": {"S": "2G"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Destroy permanent. Controller creates 3/3 beast token"},
+          "NumberOfCardsOwned": {"N":"20"},
+          "Artist": {"S": "Jesper Ejsing"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"9dca3595-0537-49d6-965c-3eba06212eb4"},
+          "Name": {"S": "Temur Ascendancy"},
+          "ReleasedSet": {"L": [
+            {"S":"Khans of Tarkir"},
+            {"S":"Time Spiral Remastered"}
+          ]},
+          "CardType": {"S": "Enchantment"},
+          "ManaCost": {"S": "BUR"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Gives your creatures haste. Card Draw"},
+          "NumberOfCardsOwned": {"N":"5"},
+          "Artist": {"S": "Jaime Jones"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"600fd10d-e18e-4811-b5c8-3c5e5bf13b25"},
+          "Name": {"S": "Birds of Paradise"},
+          "ReleasedSet": {"L": [
+            {"S":"Secret Lair"},
+            {"S":"Mystery Booster"},
+            {"S":"Conspiracy"},
+            {"S":"Magic 2012"},
+            {"S":"Ravnica"},
+            {"S":"Eight Edition"},
+            {"S":"Limited Edition Alpha"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "G"},
+          "PowerToughness": {"S": "0/1"},
+          "CardAbilities": {"S":"Flying. Mana dork"},
+          "NumberOfCardsOwned": {"N":"15"},
+          "Artist": {"S": "Marcelo Vignali"},
+          "CollectionId": {"S": "008d2a9f-ca74-4e03-93fd-b954eb"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"5462c062-f2fa-446d-a9ff-e0649861badf"},
+          "Name": {"S": "The Mimeoplasm"},
+          "ReleasedSet": {"L": [
+            {"S":"Double Masters 2022"},
+            {"S":"Secret Lair"},
+            {"S":"Commander Anthology 2018"},
+            {"S":"Commander's Arsenal"},
+            {"S":"MTG-Commander"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "2BGU"},
+          "PowerToughness": {"S": "0/0"},
+          "CardAbilities": {"S":"ETB - clone, plus increased power"},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Wizard of Barge"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"46201c10-6377-430e-bf70-5369e677420d"},
+          "Name": {"S": "Arcane Signet"},
+          "ReleasedSet": {"L": [
+            {"S":"Throne of Eldraine"},
+            {"S":"Commander Sets"},
+            {"S":"Dominaria"},
+            {"S":"Kamigawa"},
+            {"S":"Innistrad"}
+          ]},
+          "CardType": {"S": "Artifact"},
+          "ManaCost": {"S": "2C"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Add 1 mana of any color in commander's identity"},
+          "NumberOfCardsOwned": {"N":"5"},
+          "Artist": {"S": "Dan Scott"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"3263e797-5562-4e0c-b4cf-bac22ec415ff"},
+          "Name": {"S": "Death Shadow"},
+          "ReleasedSet": {"L": [
+            {"S":"Worldwake"},
+            {"S":"Modern Masters 2017"},
+            {"S":"Double Masters"},
+            {"S":"Historic Anthology 4"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "B"},
+          "PowerToughness": {"S": "13/13"},
+          "CardAbilities": {"S":"Power/Toughness shrink based on life total"},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Howard Lyon"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"ef4f61f0-0ef4-46fa-9404-a8a1b0ce9aee"},
+          "Name": {"S": "Buried Alive"},
+          "ReleasedSet": {"L": [
+            {"S":"Weatherlight"},
+            {"S":"Odyssey"},
+            {"S":"MTG-Commander"},
+            {"S":"Commander Anthology 2018"},
+            {"S":"Ultimate Masters"}
+          ]},
+          "CardType": {"S": "Sorcery"},
+          "ManaCost": {"S": "2B"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Tutor 3 Creatures to the graveyard"},
+          "NumberOfCardsOwned": {"N":"2"},
+          "Artist": {"S": "Greg Staples"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"e89ad08e-9c25-4138-8d59-506f406554e6"},
+          "Name": {"S": "Watery Grave"},
+          "ReleasedSet": {"L": [
+            {"S":"Guilds of Ravnica"},
+            {"S":"Zendikar Expeditions"},
+            {"S":"Gatewatch, Ravnica"}
+          ]},
+          "CardType": {"S": "Land"},
+          "ManaCost": {"S": "N/A"},
+          "PowerToughness": {"S": "N/A"},
+          "CardAbilities": {"S":"Shock Land. Add B or U."},
+          "NumberOfCardsOwned": {"N":"4"},
+          "Artist": {"S": "Rob Alexander"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"e9682451-4699-4e89-a0c2-7da2e3f5e676"},
+          "Name": {"S": "Titanoth Rex"},
+          "ReleasedSet": {"L": [
+            {"S":"Ikoria: Lair of Behemoths"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "7GG"},
+          "PowerToughness": {"S": "11/11"},
+          "CardAbilities": {"S":"Trample. Cycle (1G) - give another creature trample."},
+          "NumberOfCardsOwned": {"N":"1"},
+          "Artist": {"S": "Svetlin Velinov"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "Id": {"S":"27601689-f0cd-4be6-a930-3ed4bab5e311"},
+          "Name": {"S": "Craterhoof Behemoth"},
+          "ReleasedSet": {"L": [
+            {"S":"Secret Lair"},
+            {"S":"Jumpstart"},
+            {"S":"Modern Masters 2017"},
+            {"S":"Avacyn Restored"}
+          ]},
+          "CardType": {"S": "Creature"},
+          "ManaCost": {"S": "5GGG"},
+          "PowerToughness": {"S": "5/5"},
+          "CardAbilities": {"S":"Haste. ETB: Creatures gain trample & get +X/+X until end of turn based on # of creatures."},
+          "NumberOfCardsOwned": {"N":"2"},
+          "Artist": {"S": "Chris Rahn"},
+          "CollectionId": {"S": "2c2e0904-6f07-4e34-a73b-aa6daa8e490f"}
+        }
+      }
+    }
+  ]
+}

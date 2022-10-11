@@ -1,5 +1,6 @@
 package com.kenzie.appserver.service;
 
+import com.kenzie.appserver.BoardGameNameComparator;
 import com.kenzie.appserver.CollectionNotFoundException;
 import com.kenzie.appserver.repositories.BoardGameRepository;
 import com.kenzie.appserver.repositories.model.BoardGameRecord;
@@ -7,6 +8,10 @@ import com.kenzie.appserver.repositories.model.BoardGameRecord;
 import com.kenzie.appserver.service.model.BoardGame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class BoardGameService {
@@ -61,6 +66,23 @@ public class BoardGameService {
 //            boardGameRepository.save(boardGameRecord);
 //        }
 //    }
+
+    public List<BoardGame> getAllBoardGames(){
+        List<BoardGame> listOfBoardGames = new ArrayList<>();
+        Iterable<BoardGameRecord> records = boardGameRepository.findAll();
+        for (BoardGameRecord record: records) {
+            BoardGame boardGame = new BoardGame(
+                    record.getId(),
+                    record.getName(),
+                    record.getNumberOfPlayers(),
+                    record.getYearPublished(),
+                    record.getAveragePlayTime(),
+                    record.getCollectionId());
+            listOfBoardGames.add(boardGame);
+        }
+        listOfBoardGames.sort(new BoardGameNameComparator());
+        return listOfBoardGames;
+    }
 
     public boolean checkIfCollectionIdExists(String collectionId){
         return collectionService.doesExist(collectionId);

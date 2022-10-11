@@ -10,10 +10,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class BoardGameServiceTest {
 
@@ -76,5 +77,52 @@ public class BoardGameServiceTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> boardGameService.addBoardGameToCollection(null),
                 "Null board game should throw IllegalArgumentException");
+    }
+
+    @Test
+    void findAllBoardGame_twoBoardGames_twoBoardGamesReturned(){
+        BoardGameRecord record1 = new BoardGameRecord();
+        record1.setId(UUID.randomUUID().toString());
+        record1.setName("fakeName1");
+        record1.setNumberOfPlayers("2");
+        record1.setYearPublished("1994");
+        record1.setAveragePlayTime("A While");
+        record1.setCollectionId(UUID.randomUUID().toString());
+
+        BoardGameRecord record2 = new BoardGameRecord();
+        record2.setId(UUID.randomUUID().toString());
+        record2.setName("fakeName2");
+        record2.setNumberOfPlayers("3");
+        record2.setYearPublished("1993");
+        record2.setAveragePlayTime("Really Long");
+        record2.setCollectionId(UUID.randomUUID().toString());
+
+        List<BoardGameRecord> recordList = new ArrayList<>();
+        recordList.add(record1);
+        recordList.add(record2);
+        when(boardGameRepository.findAll()).thenReturn(recordList);
+
+        List<BoardGame> boardGames = boardGameService.getAllBoardGames();
+
+        Assertions.assertNotNull(boardGames,"The board game list is null");
+        Assertions.assertEquals(2, boardGames.size(), "boardGames should have a size of 2");
+
+        for (BoardGame boardGame: boardGames) {
+            if(boardGame.getId().equals(record1.getId())){
+                Assertions.assertEquals(record1.getId(), boardGame.getId(), "the Id's should match");
+                Assertions.assertEquals(record1.getName(), boardGame.getName(), "the Names should match");
+                Assertions.assertEquals(record1.getNumberOfPlayers(), boardGame.getNumberOfPlayers(), "numberOfPlayers should match");
+                Assertions.assertEquals(record1.getYearPublished(), boardGame.getYearPublished(), "yearPublished should match");
+                Assertions.assertEquals(record1.getAveragePlayTime(), boardGame.getAveragePlayTime(), "averagePlayTime should match");
+                Assertions.assertEquals(record1.getCollectionId(), boardGame.getCollectionId(), "collectionId should match");
+            }else if (boardGame.getId().equals(record2.getId())){
+                Assertions.assertEquals(record2.getId(), boardGame.getId(), "the Id's should match");
+                Assertions.assertEquals(record2.getName(), boardGame.getName(), "the Names should match");
+                Assertions.assertEquals(record2.getNumberOfPlayers(), boardGame.getNumberOfPlayers(), "numberOfPlayers should match");
+                Assertions.assertEquals(record2.getYearPublished(), boardGame.getYearPublished(), "yearPublished should match");
+                Assertions.assertEquals(record2.getAveragePlayTime(), boardGame.getAveragePlayTime(), "averagePlayTime should match");
+                Assertions.assertEquals(record2.getCollectionId(), boardGame.getCollectionId(), "collectionId should match");
+            }
+        }
     }
 }
