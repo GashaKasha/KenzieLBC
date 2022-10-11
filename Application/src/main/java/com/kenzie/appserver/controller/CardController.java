@@ -27,6 +27,7 @@ public class CardController {
     public ResponseEntity<CardResponse> addMtgCardToCollection(@RequestBody CardCreateRequest cardCreateRequest) {
         // Check if collection Id exists
         // TODO: This should actually return an error message or something
+        System.out.println(cardCreateRequest.toString());
         String collectionId = cardCreateRequest.getCollectionId();
         if (!cardService.doesExist(collectionId)) {
             return ResponseEntity.notFound().build();
@@ -48,7 +49,7 @@ public class CardController {
         cardService.addCardToCollection(magicTheGathering);
         CardResponse cardResponse = createCardResponse(magicTheGathering);
 
-        return ResponseEntity.created(URI.create("/cards/mtg" + cardResponse.getCollectionId())).body(cardResponse);
+        return ResponseEntity.created(URI.create("/cards" + cardResponse.getCollectionId())).body(cardResponse);
     }
 
     @GetMapping
@@ -112,4 +113,6 @@ public class CardController {
         cardGetResponse.setCollectionId(magicTheGathering.getCollectionId());
         return cardGetResponse;
     }
+
+
 }
