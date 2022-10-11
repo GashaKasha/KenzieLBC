@@ -182,7 +182,7 @@ img {
     position: absolute;
     min-width: 100%;
     /*min-height: 100%;*/
-    height: 450px;
+    height: 400px;
     background: #000;
     webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -261,7 +261,7 @@ img {
 .search-bar {
     font-weight: bold;
     color: black;
-    padding: 16px 16px;
+    padding: 10px 16px;
     float: right;
     height: 24px;
     margin-bottom: 40px;
@@ -426,6 +426,7 @@ button.search-button[type='submit']:hover {
 /* Hide the images by default */
 .mySlides {
     display: none;
+    height: 600px;
 }
 
 /* Next & previous buttons */

@@ -1,6 +1,7 @@
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
 import MTGPageClient from "../api/mtgPageClient";
+import CollectionClient from "../api/collectionPageClient";
 
 /**
  * Logic needed for the view playlist page of the website.
@@ -19,26 +20,57 @@ class MTGPage extends BaseClass {
     async mount() {
         document.getElementById('add-card-form').addEventListener('submit', this.onCreate);
         this.client = new MTGPageClient();
+        this.collectionClient = new CollectionClient();
+        let result = await this.collectionClient.getAllCollections(this.errorHandler);
+        this.dataStore.set("allCollections", result);
+        this.renderExample();
 
         this.dataStore.addChangeListener(this.renderExample);
     }
 
     // Render Methods --------------------------------------------------------------------------------------------------
 
-   async renderExample() {
-        let resultArea = document.getElementById('mtg-card-info');
+//   async renderExample() {
+//        let resultArea = document.getElementById('mtg-card-info');
+//
+//        const addCard = this.dataStore.get("mtgCard");
+//        console.log(addCard);
+//
+//        if (addCard) {
+//            console.log("Entering if statement...")
+//            document.getElementById("mtg-card-name").style.display = "flex";
+//            resultArea.innerHTML = `
+//              <div>${addCard.collectionName}</div>
+//              `
+//        } else {
+//            resultArea.innerHTML = "Error adding Card! Try Again... ";
+//        }
+//    }
 
-        const addCard = this.dataStore.get("mtgCard");
-        console.log(addCard);
+    async renderExample() {
+        console.log("Entering render");
+        let resultArea = document.getElementById("collections-display");
 
-        if (addCard) {
-            console.log("Entering if statement...")
-            document.getElementById("mtg-card-name").style.display = "flex";
-            resultArea.innerHTML = `
-              <div>${addCard.collectionName}</div>
-              `
-        } else {
-            resultArea.innerHTML = "Error adding Card! Try Again... ";
+        resultArea.innerHTML = ""
+
+        const allCollections = this.dataStore.get("allCollections");
+
+        const toArray = Object.entries(allCollections);
+        console.log(toArray);
+
+        if (allCollections) {
+            const ul = document.createElement("ul");
+            for (let i = 0; i < allCollections.length; i++) {
+                const li = document.createElement("li");
+                console.log("inside the for loop " + allCollections[i]);
+                li.innerHTML = `
+                    ${allCollections[i].collectionName} ............. ${allCollections[i].collectionId}
+                `;
+                ul.append(li);
+            }
+            resultArea.append(ul);
+        }else {
+            resultArea.innerHTML = "No Item";
         }
     }
 
