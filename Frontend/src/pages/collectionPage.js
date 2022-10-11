@@ -62,7 +62,7 @@ class CollectionPage extends BaseClass {
             const getCollection = this.dataStore.get("getCollection");
 
             if (getCollection) {
-                document.getElementById("collection-results-header").innerHTML = "Collection ID:";
+                document.getElementById("collection-results-header").innerHTML = "COLLECTION ID:";
                 console.log(getCollection);
 
                 let collectionId = getCollection.collectionId;
@@ -118,14 +118,14 @@ class CollectionPage extends BaseClass {
 
             if (getAllCollections) {
                 document.getElementById("create-collection-results").style.display = "flex";
-                document.getElementById("collection-results-header").innerHTML = "All Collections:";
+                document.getElementById("collection-results-header").innerHTML = "ALL COLLECTIONS:";
                 const ul = document.createElement("ul");
                 for (let i = 0; i < getAllCollections.length; i++) {
                     const li = document.createElement("li");
                     console.log("inside the for loop " + getAllCollections[i]);
                     li.innerHTML += `
-                    Collection Name: ${getAllCollections[i].collectionName}
-                    Collection ID: ${getAllCollections[i].collectionId}`;
+                    <div>Collection Name: ${getAllCollections[i].collectionName}</div>
+                    <div>Collection ID: ${getAllCollections[i].collectionId}</div>`;
                     ul.append(li);
                 }
                 resultArea.append(ul);
@@ -559,7 +559,7 @@ class CollectionPage extends BaseClass {
             // TODO: Needs to be changed to w/e the card game page url will be
             window.location.href = `http://localhost:5001/index.html`
         } else if (collectionType.toLowerCase() === 'boardgame') {
-            window.location.href = `http://localhost:5001/gamePage.html`
+            window.location.href = `http://localhost:5001/mtgPage.html`
         }
 
 
